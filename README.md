@@ -15,7 +15,8 @@ el riego de un cultivo de patata mediante la combinación de:
 
 ## Objetivo principal
 Diseñar e implementar un sistema capaz de estimar el estado hídrico del cultivo
-de patata y recomendar acciones de riego que reduzcan el consumo de agua sin modificar la calidad de la producción.
+de patata y recomendar acciones de riego que reduzcan el consumo de agua 
+sin modificar la calidad de la producción.
 
 ## Objetivos específicos
 1. Analizar datos históricos de la parcela obtenidos mediante Sentinel-2.
@@ -41,13 +42,13 @@ Sentinel-2 + meteorología + sensores
           Simulador de cultivo
                 |
                 v
-        Entorno de aprendizaje RL
+        Entorno de aprendizaje
                 |
                 v
         Recomendación de riego
                 |
                 v
-              Dashboard
+            Dashboard
 
 ## Estructura prevista
 data/          Datos de entrada y datos procesados
@@ -74,6 +75,7 @@ repositorio cuando sea necesario.
 ## Autor
 Iván Ramírez Rodríguez (irr1008@alu.ubu.es)
 
-##Tutores
-Rubén Ruíz González
-Antonia Maiara Marqués
+## Tutores
+- Rubén Ruíz González
+- Antonia Maiara Marques Do Nascimiento
+
