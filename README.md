@@ -30,34 +30,7 @@ sin modificar la calidad de la producción.
 9. Desarrollar una interfaz de visualización de resultados.
 
 ## Arquitectura prevista
-Sentinel-2 + meteorología + sensores
-                |
-                v
-       Preprocesamiento de datos
-                |
-                v
-       Modelo físico e hídrico
-                |
-                v
-          Simulador de cultivo
-                |
-                v
-        Entorno de aprendizaje
-                |
-                v
-        Recomendación de riego
-                |
-                v
-            Dashboard
-
-## Estructura prevista
-data/          Datos de entrada y datos procesados
-notebooks/     Experimentos realizados en Google Colab
-src/           Código fuente reutilizable
-tests/         Pruebas automáticas
-models/        Modelos entrenados
-results/       Gráficos y métricas
-docs/          Documentación técnica y seguimiento
+Sentinel-2 + meteorología + sensores -> Preprocesamiento de datos -> Modelo físico e hídrico -> Simulador de cultivo -> Entorno de aprendizaje -> Recomendación de riego -> Dashboard
 
 ## Tecnologías previstas
 - Python
