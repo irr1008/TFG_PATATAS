@@ -3,8 +3,7 @@
 ## Metodología seleccionada
 
 El proyecto se gestionará mediante una adaptación individual de Scrum combinada
-con elementos visuales de Kanban y planificación temporal mediante diagramas de
-Gantt.
+con elementos visuales de Kanban y planificación temporal.
 
 Esta adaptación se realiza porque el TFG será desarrollado por un único
 estudiante con supervisión periódica del profesor.
@@ -44,32 +43,11 @@ Se establece un máximo de una tarea en estado `En progreso`.
 Este límite pretende reducir los cambios de contexto y favorecer la finalización
 de una tarea antes de comenzar otra.
 
-## Planificación mediante Gantt
-
-ProjectLibre se utilizará para crear la planificación temporal formal del TFG.
-
-El diagrama de Gantt incluirá:
-
-- Fases del proyecto.
-- Tareas.
-- Duraciones.
-- Fechas de inicio y finalización.
-- Dependencias.
-- Hitos.
-- Revisiones con el profesor.
-- Fecha prevista de entrega.
-
-## Relación entre herramientas
+## Leyenda
 
 Las GitHub Issues representarán las tareas concretas. Los GitHub Milestones
 agruparán fases principales. GitHub Projects se utilizará para el backlog, el
 tablero Kanban y el roadmap.
-
-ProjectLibre se utilizará para representar la planificación temporal formal y
-generar el diagrama de Gantt.
-
-Los nombres de las tareas y de los hitos se mantendrán coherentes entre GitHub
-y ProjectLibre.
 
 ## Definición de tarea terminada
 
