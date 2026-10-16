@@ -52,4 +52,4 @@
 - Notebooks:
 - Resultados:
 - Documentación:
-- Versión del Gantt:
+
