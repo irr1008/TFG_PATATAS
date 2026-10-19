@@ -217,5 +217,6 @@ Pendiente de realizar al finalizar la iteración.
 - Documentación:
   - `docs/gestion-agil.md`.
   - `docs/memoria/gestion-del-proyecto.md`.
+  - `docs/alcance-y-arquitectura.md`.
   - Este documento de seguimiento.
   - Los documentos de alcance y análisis que se actualicen en el sprint.
