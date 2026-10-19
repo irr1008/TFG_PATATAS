@@ -1,14 +1,15 @@
 # Alcance y arquitectura inicial del sistema
 
-Estado: borrador del sprint 2 (issue #1). Pendiente de validar con los tutores.
+Estado: validado por los tutores. Versión del
+sprint 2 (issue #1).
 
 ## 1. Contexto y problema
 
 Existe un motor de decisión de riego para patata (Agrobioma v14) que
 combina la lectura de una sonda de humedad, datos meteorológicos e
 índices satelitales para emitir una recomendación diaria. Los documentos
-del tutor especifican una versión mejorada. El TFG pretende contribuir a
-esa mejora.
+del tutor especifican una versión mejorada. El TFG contribuye a esa
+mejora.
 
 ## 2. Sistema de referencia
 
@@ -27,7 +28,8 @@ Motor especificado por el tutor: cuatro módulos.
 
 ## 3. Componentes que se pretende mejorar
 
-Se concretará con los tutores. Candidatos identificados:
+Componentes confirmados con los tutores. Ninguno se implementa en este
+sprint.
 - Sustituir la ETc empírica por ETo de Penman-Monteith.
 - Incorporar sondas a varias profundidades con pesos según Zr.
 - Estimar Kc a partir de NDVI de Sentinel-2.
@@ -55,12 +57,14 @@ recomendaciones operativas de riego.
 ## 6. Encaje del procesamiento Sentinel-2
 
 Sentinel-2 aporta índices por parcela y semana. NDVI alimenta la
-estimación de Kc (módulo 2). Los índices no miden humedad del suelo y no
-sustituyen a las sondas.
+estimación de Kc (módulo 2); esta relación está especificada pero no
+implementada en este sprint. Los índices no miden humedad del suelo y
+no sustituyen a las sondas.
 
 ## 7. Limitaciones y fuera de alcance
 
 - Periodo de extracción provisional; cultivo no confirmado.
 - Semanas sin observaciones conservan valores ausentes.
 - No se implementa el motor completo ni se entrenan modelos.
-- Alcance pendiente de validación con los tutores.
+- Faltan por incorporar riegos, meteorología, textura del suelo y
+  fechas agronómicas.
