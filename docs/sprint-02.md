@@ -6,7 +6,7 @@
 - Objetivo: actualizar el alcance y la arquitectura del sistema a partir
   de los documentos del tutor, consolidar los datos Sentinel-2 de las
   cuatro parcelas y revisar los entregables del sprint.
-- Fecha de inicio: 17/10/2026.
+- Fecha de inicio: 19/10/2026.
 - Fecha objetivo: 23/10/2026.
 - Responsable: irr1008.
 - Milestone asociado a la issue de revisión: M1 - Preparación y análisis inicial.
