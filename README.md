@@ -2,8 +2,8 @@
 Trabajo de Fin de Grado del Grado en Ingeniería Informática.
 
 ## Descripción
-Este proyecto desarrolla un prototipo de sistema inteligente para recomendar
-el riego de un cultivo de patata mediante la combinación de:
+Este proyecto desarrolla una mejora sobre un prototipo de sistema inteligente para 
+recomendar el riego de un cultivo de patata mediante la combinación de:
 
 - Datos de observación terrestre obtenidos mediante Sentinel-2 (proporcionado por el profesorado).
 - Variables meteorológicas.
