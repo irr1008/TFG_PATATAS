@@ -208,6 +208,7 @@ Pendiente de realizar al finalizar la iteración.
   - #6 — Revisar los entregables y documentar el cierre del sprint 2.
 
 - Commits:
+    - Pendiente de registrar al cierre del sprint.
 
 - Notebooks:
  
