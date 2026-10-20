@@ -52,8 +52,8 @@ registrar una decisión de replanificación o de reducción de alcance.
 |---|---|---|---:|---|---|---|
 | #1 | Documentar el alcance y la arquitectura inicial del sistema | Alta | 4 | 17/10/2026 | 19/10/2026 | En progreso |
 | #2 | Analizar la estructura del CSV generado por Sentinel-2 | Alta | 3 | 20/10/2026 | 20/10/2026 | Por hacer |
-| #4 | Preparar los datos Sentinel-2 para el simulador | Alta | 4 | 20/10/2026 | 21/10/2026 | Por hacer |
 | #3 | Representar la evolución temporal de los índices espectrales | Media | 5 | 21/10/2026 | 22/10/2026 | Por hacer |
+| #4 | Preparar los datos Sentinel-2 para el simulador | Alta | 4 | 20/10/2026 | 21/10/2026 | Por hacer |
 | #6 | Revisar los entregables y documentar el cierre del sprint 2 | Alta | 4 | 23/10/2026 | 23/10/2026 | Por hacer |
 
 Total estimado: 20 horas.
