@@ -13,7 +13,7 @@ El trabajo con los datos satelitales se organiza en tres notebooks:
 | `03_extraccion_sentinel2_parcelas_reales` | Usa ese catálogo para extraer Sentinel-2 y genera los CSV de índices, de revisión de calidad y el resumen semanal |
 | `01_Exploracion_inicial_datos_sentinel-2` (Parte 1) | Analiza la estructura de los CSV generados por el notebook 03 |
 
-Este documento analiza los CSV generados por el notebook 02 para cuatro parcelas,
+Este documento analiza los CSV generados por el notebook 03 para cuatro parcelas,
 con una extracción provisional del 01/04/2026 (incluido) al 01/10/2026
 (excluido). El periodo es provisional y no se confirma el cultivo presente en
 cada parcela durante esas fechas.
