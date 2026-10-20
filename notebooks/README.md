@@ -8,7 +8,7 @@ este repositorio.
 
 | Notebook | Función | Estado en el repositorio |
 |---|---|---|
-| `01_Exploracion_inicial_datos_sentinel_2.ipynb` | Parte 1: análisis de la estructura de los CSV de las cuatro parcelas (2026). Parte 2: ejemplo previo con un CSV de maíz de 2018 | Publicado |
+| `01_Exploracion_inicial_datos_sentinel-2.ipynb` | Parte 1: análisis de la estructura de los CSV de las cuatro parcelas (2026). Parte 2: ejemplo previo con un CSV de maíz de 2018 | Publicado |
 | `02_preparacion_parcelas_reales` | Catálogo y validación de las geometrías de las parcelas | Pendiente de publicar |
 | `03_extraccion_sentinel2_parcelas_reales` | Extracción de índices Sentinel-2 con Google Earth Engine | Pendiente de publicar |
 
