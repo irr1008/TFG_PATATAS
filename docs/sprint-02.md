@@ -167,6 +167,13 @@ Estas limitaciones no bloquean automáticamente todas las tareas.
 Si alguna impide continuar una actividad concreta, se registrará en la
 issue afectada y se utilizará el estado Bloqueado.
 
+### Decisiones durante el sprint
+
+- 20/10/2026: los notebooks 02 y 03 no se publican por ahora. El 02
+  contiene las coordenadas de las parcelas y ambos incluyen salidas con
+  datos de las explotaciones, y el repositorio es público. Se publicarán
+  versiones saneadas tras revisar los permisos sobre los datos (issue #4).
+
 ## Revisión del sprint
 
 Pendiente de realizar durante la issue #6, al finalizar la iteración.
@@ -211,6 +218,7 @@ Pendiente de realizar al finalizar la iteración.
     - Pendiente de registrar al cierre del sprint.
 
 - Notebooks:
+  - `notebooks/01_Exploracion_inicial_datos_sentinel_2.ipynb`.
  
 
 - Resultados:
@@ -219,5 +227,6 @@ Pendiente de realizar al finalizar la iteración.
   - `docs/gestion-agil.md`.
   - `docs/memoria/gestion-del-proyecto.md`.
   - `docs/alcance-y-arquitectura.md`.
+  - `docs/analisis-estructura-csv.md`.
   - Este documento de seguimiento.
   - Los documentos de alcance y análisis que se actualicen en el sprint.
