@@ -52,8 +52,8 @@ registrar una decisión de replanificación o de reducción de alcance.
 |---|---|---|---:|---|---|---|
 | #1 | Documentar el alcance y la arquitectura inicial del sistema | Alta | 4 | 17/10/2026 | 19/10/2026 | En progreso |
 | #2 | Analizar la estructura del CSV generado por Sentinel-2 | Alta | 3 | 20/10/2026 | 20/10/2026 | Por hacer |
-| #3 | Representar la evolución temporal de los índices espectrales | Media | 5 | 21/10/2026 | 22/10/2026 | Por hacer |
-| #4 | Preparar los datos Sentinel-2 para el simulador | Alta | 4 | 20/10/2026 | 21/10/2026 | Por hacer |
+| #3 | Representar la evolución temporal de los índices espectrales | Media | 5 | 20/10/2026 | 21/10/2026 | Por hacer |
+| #4 | Preparar los datos Sentinel-2 para el simulador | Alta | 4 | 22/10/2026 | 22/10/2026 | Por hacer |
 | #6 | Revisar los entregables y documentar el cierre del sprint 2 | Alta | 4 | 23/10/2026 | 23/10/2026 | Por hacer |
 
 Total estimado: 20 horas.
@@ -70,9 +70,9 @@ secciones de revisión y evidencias.
 | Jornada | Trabajo previsto | Horas |
 |---|---|---:|
 | Lunes 19/10 | Issue #1 | 4 |
-| Martes 20/10 | Issue #2 y comienzo de la issue #4 | 4 |
-| Miércoles 21/10 | Continuación de #4 y comienzo de #3 | 4 |
-| Jueves 22/10 | Continuación de #3 | 4 |
+| Martes 20/10 | Issue #2 y comienzo de la issue #3 | 4 |
+| Miércoles 21/10 | Continuación de #3 | 4 |
+| Jueves 22/10 | Issue #4 | 4 |
 | Viernes 23/10 | Issue #6 | 4 |
 
 Las tareas que comparten fecha no se consideran paralelas: se mantiene
@@ -160,7 +160,7 @@ No se presenta como desarrollado íntegramente dentro del sprint 2.
 - Los históricos no se incorporan en esta fase.
 - Los índices satelitales no sustituyen las mediciones de humedad del suelo.
 - Existen huecos temporales en las observaciones seleccionadas.
-- Debe resolverse el alcance de NDRE en la issue #3.
+- NDRE no está en la extracción de 2026; su incorporación se resuelve en la issue #4.
 - La planificación no dispone de margen libre de horas.
 
 Estas limitaciones no bloquean automáticamente todas las tareas.
@@ -173,6 +173,9 @@ issue afectada y se utilizará el estado Bloqueado.
   contiene las coordenadas de las parcelas y ambos incluyen salidas con
   datos de las explotaciones, y el repositorio es público. Se publicarán
   versiones saneadas tras revisar los permisos sobre los datos (issue #4).
+- 21/10/2026: la incorporación de NDRE al extractor se traslada de la
+  issue #3 a la issue #4, con un límite de 90 minutos. Si no es viable,
+  se documenta como limitación.
 
 ## Revisión del sprint
 
@@ -218,15 +221,16 @@ Pendiente de realizar al finalizar la iteración.
     - Pendiente de registrar al cierre del sprint.
 
 - Notebooks:
-  - `notebooks/01_Exploracion_inicial_datos_sentinel_2.ipynb`.
+  - `notebooks/01_Exploracion_inicial_datos_sentinel-2.ipynb` (Partes 1 y 3).
  
-
 - Resultados:
+  - `docs/figuras/` (figuras de evolución temporal, issue #3).
  
 - Documentación:
   - `docs/gestion-agil.md`.
   - `docs/memoria/gestion-del-proyecto.md`.
   - `docs/alcance-y-arquitectura.md`.
   - `docs/analisis-estructura-csv.md`.
+  - `docs/evolucion-temporal-indices.md`.
   - Este documento de seguimiento.
   - Los documentos de alcance y análisis que se actualicen en el sprint.
