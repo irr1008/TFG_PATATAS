@@ -159,7 +159,7 @@ parcelas). El filtro orientativo del ejemplo de 2018 (50 % del máximo de
 | EVI, SAVI | Sí | Indicadores de vigor y cobertura vegetal |
 | Calidad y cobertura por imagen | Sí | Selección de observaciones |
 | Resumen semanal sin interpolar | Sí | Entrada temporal para el simulador |
-| NDRE | No | Su tratamiento se decide en la issue #3 |
+| NDRE | No | Su tratamiento se traslada a la issue #4 |
 | NDWI y RECI | No | El motor actual (Agrobioma v14) usa NDVI, MSI, NDWI y RECI; los dos últimos no están en esta extracción |
 | Humedad del suelo, meteorología y riegos | No | Fuentes externas pendientes |
 | Textura del suelo, cultivo y fechas agronómicas confirmadas | No | Pendientes; el periodo es provisional |
@@ -187,6 +187,7 @@ del notebook 01 solo como ejemplo metodológico.
 - Las semanas sin observaciones seleccionadas conservan valores ausentes y no se interpolan.
 - Puri combina dos teselas con coberturas distintas de la parcela.
 - Los índices no sustituyen a las mediciones de humedad del suelo.
+- Los recuentos *_count y pixeles_antes no son directamente comparables; no deben interpretarse como intercambiables.
 
 ## 10. Evidencias
 
