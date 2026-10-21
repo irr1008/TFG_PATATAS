@@ -1,6 +1,10 @@
-Python
-Google Colab
-Pandas
-NumPy
-Google Earth Engine
-GitHub
+# Dependencias de los notebooks del TFG.
+# Los notebooks se ejecutan en Google Colab, que ya incluye la mayoría de estos paquetes. El módulo google.colab 
+# solo existe dentro de Colab y no se instala con pip.
+pandas
+numpy
+matplotlib
+seaborn
+shapely
+earthengine-api
+ipython
