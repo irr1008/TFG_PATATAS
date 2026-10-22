@@ -9,8 +9,8 @@ este repositorio.
 | Notebook | Función | Estado en el repositorio |
 |---|---|---|
 | `02_preparacion_parcelas_reales` | Genera el catálogo de parcelas y sus geometrías y comprueba su validez | Pendiente de publicar |
-| `03_extraccion_sentinel2_parcelas_reales` | Extrae Sentinel-2 con Google Earth Engine y genera los CSV de índices, de calidad y el resumen semanal | Publicado, sin salidas |
-| `01_Exploracion_inicial_datos_sentinel-2` | Parte 1: estructura de los CSV de las cuatro parcelas. Parte 2: ejemplo previo con maíz de 2018. Parte 3: evolución temporal de NDVI, NDMI y EVI | Publicado |
+| `03_extraccion_sentinel2_parcelas_reales` | Extrae Sentinel-2 con Google Earth Engine y genera los CSV de índices (NDVI, NDRE, NDMI, MSI, EVI y SAVI), de calidad y el resumen semanal | Publicado, sin salidas |
+| `01_Exploracion_inicial_datos_sentinel-2` | Parte 1: estructura de los CSV de las cuatro parcelas. Parte 2: ejemplo previo con maíz de 2018. Parte 3: evolución temporal de NDVI, NDRE, NDMI y EVI | Publicado, sin salidas |
 
 ## Orden de ejecución
 
@@ -33,6 +33,8 @@ este repositorio.
    en el notebook.
 4. No pegues códigos de verificación, tokens ni identificadores de proyecto en
    las celdas ni en los comentarios.
+5. Antes de publicar un notebook, borra sus salidas (Editar → Borrar todos los
+   resultados) si contienen datos de las explotaciones.
 
 ## Dónde se guardan las salidas en Drive
 
@@ -57,3 +59,10 @@ salidas y sin el identificador del proyecto de Earth Engine.
   Colab la mayoría ya están instaladas; los notebooks 02 y 03 instalan
   `shapely` y `earthengine-api` en su primera celda.
 - No se almacenan credenciales ni tokens en este repositorio.
+
+## Documentación relacionada
+
+- `docs/analisis-estructura-csv.md`: estructura de los CSV (Parte 1 del 01).
+- `docs/evolucion-temporal-indices.md`: evolución temporal (Parte 3 del 01).
+- `docs/preparacion-datos-simulador.md`: reglas y decisiones de preparación de
+  los datos (notebook 03).
