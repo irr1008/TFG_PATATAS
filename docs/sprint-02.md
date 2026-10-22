@@ -160,12 +160,18 @@ No se presenta como desarrollado íntegramente dentro del sprint 2.
 - Los históricos no se incorporan en esta fase.
 - Los índices satelitales no sustituyen las mediciones de humedad del suelo.
 - Existen huecos temporales en las observaciones seleccionadas.
-- NDRE no está en la extracción de 2026; su incorporación se resuelve en la issue #4.
+- NDRE no estaba en la extracción de 2026; se incorporó el 22/10/2026 en la
+  issue #4 (ver decisiones del sprint).
 - La planificación no dispone de margen libre de horas.
 
 Estas limitaciones no bloquean automáticamente todas las tareas.
 Si alguna impide continuar una actividad concreta, se registrará en la
 issue afectada y se utilizará el estado Bloqueado.
+
+### Limitaciones que siguen abiertas
+
+- La publicación del notebook 02 y de los datos de coordenadas, municipio y
+  variedad de las parcelas depende de la autorización de los tutores.
 
 ### Decisiones durante el sprint
 
@@ -173,6 +179,7 @@ issue afectada y se utilizará el estado Bloqueado.
   contiene las coordenadas de las parcelas y ambos incluyen salidas con
   datos de las explotaciones, y el repositorio es público. Se publicarán
   versiones saneadas tras revisar los permisos sobre los datos (issue #4).
+  Resolución el 22/10/2026: ver más abajo.
 - 21/10/2026: la incorporación de NDRE al extractor se traslada de la
   issue #3 a la issue #4, con un límite de 90 minutos. Si no es viable,
   se documenta como limitación.
@@ -180,6 +187,29 @@ issue afectada y se utilizará el estado Bloqueado.
   (municipio y variedad de las parcelas). Se detectó al revisar el contenido
   del archivo, se eliminó y se sustituyó por la versión sin salidas. La
   versión anterior permanece en el historial del repositorio.
+- 22/10/2026: NDRE se incorporó al extractor (bandas B8A y B5). Se repitió la extracción
+- de las cuatro parcelas y la selección de observaciones no cambió (25, 29, 27 y 26).
+- Los CSV pasan de 56 a 64 columnas y de 5 a 6 índices. Se regeneraron las Partes 1 y 3 del
+  notebook 01 y se actualizaron los documentos asociados.
+- 22/10/2026: el notebook 03 se publica sin salidas y sin el identificador del
+  proyecto de Earth Engine. El 02 sigue sin publicarse hasta que los tutores
+  autoricen publicar coordenadas, municipio y variedad.
+- 22/10/2026: las reglas de preparación de los datos (sin interpolación, una
+  imagen seleccionada por parcela y fecha, agregación semanal y distinción entre
+  observado e interpolado) quedan documentadas en
+  `docs/preparacion-datos-simulador.md`.
+
+### Estado de la issue #4 (22/10/2026)
+
+| Criterio | Estado | Evidencia |
+|---|---|---|
+| Revisar los notebooks de parcelas y de extracción automática | Hecho | Notebook 02 revisado y no publicado; notebook 03 revisado y publicado sin salidas |
+| Conservar la trazabilidad de los datos y la selección técnica | Hecho | Columnas de calidad y selección en los CSV; `configuracion_extraccion.json` por parcela |
+| Verificar el control de varias imágenes seleccionadas por fecha | Hecho | 0 fechas con más de una imagen seleccionada en las cuatro parcelas |
+| Documentar la agregación semanal sin interpolación | Hecho | `docs/preparacion-datos-simulador.md`, apartados 4.6 a 6 |
+| Revisar dependencias, instrucciones de ejecución y archivos de salida | Hecho | `requirements.txt`, `notebooks/README.md` y apartados 9 y 10 del documento de decisiones |
+| Revisar credenciales, salidas sensibles y permisos antes de publicar | Notebook 03 hecho; notebook 02 pendiente | Autorización de los tutores para coordenadas, municipio y variedad |
+| Incorporar NDRE (trasladado desde la issue #3) | Hecho | Apartado 8 del documento de decisiones |
 
 ## Revisión del sprint
 
@@ -226,15 +256,20 @@ Pendiente de realizar al finalizar la iteración.
 
 - Notebooks:
   - `notebooks/01_Exploracion_inicial_datos_sentinel-2.ipynb` (Partes 1 y 3).
- 
+  - `notebooks/03_extraccion_sentinel2_parcelas_reales.ipynb` (sin salidas).
+  - `notebooks/README.md`.
+
 - Resultados:
-  - `docs/figuras/` (figuras de evolución temporal, issue #3).
- 
+  - `docs/figuras/` (figuras de evolución temporal, issues #3 y #4, incluida la
+    de NDRE).
+
 - Documentación:
   - `docs/gestion-agil.md`.
   - `docs/memoria/gestion-del-proyecto.md`.
   - `docs/alcance-y-arquitectura.md`.
   - `docs/analisis-estructura-csv.md`.
   - `docs/evolucion-temporal-indices.md`.
+  - `docs/preparacion-datos-simulador.md`.
+  - `requirements.txt`.
   - Este documento de seguimiento.
   - Los documentos de alcance y análisis que se actualicen en el sprint.
