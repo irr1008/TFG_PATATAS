@@ -1,6 +1,7 @@
 # Análisis de la estructura de los CSV de Sentinel-2
 
-Issue #2 · Sprint 2 · Fecha del análisis: 20/10/2026
+Issue #2 · Sprint 2 · Fecha del análisis: 20/10/2026 (actualizado el 22/10/2026
+al incorporar NDRE, issue #4)
 Notebook: `01_Exploracion_inicial_datos_sentinel-2.ipynb` (Parte 1)
 
 ## 1. Fuente y alcance
@@ -13,23 +14,19 @@ El trabajo con los datos satelitales se organiza en tres notebooks:
 | `03_extraccion_sentinel2_parcelas_reales` | Usa ese catálogo para extraer Sentinel-2 y genera los CSV de índices, de revisión de calidad y el resumen semanal |
 | `01_Exploracion_inicial_datos_sentinel-2` (Parte 1) | Analiza la estructura de los CSV generados por el notebook 03 |
 
-Este documento analiza los CSV generados por el notebook 03 para cuatro parcelas,
-con una extracción provisional del 01/04/2026 (incluido) al 01/10/2026
-(excluido). El periodo es provisional y no se confirma el cultivo presente en
-cada parcela durante esas fechas.
+Este documento analiza los CSV generados por el notebook 03 para cuatro parcelas
+(`pancostales`, `puri`, `la_culebra` y `los_ceres`), con una extracción
+provisional del 01/04/2026 (incluido) al 01/10/2026 (excluido). El periodo es
+provisional y no se confirma el cultivo presente en cada parcela durante esas
+fechas.
 
 Parámetros de la extracción: probabilidad de nube inferior a 20, cobertura
 mínima del 70 % por índice y escala de evaluación de 20 m.
 
-| Parcela | Identificador | Variedad (catálogo) |
-|---|---|---|
-| Pancostales | `pancostales` | Lady Amarilla |
-| Puri | `puri` | Lady Amarilla |
-| La Culebra | `la_culebra` | Agria |
-| Los Ceres | `los_ceres` | Noha |
-
-La variedad procede del catálogo de parcelas y no confirma que el cultivo de la
-campaña sea patata en el periodo analizado.
+El catálogo de parcelas incluye municipio y variedad. Esos datos no se publican
+en este repositorio mientras los tutores no autoricen su publicación (apartado
+11). La variedad del catálogo no confirma que el cultivo de la campaña sea
+patata en el periodo analizado.
 
 Por cada parcela se usan tres archivos generados por el notebook 03: el CSV de
 índices (una fila por imagen con al menos un píxel válido), el CSV de revisión
@@ -39,10 +36,10 @@ de calidad y el resumen semanal.
 
 | Parcela | Filas | Columnas | Imágenes distintas | Fechas distintas | Fechas con varias filas | Primera fecha | Última fecha |
 |---|---:|---:|---:|---:|---:|---|---|
-| Pancostales | 39 | 56 | 39 | 39 | 0 | 2026-04-10 | 2026-09-24 |
-| Puri | 68 | 56 | 68 | 35 | 33 | 2026-04-10 | 2026-09-24 |
-| La Culebra | 39 | 56 | 39 | 39 | 0 | 2026-04-10 | 2026-09-24 |
-| Los Ceres | 35 | 56 | 35 | 35 | 0 | 2026-04-10 | 2026-09-24 |
+| Pancostales | 39 | 64 | 39 | 39 | 0 | 2026-04-10 | 2026-09-24 |
+| Puri | 68 | 64 | 68 | 35 | 33 | 2026-04-10 | 2026-09-24 |
+| La Culebra | 39 | 64 | 39 | 39 | 0 | 2026-04-10 | 2026-09-24 |
+| Los Ceres | 35 | 64 | 35 | 35 | 0 | 2026-04-10 | 2026-09-24 |
 
 Cada fila del CSV corresponde a una imagen Sentinel-2 con al menos un píxel
 válido tras la máscara de calidad, por lo que las filas coinciden con las
@@ -63,7 +60,7 @@ parcelas hay como máximo una fila por fecha.
 
 ## 3. Columnas y tipos
 
-Los CSV tienen 56 columnas. Las cuatro parcelas comparten las mismas columnas,
+Los CSV tienen 64 columnas. Las cuatro parcelas comparten las mismas columnas,
 en el mismo orden y con los mismos tipos de datos.
 
 | Grupo | Columnas | Contenido |
@@ -71,11 +68,11 @@ en el mismo orden y con los mismos tipos de datos.
 | Identificación | 6 | `parcela_id`, `nombre_parcela`, `municipio`, `variedad_catalogo`, `date`, `image_id` |
 | Calidad | 4 | `cloud_percentage`, `pixeles_antes`, `pixeles_despues`, `porcentaje_conservado` |
 | Contexto de extracción | 6 | `periodo_provisional`, `cultivo_confirmado_en_periodo`, `fecha_inicio_incluida`, `fecha_fin_excluida`, `escala_estadisticas_m`, `umbral_probabilidad_nube` |
-| Estadísticas por índice | 40 | 5 índices × 8 estadísticos |
+| Estadísticas por índice | 48 | 6 índices × 8 estadísticos |
 
-Índices presentes: NDVI, NDMI, MSI, EVI y SAVI. Estadísticos de cada índice:
-`mean`, `stdDev`, `min`, `max`, `median`, `p25`, `p75` y `count`. Por ejemplo,
-`NDVI_mean`, `NDVI_stdDev` y `NDVI_count`.
+Índices presentes: NDVI, NDRE, NDMI, MSI, EVI y SAVI. Estadísticos de cada
+índice: `mean`, `stdDev`, `min`, `max`, `median`, `p25`, `p75` y `count`. Por
+ejemplo, `NDVI_mean`, `NDRE_mean` y `NDVI_count`.
 
 Tipos de datos:
 - `date`: fecha (`datetime64`).
@@ -147,19 +144,21 @@ selecciona. Ese es el motivo principal de sus 39 observaciones no seleccionadas.
 
 Las cifras de selección y de semanas coinciden con las de la ejecución del
 notebook 03 (comprobación 1.10 del notebook 01, resultado correcto en las cuatro
-parcelas). El filtro orientativo del ejemplo de 2018 (50 % del máximo de
-`NDVI_count`) no se aplica a estos datos.
+parcelas). La incorporación de NDRE el 22/10/2026 no modificó la selección:
+tras repetir la extracción se obtuvieron las mismas 25, 29, 27 y 26
+observaciones seleccionadas. El filtro orientativo del ejemplo de 2018 (50 % del
+máximo de `NDVI_count`) no se aplica a estos datos.
 
 ## 7. Variables utilizables y no disponibles
 
 | Elemento | ¿Disponible? | Uso posterior |
 |---|---|---|
 | NDVI | Sí | Series por parcela; según la especificación del tutor puede alimentar la estimación de Kc (no implementado) |
+| NDRE | Sí | Series por parcela; se calcula con las bandas B8A y B5 (borde rojo). Incorporado el 22/10/2026 |
 | NDMI, MSI | Sí | Indicadores del estado hídrico de la vegetación; no miden humedad del suelo |
 | EVI, SAVI | Sí | Indicadores de vigor y cobertura vegetal |
 | Calidad y cobertura por imagen | Sí | Selección de observaciones |
 | Resumen semanal sin interpolar | Sí | Entrada temporal para el simulador |
-| NDRE | No | Su tratamiento se traslada a la issue #4 |
 | NDWI y RECI | No | El motor actual (Agrobioma v14) usa NDVI, MSI, NDWI y RECI; los dos últimos no están en esta extracción |
 | Humedad del suelo, meteorología y riegos | No | Fuentes externas pendientes |
 | Textura del suelo, cultivo y fechas agronómicas confirmadas | No | Pendientes; el periodo es provisional |
@@ -171,11 +170,12 @@ Los índices satelitales no sustituyen a las sondas de humedad del suelo.
 La descripción de la issue citaba columnas de interés que proceden del CSV de
 maíz de 2018:
 
-- `NDRE_mean`: no existe en la extracción de 2026.
+- `NDRE_mean`: no existía en la primera extracción de 2026. Se incorporó al
+  extractor el 22/10/2026 (issue #4) y ya está en los CSV.
 - `NDVI_std`: en 2026 la desviación se llama `NDVI_stdDev`.
 
 Además, el CSV de 2018 tiene 123 columnas y 15 índices, mientras que los de 2026
-tienen 56 columnas y 5 índices. Los análisis de 2018 se conservan en la Parte 2
+tienen 64 columnas y 6 índices. Los análisis de 2018 se conservan en la Parte 2
 del notebook 01 solo como ejemplo metodológico.
 
 ## 9. Limitaciones
@@ -205,10 +205,12 @@ Cadena de generación de los datos analizados:
 3. El notebook 01 (Parte 1) analiza esos CSV.
 
 Los notebooks 02 y 03 se ejecutan en Google Colab y guardan sus resultados en
-Drive. Todavía no están en este repositorio porque el 02 contiene las
-coordenadas de las parcelas y ambos incluyen salidas con datos de las
-explotaciones. Se publicarán versiones saneadas tras revisar los permisos sobre
-los datos (issue #4).
+Drive. El notebook 03 está publicado en este repositorio sin salidas y sin el
+identificador del proyecto de Earth Engine. El notebook 02 no se publica: contiene
+las coordenadas de las parcelas y sus salidas incluyen datos de las
+explotaciones. Se publicará una versión saneada solo si los tutores autorizan
+publicar esos datos. Las reglas de preparación y las decisiones están en
+`docs/preparacion-datos-simulador.md`.
 
 Las cifras de contraste con el notebook 03 están registradas en la celda 1.10 del
 notebook 01.
