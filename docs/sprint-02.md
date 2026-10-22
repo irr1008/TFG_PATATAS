@@ -176,6 +176,10 @@ issue afectada y se utilizará el estado Bloqueado.
 - 21/10/2026: la incorporación de NDRE al extractor se traslada de la
   issue #3 a la issue #4, con un límite de 90 minutos. Si no es viable,
   se documenta como limitación.
+- 22/10/2026: el notebook 03 se publicó por error con sus salidas
+  (municipio y variedad de las parcelas). Se detectó al revisar el contenido
+  del archivo, se eliminó y se sustituyó por la versión sin salidas. La
+  versión anterior permanece en el historial del repositorio.
 
 ## Revisión del sprint
 
