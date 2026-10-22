@@ -9,7 +9,7 @@ este repositorio.
 | Notebook | Función | Estado en el repositorio |
 |---|---|---|
 | `02_preparacion_parcelas_reales` | Genera el catálogo de parcelas y sus geometrías y comprueba su validez | Pendiente de publicar |
-| `03_extraccion_sentinel2_parcelas_reales` | Extrae Sentinel-2 con Google Earth Engine y genera los CSV de índices, de calidad y el resumen semanal | Pendiente de publicar |
+| `03_extraccion_sentinel2_parcelas_reales` | Extrae Sentinel-2 con Google Earth Engine y genera los CSV de índices, de calidad y el resumen semanal | Publicado, sin salidas |
 | `01_Exploracion_inicial_datos_sentinel-2` | Parte 1: estructura de los CSV de las cuatro parcelas. Parte 2: ejemplo previo con maíz de 2018. Parte 3: evolución temporal de NDVI, NDMI y EVI | Publicado |
 
 ## Orden de ejecución
@@ -26,10 +26,13 @@ este repositorio.
 1. Abre el notebook en Colab y ejecuta las celdas en orden.
 2. Autoriza el acceso a Drive cuando Colab lo pida. Los notebooks usan la
    carpeta de trabajo `TFG_PATATAS_TRABAJO` de tu Drive.
-3. En el notebook 03, autoriza Google Earth Engine con tu cuenta e indica tu
-   propio proyecto de Earth Engine en la configuración.
-4. No pegues códigos de verificación ni tokens en las celdas ni en los
-   comentarios.
+3. En el notebook 03, autoriza Google Earth Engine con tu cuenta. El
+   identificador de tu proyecto de Earth Engine se lee del secreto
+   `PROYECTO_EE` de Colab (icono de la llave, con acceso al notebook
+   concedido) o se pide al ejecutar sin mostrarlo en pantalla. No se guarda
+   en el notebook.
+4. No pegues códigos de verificación, tokens ni identificadores de proyecto en
+   las celdas ni en los comentarios.
 
 ## Dónde se guardan las salidas en Drive
 
@@ -40,12 +43,12 @@ este repositorio.
 | Tablas del análisis de estructura | `TFG_PATATAS_TRABAJO/resultados/analisis_estructura_csv` |
 | Figuras de evolución temporal | `TFG_PATATAS_TRABAJO/resultados/graficas_evolucion_temporal` |
 
-## Por qué faltan el 02 y el 03
+## Por qué falta el 02
 
-El 02 contiene las coordenadas de las parcelas y ambos notebooks incluyen
-salidas con datos de las explotaciones. Como el repositorio es público, se
-publicarán versiones saneadas tras revisar los permisos sobre los datos
-(issue #4).
+El 02 contiene las coordenadas de las parcelas y sus salidas incluyen datos de
+las explotaciones. Como el repositorio es público, se publicará una versión
+saneada solo si los tutores autorizan publicar esos datos. El 03 se publica sin
+salidas y sin el identificador del proyecto de Earth Engine.
 
 ## Requisitos
 
