@@ -1,26 +1,36 @@
 # Evolución temporal de los índices espectrales
 
-Issue #3 · Sprint 2 · Fecha: 20 y 21/10/2026
+Issue #3 · Sprint 2 · Fecha: 20 y 21/10/2026 (actualizado el 22/10/2026 al
+incorporar NDRE, issue #4)
 Notebook: `01_Exploracion_inicial_datos_sentinel-2.ipynb` (Parte 3)
 
 ## 1. Alcance e índices representados
 
-Se representa la evolución temporal de NDVI, NDMI y EVI para las cuatro parcelas
-(Pancostales, Puri, La Culebra y Los Ceres) durante el periodo de extracción
-provisional, del 01/04/2026 (incluido) al 01/10/2026 (excluido). El periodo es
-provisional y no se confirma el cultivo presente en cada parcela.
+Se representa la evolución temporal de NDVI, NDRE, NDMI y EVI para las cuatro
+parcelas (Pancostales, Puri, La Culebra y Los Ceres) durante el periodo de
+extracción provisional, del 01/04/2026 (incluido) al 01/10/2026 (excluido). El
+periodo es provisional y no se confirma el cultivo presente en cada parcela.
 
 ## 2. Decisión sobre NDRE
 
-La issue pedía NDVI, NDRE, NDMI y EVI. La extracción de 2026 calcula NDVI, NDMI,
-MSI, EVI y SAVI; NDRE no está disponible.
+La issue pedía NDVI, NDRE, NDMI y EVI. La extracción inicial de 2026 calculaba
+NDVI, NDMI, MSI, EVI y SAVI; NDRE no estaba disponible.
 
-Decisión (21/10/2026): en esta issue se representan los tres índices disponibles
-y la incorporación de NDRE se traslada a la issue #4. Allí se evaluará añadirlo al
-extractor (bandas B8A y B5), repetir la extracción de las cuatro parcelas y
-revisar la selección de observaciones. Si se incorpora, bastará añadir `NDRE` a la 
-lista de índices de la Parte 3 del notebook para generar su figura. Si no es viable 
-dentro del sprint, se documentará como limitación.
+Decisión (21/10/2026): la incorporación de NDRE se traslada a la issue #4, con
+un límite de 90 minutos. Si no era viable dentro del sprint, se documentaba como
+limitación.
+
+Resultado (22/10/2026): NDRE se ha incorporado.
+
+- Se modificó el extractor (notebook 03): se añaden las bandas B8A y B5 y se
+  calcula `NDRE = (B8A - B5) / (B8A + B5)` con el mismo tratamiento de
+  denominadores no válidos que los demás índices.
+- Se repitió la extracción de las cuatro parcelas con los mismos parámetros. La
+  selección de observaciones no cambió: 25, 29, 27 y 26 observaciones
+  seleccionadas en Pancostales, Puri, La Culebra y Los Ceres. NDRE tiene la
+  misma cobertura que el resto de índices en cada imagen y no tiene medias
+  ausentes.
+- Se añadió `NDRE` a la lista de índices de la Parte 3 y se generó su figura.
 
 MSI y SAVI están disponibles pero no se representan porque la issue no los pide.
 
@@ -74,6 +84,7 @@ cada imagen.
 | Figura | Contenido |
 |---|---|
 | `evolucion_ndvi_cuatro_parcelas.png` | Evolución del NDVI en las cuatro parcelas |
+| `evolucion_ndre_cuatro_parcelas.png` | Evolución del NDRE en las cuatro parcelas |
 | `evolucion_ndmi_cuatro_parcelas.png` | Evolución del NDMI en las cuatro parcelas |
 | `evolucion_evi_cuatro_parcelas.png` | Evolución del EVI en las cuatro parcelas |
 
@@ -84,33 +95,41 @@ Valores de las observaciones seleccionadas (tabla de la celda 3.5 del notebook).
 | Parcela | Índice | Valor inicial | Máximo | Fecha del máximo | Mínimo | Fecha del mínimo | Valor final |
 |---|---|---:|---:|---|---:|---|---:|
 | Pancostales | NDVI | 0,238 | 0,815 | 2026-07-04 | 0,126 | 2026-05-20 | 0,222 |
+| Pancostales | NDRE | 0,173 | 0,589 | 2026-06-29 | 0,077 | 2026-05-20 | 0,144 |
 | Pancostales | NDMI | -0,187 | 0,384 | 2026-07-04 | -0,233 | 2026-04-15 | -0,094 |
 | Pancostales | EVI | 0,173 | 0,750 | 2026-07-04 | 0,105 | 2026-04-27 | 0,178 |
 | Puri | NDVI | 0,175 | 0,816 | 2026-07-04 | 0,095 | 2026-05-20 | 0,207 |
+| Puri | NDRE | 0,111 | 0,580 | 2026-06-29 | 0,048 | 2026-05-20 | 0,133 |
 | Puri | NDMI | -0,118 | 0,440 | 2026-07-04 | -0,165 | 2026-04-27 | -0,102 |
 | Puri | EVI | 0,149 | 0,807 | 2026-07-04 | 0,091 | 2026-05-20 | 0,160 |
 | La Culebra | NDVI | 0,172 | 0,938 | 2026-07-04 | 0,113 | 2026-04-27 | 0,220 |
+| La Culebra | NDRE | 0,116 | 0,731 | 2026-06-29 | 0,072 | 2026-04-27 | 0,161 |
 | La Culebra | NDMI | -0,137 | 0,486 | 2026-07-04 | -0,188 | 2026-04-17 | -0,139 |
 | La Culebra | EVI | 0,138 | 0,974 | 2026-07-04 | 0,092 | 2026-04-27 | 0,160 |
 | Los Ceres | NDVI | 0,248 | 0,871 | 2026-06-29 | 0,188 | 2026-04-17 | 0,293 |
+| Los Ceres | NDRE | 0,180 | 0,663 | 2026-06-29 | 0,128 | 2026-04-17 | 0,196 |
 | Los Ceres | NDMI | -0,110 | 0,415 | 2026-06-29 | -0,164 | 2026-04-15 | -0,091 |
 | Los Ceres | EVI | 0,188 | 0,859 | 2026-06-29 | 0,135 | 2026-04-15 | 0,228 |
 
 Lo que muestran las figuras y la tabla:
 
-- Los tres índices siguen un patrón temporal parecido en las cuatro parcelas:
+- Los cuatro índices siguen un patrón temporal parecido en las cuatro parcelas:
   valores bajos en abril y mayo, un aumento a lo largo de junio, un máximo a
   finales de junio o principios de julio, un descenso en julio y agosto, y
   valores bajos y estables en septiembre.
-- Los máximos de las observaciones seleccionadas se producen el 04/07/2026 en
-  Pancostales, Puri y La Culebra y el 29/06/2026 en Los Ceres, con cinco días de
-  diferencia entre los dos grupos. Los tres índices alcanzan el máximo en la
-  misma observación de cada parcela.
+- Los máximos de NDVI, NDMI y EVI se producen el 04/07/2026 en Pancostales, Puri
+  y La Culebra y el 29/06/2026 en Los Ceres, con cinco días de diferencia entre
+  los dos grupos. Estos tres índices alcanzan el máximo en la misma observación
+  de cada parcela. El NDRE alcanza su máximo el 29/06/2026 en las cuatro
+  parcelas, es decir, cinco días antes que los otros tres índices en Pancostales,
+  Puri y La Culebra.
 - El NDVI máximo va de 0,815 (Pancostales) a 0,938 (La Culebra) y el EVI máximo
   de 0,750 (Pancostales) a 0,974 (La Culebra). El NDMI máximo va de 0,384 a 0,486.
+  El NDRE máximo va de 0,580 (Puri) a 0,731 (La Culebra).
 - El NDVI mínimo está entre 0,095 y 0,188 y se da entre mediados de abril y
   finales de mayo. Al final del periodo el NDVI vuelve a valores de 0,207 a
-  0,293, próximos a los iniciales.
+  0,293, próximos a los iniciales. El NDRE mínimo está entre 0,048 y 0,128, en las
+  mismas fechas, y termina entre 0,133 y 0,196.
 - El NDMI parte de valores negativos (de -0,187 a -0,110), pasa a positivos en el
   máximo y termina otra vez en negativos (de -0,139 a -0,091).
 - Las observaciones no seleccionadas siguen en general la misma curva que las
@@ -161,11 +180,10 @@ mayor hueco de cada parcela coincide con el calculado por el notebook 03: 23,
 - Puri combina dos teselas; solo se seleccionan las filas de la que cubre toda la
   parcela.
 - Los recuentos `*_count` y `pixeles_antes` no son directamente comparables.
-- NDRE no se representa en esta issue; su tratamiento se traslada a la issue #4.
 
 ## 10. Evidencias
 
 - Notebook: `01_Exploracion_inicial_datos_sentinel-2.ipynb` (Parte 3).
 - Figuras y tablas, guardadas en Drive en
-  `resultados/graficas_evolucion_temporal/`: las tres figuras anteriores,
+  `resultados/graficas_evolucion_temporal/`: las cuatro figuras anteriores,
   `huecos_seleccion.csv` y `resumen_indices_seleccionadas.csv`.
