@@ -1,6 +1,7 @@
 # Preparación de los datos Sentinel-2 para el simulador
 
-Issue #4 · Sprint 2 · Fecha: 22/10/2026
+Issue #4 · Sprint 2 · Fecha: 22/10/2026 (actualizado el 23/10/2026 tras la
+revisión con los tutores; issue #6)
 Notebooks: `03_extraccion_sentinel2_parcelas_reales` (extracción y preparación) y
 `01_Exploracion_inicial_datos_sentinel-2` (análisis y figuras)
 
@@ -9,8 +10,10 @@ Notebooks: `03_extraccion_sentinel2_parcelas_reales` (extracción y preparación
 Dejar documentadas las decisiones con las que los datos Sentinel-2 de las cuatro
 parcelas (Pancostales, Puri, La Culebra y Los Ceres) se preparan para un uso
 posterior en el simulador de riego. El periodo de extracción es provisional, del
-01/04/2026 (incluido) al 01/10/2026 (excluido), y no se confirma el cultivo
-presente en cada parcela. Este documento no genera recomendaciones de riego.
+01/04/2026 (incluido) al 01/11/2026 (excluido), y no se confirma el cultivo
+presente en cada parcela. La fecha de fin es posterior a la ejecución: las
+imágenes disponibles llegan hasta el 22/10/2026. Este documento no genera
+recomendaciones de riego.
 
 La preparación está implementada en el notebook 03. Este documento recoge las
 reglas aplicadas, justifica las decisiones y registra lo que queda pendiente.
@@ -21,12 +24,14 @@ reglas aplicadas, justifica las decisiones y registra lo que queda pendiente.
 |---|---|---|
 | Convertir `date` a formato temporal | Fecha en formato `YYYY-MM-DD`, validada como fecha real y convertida con `pd.to_datetime` sin tolerar errores | Notebook 03 |
 | Ordenar cronológicamente | Orden por `date` e `image_id` | Notebook 03 |
-| Eliminar filas sin datos esenciales | Las imágenes sin ningún píxel válido no entran en el CSV de índices; las filas con cobertura insuficiente se conservan marcadas como no seleccionadas | Notebook 03 |
+| Eliminar filas sin datos esenciales | Las imágenes sin ningún píxel válido no entran en el CSV de índices; las observaciones con demasiada nube y sombra en la parcela se conservan marcadas como no seleccionadas | Notebook 03 |
 | Seleccionar los índices relevantes | NDVI, NDRE, NDMI, MSI, EVI y SAVI (apartado 7) | Notebook 03 |
-| Analizar observaciones repetidas en la misma fecha | Como máximo una imagen seleccionada por parcela y fecha; el proceso se detiene si hay más | Notebook 03 |
+| Analizar observaciones repetidas en la misma fecha | Si más de una tesela interseca la parcela, se combinan las imágenes de cada fecha en un mosaico antes de generar el CSV (una fila por fecha); con una sola tesela se procesa cada imagen como antes. El proceso se detiene si hay más de una imagen seleccionada por fecha | Notebook 03 |
 | Decidir si se necesita interpolación | No se interpola | Notebook 03 |
 | Diferenciar observado de interpolado | Columnas `interpolado` y `origen_dato` en el resumen semanal | Notebook 03 |
 | Incorporar NDRE (trasladado desde la issue #3) | Incorporado el 22/10/2026 (apartado 8) | Notebooks 03 y 01 |
+| Criterio de descarte por nube y sombra | Solo cuenta el porcentaje de nube y sombra de la propia parcela (máximo 30 %); revisión del 23/10/2026 | Notebook 03 |
+| Periodo de extracción | 01/04/2026 a 01/11/2026; las semanas posteriores a la última imagen se marcan como aún no disponibles | Notebook 03 |
 | Documentar las decisiones | Este documento | `docs/` |
 
 ## 3. Datos de partida y cadena de generación
@@ -65,41 +70,65 @@ anterior al fin. Las tablas se ordenan por `date` e `image_id`.
 
 ### 4.3 Imágenes sin datos y filas incompletas
 
-- Para cada imagen se cuentan los píxeles B8 antes y después de aplicar la
-  máscara. Las imágenes sin ningún píxel válido se descartan antes de calcular
-  los índices y su recuento queda en el resumen de ejecución (15, 40, 15 y 19
-  imágenes en Pancostales, Puri, La Culebra y Los Ceres).
-- Las imágenes con píxeles válidos entran en el CSV de índices, aunque su
-  cobertura de parcela sea baja. No se borran las filas no seleccionadas, para
-  poder revisarlas.
+- Para cada imagen (o mosaico) se cuentan los píxeles B8 antes y después de
+  aplicar la máscara. Las imágenes sin ningún píxel válido se descartan antes de
+  calcular los índices y su recuento queda en el resumen de ejecución: 19, 25, 20
+  y 24 en Pancostales, Puri, La Culebra y Los Ceres (en Puri, mosaicos diarios).
+- Las imágenes con píxeles válidos entran en el CSV de índices, aunque tengan
+  mucha nube y sombra. No se borran las filas no seleccionadas, para poder
+  revisarlas.
 - Una fila solo se considera seleccionable si todas las medias de los índices
   existen.
 
 ### 4.4 Selección técnica provisional
 
+Revisión con los tutores del 23/10/2026: una imagen se descarta solo si el
+porcentaje de píxeles de nube y sombra dentro de la propia parcela impide un
+estudio correcto, y no por otros factores como los bordes de la imagen o la parte
+de la parcela que queda fuera de una tesela.
+
 Una observación se selecciona si cumple a la vez:
 
-- cobertura mínima de la parcela del 70 % en todos los índices, y
-- medias completas de todos los índices.
+- como máximo el 30 % de los píxeles de la parcela son nube o sombra, y
+- las medias de todos los índices existen.
 
-La cobertura se calcula con el área de píxeles válidos de cada índice respecto a
-una referencia de la parcela en la cuadrícula de evaluación. Los umbrales (nube
-20 y cobertura 70 %) son provisionales y no están validados agronómicamente.
-Resultado: 25, 29, 27 y 26 observaciones seleccionadas en Pancostales, Puri, La
-Culebra y Los Ceres.
+Un píxel cuenta como nube si su probabilidad de nube es igual o superior a 20 o
+si la clase de escena es 8, 9 o 10, y como sombra si la clase es 3. En parcelas
+con varias teselas, un píxel es nube o sombra solo si lo es en todas las teselas
+que lo observan. El porcentaje se calcula con la superficie de esos píxeles
+respecto a la superficie de la parcela en la cuadrícula de evaluación (20 m). El
+umbral del 30 % es provisional y no está validado agronómicamente; equivale al
+anterior criterio de cobertura mínima del 70 %.
 
-### 4.5 Observaciones repetidas en la misma fecha
+La cobertura de píxeles válidos (`cobertura_minima_indices_pct`) se conserva en el
+CSV de calidad solo como información. En la comprobación del 23/10/2026 con el
+periodo hasta el 01/10, el criterio nuevo dio las mismas selecciones que el
+anterior: en esas observaciones el porcentaje de nube y sombra y la cobertura
+sumaban 100.
 
-Una parcela puede tener varias imágenes en una fecha si se solapa con varias
-teselas. Es el caso de Puri (T30TTL y T30TUL).
+Resultado (periodo hasta el 01/11/2026): 26, 33, 28 y 28 observaciones
+seleccionadas en Pancostales, Puri, La Culebra y Los Ceres.
 
-- No se eliminan imágenes por fecha sin revisar su cobertura.
-- Si hay más de una imagen seleccionada para una fecha, el notebook se detiene
-  con un error antes de calcular el resumen semanal; no resuelve el caso
-  automáticamente. Hay una comprobación adicional sobre el resultado del lote.
-- En la ejecución realizada no hay ninguna fecha con varias imágenes
-  seleccionadas. En Puri, la tesela T30TTL cubre solo parte de la parcela y no
-  alcanza el 70 %, por lo que se selecciona la otra.
+### 4.5 Observaciones repetidas y combinación de teselas
+
+Una parcela puede tener imágenes de varias teselas en la misma fecha si se
+solapa con ellas. Es el caso de Puri (T30TTL y T30TUL).
+
+- Si más de una tesela interseca la parcela, el notebook aplica primero la máscara
+  de calidad a cada tesela y después combina las imágenes de cada fecha en un
+  mosaico a nivel de píxel: en cada píxel se usa la tesela con dato válido. El
+  CSV tiene así una fila por fecha. El `image_id` del mosaico termina en
+  `_T30TTL+T30TUL`.
+- Si la parcela cae en una sola tesela, cada imagen se procesa como antes.
+- El notebook se detiene si en una misma fecha hay imágenes de adquisiciones
+  distintas, para no combinarlas automáticamente.
+- Tras la combinación se comprueba que no hay fechas repetidas en el CSV. Si hay
+  más de una imagen seleccionada para una fecha, el notebook se detiene antes de
+  calcular el resumen semanal. Hay una comprobación adicional sobre el resultado
+  del lote.
+- En la ejecución realizada hay 0 fechas con varias filas o con varias imágenes
+  seleccionadas. En Puri se crean 61 mosaicos diarios a partir de 122 imágenes
+  originales y 36 tienen píxeles válidos.
 
 ### 4.6 Agregación semanal
 
@@ -109,8 +138,12 @@ cada semana. No es una media espacial combinada de todos los píxeles ni una
 media continua de todos los días.
 
 - Se incluyen las semanas sin observaciones seleccionadas, con los índices
-  ausentes. Hay 27 semanas por parcela; sin observaciones seleccionadas, 10, 7,
-  9 y 9.
+  ausentes. Hay 31 semanas por parcela; con observaciones seleccionadas, 18, 23,
+  19 y 20; sin ellas, 12, 7, 11 y 10.
+- Las semanas que empiezan después de la última imagen disponible
+  (22/10/2026) se marcan como `periodo_aun_no_disponible` y no se cuentan como
+  semanas sin observaciones, porque todavía no ha podido haberlas. Hay una por
+  parcela, la del 26/10/2026.
 - La primera y la última semana del periodo pueden ser parciales y se marcan en
   `semana_parcial_en_periodo`.
 - El valor de una semana se etiqueta con el lunes, pero puede proceder de una
@@ -139,18 +172,22 @@ El resumen semanal incluye las columnas que permiten distinguirlos:
 | Columna | Contenido |
 |---|---|
 | `interpolado` | Siempre `False` en esta versión |
-| `origen_dato` | `agregacion_observaciones_satelitales` o `sin_observaciones_seleccionadas` |
+| `origen_dato` | `agregacion_observaciones_satelitales`, `sin_observaciones_seleccionadas` o `periodo_aun_no_disponible` |
 | `metodo_agregacion` | `media_aritmetica` |
 | `tiene_observaciones_seleccionadas` | Indica si la semana tiene dato |
+| `periodo_aun_no_disponible` | Semana posterior a la última imagen disponible |
+| `fecha_ultima_imagen_disponible` | Fecha de la última imagen con información de nubes |
 | `n_imagenes_con_datos`, `n_imagenes_seleccionadas`, `n_imagenes_no_seleccionadas` | Recuentos de la semana |
 | `fechas_utilizadas`, `imagenes_utilizadas` | Trazabilidad de las observaciones usadas |
-| `cobertura_minima_utilizada_pct` | Menor cobertura entre las observaciones usadas |
+| `cobertura_minima_utilizada_pct` | Menor cobertura de píxeles válidos entre las observaciones usadas |
+| `nube_sombra_maxima_utilizada_pct` | Mayor porcentaje de nube y sombra entre las observaciones usadas |
 | `semana_parcial_en_periodo`, `semana_fin_excluida` | Límites de la semana |
 | `parcela_id`, `periodo_provisional` | Identificación y marca de periodo |
 
 El notebook comprueba que el número de imágenes seleccionadas del resumen coincide
-con el de la tabla de calidad, que no hay valores en semanas sin observaciones y
-que ninguna fila está marcada como interpolada.
+con el de la tabla de calidad, que no hay valores en semanas sin observaciones,
+que ninguna semana aún no disponible tiene observaciones y que ninguna fila está
+marcada como interpolada.
 
 ## 7. Índices seleccionados
 
@@ -182,9 +219,11 @@ con los mismos parámetros.
 Efecto en los datos:
 
 - Los CSV pasan de 56 a 64 columnas (8 estadísticos más) y de 5 a 6 índices.
-- La selección de observaciones no cambia: 25, 29, 27 y 26 observaciones
-  seleccionadas en Pancostales, Puri, La Culebra y Los Ceres, con las mismas
-  semanas sin dato y los mismos huecos máximos.
+- En ese momento la selección de observaciones no cambió: 25, 29, 27 y 26
+  observaciones seleccionadas en Pancostales, Puri, La Culebra y Los Ceres, con
+  las mismas semanas sin dato y los mismos huecos máximos. Los cambios
+  posteriores de la selección se deben a la revisión del 23/10/2026
+  (apartado 14).
 - NDRE tiene la misma cobertura que el resto de índices en cada imagen y no tiene
   medias ausentes.
 - Se regeneraron la Parte 1 y la Parte 3 del notebook 01 (con la figura de NDRE)
@@ -194,18 +233,20 @@ Efecto en los datos:
 ## 9. Archivos de salida
 
 Los resultados se guardan en Drive, fuera del repositorio, en
-`TFG_PATATAS_TRABAJO/resultados/sentinel2_lotes/provisional/`.
+`TFG_PATATAS_TRABAJO/resultados/sentinel2_lotes/provisional/`. Cada periodo usa
+su propia carpeta (`<inicio>_<fin>`), por lo que los resultados del periodo hasta
+el 01/10/2026 no se sobrescriben con los del periodo hasta el 01/11/2026.
 
 | Archivo | Contenido |
 |---|---|
-| `parcela/inicio_fin/parcela_sentinel2_indices_inicio_fin.csv` | Una fila por imagen con píxeles válidos: estadísticos de cada índice y calidad |
-| `parcela/inicio_fin/parcela_sentinel2_indices_calidad_inicio_fin.csv` | Lo anterior más cobertura por índice y marca de selección técnica |
-| `parcela/inicio_fin/parcela_sentinel2_semanal_inicio_fin.csv` | Resumen semanal sin interpolar |
-| `parcela/inicio_fin/revision_calidad_imagenes.csv` | Píxeles antes y después de la máscara por imagen |
-| `parcela/inicio_fin/resumen_ejecucion.csv` | Recuentos de la ejecución |
-| `parcela/inicio_fin/configuracion_extraccion.json` | Parámetros y momento de la ejecución |
-| `comparativas/inicio_fin/comparativa_parcelas.csv` | Resumen comparativo de las cuatro parcelas |
-| `comparativas/inicio_fin/revision_fechas_seleccionadas.csv` | Control de una imagen por fecha |
+| `<parcela>/<inicio>_<fin>/<parcela>_sentinel2_indices_<inicio>_<fin>.csv` | Una fila por imagen (o mosaico) con píxeles válidos: estadísticos de cada índice y calidad |
+| `<parcela>/<inicio>_<fin>/<parcela>_sentinel2_indices_calidad_<inicio>_<fin>.csv` | Lo anterior más cobertura por índice, `nube_sombra_parcela_pct`, `apta_nube_sombra` y marca de selección técnica |
+| `<parcela>/<inicio>_<fin>/<parcela>_sentinel2_semanal_<inicio>_<fin>.csv` | Resumen semanal sin interpolar |
+| `<parcela>/<inicio>_<fin>/revision_calidad_imagenes.csv` | Píxeles antes y después de la máscara por imagen o mosaico |
+| `<parcela>/<inicio>_<fin>/resumen_ejecucion.csv` | Recuentos de la ejecución, teselas combinadas y última imagen disponible |
+| `<parcela>/<inicio>_<fin>/configuracion_extraccion.json` | Parámetros y momento de la ejecución |
+| `comparativas/<inicio>_<fin>/comparativa_parcelas.csv` | Resumen comparativo de las cuatro parcelas |
+| `comparativas/<inicio>_<fin>/revision_fechas_seleccionadas.csv` | Control de una imagen por fecha |
 
 Repetir una parcela y un periodo actualiza sus archivos. Una ejecución que falle
 puede dejar archivos parciales.
@@ -233,6 +274,9 @@ puede dejar archivos parciales.
 ## 12. Limitaciones y trabajo posterior
 
 - El periodo es provisional y el cultivo no está confirmado.
+- Las imágenes llegan hasta el 22/10/2026 y la última observación con píxeles
+  válidos es del 14/10/2026; el resto del periodo hasta el 01/11/2026 requiere
+  repetir la extracción.
 - Los umbrales de la selección provisional no están validados agronómicamente.
 - No se incorporan históricos de sensores, riegos, meteorología ni textura del
   suelo.
@@ -249,3 +293,23 @@ puede dejar archivos parciales.
   salidas) y `notebooks/01_Exploracion_inicial_datos_sentinel-2.ipynb`.
 - Documentación: `notebooks/README.md`, `requirements.txt`,
   `docs/analisis-estructura-csv.md` y `docs/evolucion-temporal-indices.md`.
+
+## 14. Cambios de la revisión con los tutores (23/10/2026)
+
+La revisión con los tutores pidió tres cambios en la preparación de los datos.
+Cada uno se aplicó y comprobó por separado en el notebook 03.
+
+| Cambio solicitado | Qué se hizo | Resultado |
+|---|---|---|
+| Parcelas en más de una tesela: combinar los datos antes de generar el CSV | Mosaico diario a nivel de píxel cuando más de una tesela interseca la parcela (apartado 4.5) | Solo afecta a Puri: 68 filas pasan a 35 con el mismo periodo, `pixeles_antes` de 117 y 59 a 117, seleccionadas de 29 a 32, semanas sin dato de 7 a 5 y mayor hueco de 20 a 17 días |
+| Descartar solo por nube y sombra de la propia parcela | Se mide el porcentaje de nube y sombra de la parcela y se descarta por encima del 30 % (apartado 4.4) | Con los datos hasta el 01/10, la selección no cambió respecto al criterio anterior: 25, 32, 27 y 26 seleccionadas |
+| Periodo del 01/04/2026 al 01/11/2026 | Nueva fecha de fin; las semanas posteriores a la última imagen se marcan como aún no disponibles (apartado 4.6) | 31 semanas por parcela, una aún no disponible; seleccionadas 26, 33, 28 y 28; imágenes hasta el 22/10/2026 |
+
+Resultados finales de la extracción hasta el 01/11/2026:
+
+| Parcela | Filas | Seleccionadas | No seleccionadas | Semanas con datos | Sin datos | Aún no disponibles | Mayor hueco (días) |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Pancostales | 42 | 26 | 16 | 18 | 12 | 1 | 23 |
+| Puri | 36 | 33 | 3 | 23 | 7 | 1 | 20 |
+| La Culebra | 41 | 28 | 13 | 19 | 11 | 1 | 23 |
+| Los Ceres | 37 | 28 | 9 | 20 | 10 | 1 | 18 |
