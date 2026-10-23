@@ -36,8 +36,7 @@ reglas aplicadas, justifica las decisiones y registra lo que queda pendiente.
 
 ## 3. Datos de partida y cadena de generación
 
-1. El notebook 02 prepara el catálogo de parcelas y sus geometrías (no está en el
-   repositorio; ver apartado 11).
+1. El notebook 02 prepara el catálogo de parcelas y sus geometrías (lee los datos privados de las parcelas de un    archivo que no está en el repositorio; ver apartado 11).
 2. El notebook 03 lee ese catálogo, consulta Sentinel-2 en Google Earth Engine y
    genera, por parcela, el CSV de índices, el CSV de revisión de calidad y el
    resumen semanal.
@@ -261,11 +260,15 @@ puede dejar archivos parciales.
 
 ## 11. Publicación y datos sensibles
 
-- El repositorio es público. El notebook 03 se publica sin salidas y sin el
-  identificador del proyecto de Earth Engine.
-- El notebook 02 no se publica: contiene las coordenadas de las parcelas y sus
-  salidas incluyen datos de las explotaciones. Se publicará una versión saneada
-  solo si los tutores autorizan publicar esos datos.
+- El repositorio es público. Los notebooks 02 y 03 se publican sin salidas, y el
+  03 también sin el identificador del proyecto de Earth Engine.
+- El notebook 02 no contiene las coordenadas, el municipio ni la variedad de las
+  parcelas: los lee de `privado/datos_parcelas_privados.py`, un archivo que se
+  guarda en Drive y está excluido del repositorio mediante `.gitignore`. La
+  plantilla `notebooks/datos_parcelas_privados_ejemplo.py` muestra el formato
+  con valores ficticios.
+- Los GeoJSON y el catálogo de parcelas también están excluidos del repositorio
+  mediante `.gitignore`.
 - Los CSV y las coordenadas se guardan en Drive y no se versionan.
 - El 22/10/2026 el notebook 03 se subió por error con sus salidas (municipio y
   variedad de las parcelas). Se eliminó y se sustituyó por la versión sin salidas;
@@ -284,13 +287,16 @@ puede dejar archivos parciales.
   del suelo.
 - Los recuentos `*_count` y `pixeles_antes` no son directamente comparables.
 - NDWI y RECI, usados por el motor actual, no están en la extracción.
-- Pendiente de los tutores: autorización para publicar coordenadas, municipio y
-  variedad.
+- Las coordenadas, el municipio y la variedad de las parcelas no se publican: el
+  notebook 02 solo se puede ejecutar con el archivo privado de datos, que no
+  está en el repositorio.
 
 ## 13. Evidencias
 
-- Notebooks: `notebooks/03_extraccion_sentinel2_parcelas_reales.ipynb` (sin
-  salidas) y `notebooks/01_Exploracion_inicial_datos_sentinel-2.ipynb`.
+- Notebooks: `notebooks/02_preparacion_parcelas_reales.ipynb` y
+  `notebooks/03_extraccion_sentinel2_parcelas_reales.ipynb` (ambos sin salidas) y
+  `notebooks/01_Exploracion_inicial_datos_sentinel-2.ipynb`. Plantilla de datos
+  privados: `notebooks/datos_parcelas_privados_ejemplo.py`.
 - Documentación: `notebooks/README.md`, `requirements.txt`,
   `docs/analisis-estructura-csv.md` y `docs/evolucion-temporal-indices.md`.
 
