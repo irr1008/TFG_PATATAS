@@ -33,7 +33,8 @@ Fase 1 (preparación y datos), trabajada en el sprint 2:
   - Teselas de una misma fecha combinadas cuando la parcela cae en más de una.
   - Imágenes descartadas solo si más del 30 % de la parcela es nube o sombra.
   - Resumen semanal sin interpolación, con las semanas posteriores a la última imagen marcadas como aún no disponibles.
-- Notebooks 01 y 03 y `requirements.txt` publicados; el notebook 03 sin salidas. El notebook 02 no está publicado hasta que los tutores autoricen publicar las coordenadas, el municipio y la variedad de las parcelas.
+- Notebooks 01, 02 y 03 y `requirements.txt` publicados, sin salidas en los notebooks 02 y 03.
+- Las coordenadas, el municipio y la variedad de las parcelas no están en el repositorio: el notebook 02 los lee de un archivo privado, `datos_parcelas_privados.py`, y el repositorio incluye la plantilla `notebooks/datos_parcelas_privados_ejemplo.py` con valores ficticios.
 
 Pendiente de la fase 1:
 - Repetir la extracción para incorporar las imágenes posteriores al 22/10/2026 hasta el fin del periodo.
@@ -42,7 +43,6 @@ Pendiente de la fase 1:
 
 Las fases 2 a 6 aún no se han iniciado.
 
-El siguiente paso es completar la revisión del sprint 2 (issue #6).
 
 ## Riesgos y limitaciones iniciales
 - Sentinel-2 no mide directamente la humedad del suelo.
