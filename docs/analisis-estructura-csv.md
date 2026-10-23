@@ -32,9 +32,9 @@ sola fila por fecha. Si cae en una sola tesela, cada imagen se procesa por
 separado.
 
 El catálogo de parcelas incluye municipio y variedad. Esos datos no se publican
-en este repositorio mientras los tutores no autoricen su publicación (apartado
-11). La variedad del catálogo no confirma que el cultivo de la campaña sea
-patata en el periodo analizado.
+en este repositorio: el notebook 02 los lee de un archivo privado guardado en
+Drive (apartado 11). La variedad del catálogo no confirma que el cultivo de la
+campaña sea patata en el periodo analizado.
 
 Por cada parcela se usan tres archivos generados por el notebook 03: el CSV de
 índices (una fila por imagen o mosaico con al menos un píxel válido), el CSV de
@@ -234,12 +234,14 @@ Cadena de generación de los datos analizados:
 3. El notebook 01 (Parte 1) analiza esos CSV.
 
 Los notebooks 02 y 03 se ejecutan en Google Colab y guardan sus resultados en
-Drive. El notebook 03 está publicado en este repositorio sin salidas y sin el
-identificador del proyecto de Earth Engine. El notebook 02 no se publica: contiene
-las coordenadas de las parcelas y sus salidas incluyen datos de las
-explotaciones. Se publicará una versión saneada solo si los tutores autorizan
-publicar esos datos. Las reglas de preparación y las decisiones están en
-`docs/preparacion-datos-simulador.md`.
+Drive. Ambos están publicados en este repositorio sin salidas. El notebook 03
+tampoco incluye el identificador del proyecto de Earth Engine. El notebook 02 no
+contiene las coordenadas, el municipio ni la variedad de las parcelas: los lee
+de un archivo privado, `datos_parcelas_privados.py`, que se guarda en Drive y
+está excluido del repositorio mediante `.gitignore`. El repositorio incluye
+solo una plantilla con valores ficticios,
+`notebooks/datos_parcelas_privados_ejemplo.py`. Las reglas de preparación y las
+decisiones están en `docs/preparacion-datos-simulador.md`.
 
 Las cifras de contraste con el notebook 03 están registradas en la celda 1.10 del
 notebook 01.
