@@ -24,12 +24,25 @@ datos del cultivo, estimar su estado hídrico y recomendar acciones de riego.
 ### Fase 6: interfaz
 
 ## Estado actual
-Se han creado los archivos iniciales del repositorio:
-- README.md
-- .gitignore
-- requirements.txt
-El siguiente objetivo es analizar el CSV generado por Sentinel-2 y documentar
-sus características.
+Fase 1 (preparación y datos), trabajada en el sprint 2:
+- Alcance y arquitectura documentados en `docs/alcance-y-arquitectura.md`.
+- Estructura de los CSV de Sentinel-2 analizada en `docs/analisis-estructura-csv.md`.
+- Evolución temporal de NDVI, NDRE, NDMI y EVI representada en `docs/evolucion-temporal-indices.md`.
+- Datos Sentinel-2 preparados para el simulador, descritos en `docs/preparacion-datos-simulador.md`:
+  - Periodo provisional del 01/04/2026 al 01/11/2026, con imágenes hasta el 22/10/2026.
+  - Teselas de una misma fecha combinadas cuando la parcela cae en más de una.
+  - Imágenes descartadas solo si más del 30 % de la parcela es nube o sombra.
+  - Resumen semanal sin interpolación, con las semanas posteriores a la última imagen marcadas como aún no disponibles.
+- Notebooks 01 y 03 y `requirements.txt` publicados; el notebook 03 sin salidas. El notebook 02 no está publicado hasta que los tutores autoricen publicar las coordenadas, el municipio y la variedad de las parcelas.
+
+Pendiente de la fase 1:
+- Repetir la extracción para incorporar las imágenes posteriores al 22/10/2026 hasta el fin del periodo.
+- Confirmar la campaña y las fechas agronómicas de las parcelas.
+- Incorporar los históricos de sensores y riego.
+
+Las fases 2 a 6 aún no se han iniciado.
+
+El siguiente paso es completar la revisión del sprint 2 (issue #6).
 
 ## Riesgos y limitaciones iniciales
 - Sentinel-2 no mide directamente la humedad del suelo.
