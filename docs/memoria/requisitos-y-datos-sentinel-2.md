@@ -231,9 +231,9 @@ plantilla y con los datos reales y que genera los mismos archivos.
 
 ## 10. Revisión y retrospectiva
 
-La revisión del sprint se realizó el 23/10/2026 y se registra en `docs/sprint-02.md`. 
-Las cuatro tareas técnicas (#1 a #4) y la configuración de la gestión (#5) están cerradas, 
-y la tarea #6 se cierra con la documentación del sprint.
+La revisión del sprint se realizó el 23/10/2026 y se registra en `docs/sprint-02.md`.
+Las cuatro tareas técnicas (#1 a #4) y la configuración de la gestión (#5) están
+cerradas, y la tarea #6 se cierra con la documentación del sprint.
 
 Lo que funcionó bien fue la corrección de criterios con los tutores antes del
 cierre, el contraste de las cifras entre el notebook 03, el notebook 01 y los
@@ -242,15 +242,15 @@ privados del código.
 
 Las dificultades fueron la publicación del notebook 03 con salidas, varios ciclos
 de borrar y volver a subir notebooks y figuras, la llegada de los cambios de
-criterio el último día del sprint sin horas de margen y la falta de registro de las
-horas reales.
+criterio el último día del sprint sin horas de margen y que la decisión sobre la
+publicación del notebook 02 se resolviera el mismo día del cierre.
 
 Las mejoras propuestas para el siguiente sprint son aplicar una lista de
 comprobación antes de subir un archivo, mantener los datos privados fuera de los
-notebooks desde el inicio, pedir a los tutores a mitad del sprint la confirmación
-de los criterios que afectan a los datos, reservar un margen de horas, registrar
-las horas reales y decidir si la revisión bibliográfica se planifica o se
-descarta.
+notebooks desde el inicio, decidir si la revisión bibliográfica se planifica o se
+descarta, y repetir la extracción cuando haya imágenes hasta el fin del periodo,
+confirmar la campaña y las fechas agronómicas e incorporar los históricos de
+sensores y riego.
 
 ## 11. Trazabilidad
 
