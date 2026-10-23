@@ -44,3 +44,9 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Datos privados de las parcelas (coordenadas, municipio y variedad)
+datos_parcelas_privados.py
+privado/
+*.geojson
+catalogo_parcelas.csv
