@@ -36,7 +36,9 @@ reglas aplicadas, justifica las decisiones y registra lo que queda pendiente.
 
 ## 3. Datos de partida y cadena de generación
 
-1. El notebook 02 prepara el catálogo de parcelas y sus geometrías (lee los datos privados de las parcelas de un    archivo que no está en el repositorio; ver apartado 11).
+1. El notebook 02 prepara el catálogo de parcelas y sus geometrías (lee los
+   datos privados de las parcelas de un archivo que no está en el repositorio;
+   ver apartado 11).
 2. El notebook 03 lee ese catálogo, consulta Sentinel-2 en Google Earth Engine y
    genera, por parcela, el CSV de índices, el CSV de revisión de calidad y el
    resumen semanal.
