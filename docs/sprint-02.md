@@ -10,7 +10,8 @@
 - Fecha objetivo: 23/10/2026.
 - Responsable: irr1008.
 - Milestone asociado a la issue de revisión: M1 - Preparación y análisis inicial.
-- Estado del sprint: en curso.
+- Estado del sprint: cerrado el 23/10/2026, con el trabajo pendiente identificado
+  en la revisión del sprint.
 
 ### Adaptación de la planificación inicial
 
@@ -170,8 +171,10 @@ issue afectada y se utilizará el estado Bloqueado.
 
 ### Limitaciones que siguen abiertas
 
-- La publicación del notebook 02 y de los datos de coordenadas, municipio y
-  variedad de las parcelas depende de la autorización de los tutores.
+- La campaña y las fechas agronómicas de las parcelas siguen sin confirmar.
+- La extracción debe repetirse para incorporar las imágenes posteriores al
+  22/10/2026 hasta el fin del periodo (01/11/2026).
+- Los históricos de sensores y riego no se han incorporado.
 
 ### Decisiones durante el sprint
 
@@ -179,68 +182,166 @@ issue afectada y se utilizará el estado Bloqueado.
   contiene las coordenadas de las parcelas y ambos incluyen salidas con
   datos de las explotaciones, y el repositorio es público. Se publicarán
   versiones saneadas tras revisar los permisos sobre los datos (issue #4).
-  Resolución el 22/10/2026: ver más abajo.
+  Resolución: ver las decisiones del 22/10/2026 y del 23/10/2026.
 - 21/10/2026: la incorporación de NDRE al extractor se traslada de la
-  issue #3 a la issue #4, con un límite de 90 minutos. Si no es viable,
-  se documenta como limitación.
+  issue #3 a la issue #4.
 - 22/10/2026: el notebook 03 se publicó por error con sus salidas
   (municipio y variedad de las parcelas). Se detectó al revisar el contenido
   del archivo, se eliminó y se sustituyó por la versión sin salidas. La
   versión anterior permanece en el historial del repositorio.
-- 22/10/2026: NDRE se incorporó al extractor (bandas B8A y B5). Se repitió la extracción
-- de las cuatro parcelas y la selección de observaciones no cambió (25, 29, 27 y 26).
-- Los CSV pasan de 56 a 64 columnas y de 5 a 6 índices. Se regeneraron las Partes 1 y 3 del
-  notebook 01 y se actualizaron los documentos asociados.
+- 22/10/2026: NDRE se incorporó al extractor (bandas B8A y B5). Se repitió la
+  extracción de las cuatro parcelas y la selección de observaciones no cambió
+  (25, 29, 27 y 26). Los CSV pasan de 56 a 64 columnas y de 5 a 6 índices. Se
+  regeneraron las Partes 1 y 3 del notebook 01 y se actualizaron los documentos
+  asociados.
 - 22/10/2026: el notebook 03 se publica sin salidas y sin el identificador del
-  proyecto de Earth Engine. El 02 sigue sin publicarse hasta que los tutores
-  autoricen publicar coordenadas, municipio y variedad.
+  proyecto de Earth Engine. El 02 queda sin publicar por los datos de las
+  parcelas (resuelto el 23/10/2026).
 - 22/10/2026: las reglas de preparación de los datos (sin interpolación, una
   imagen seleccionada por parcela y fecha, agregación semanal y distinción entre
   observado e interpolado) quedan documentadas en
   `docs/preparacion-datos-simulador.md`.
-
-### Estado de la issue #4 (22/10/2026)
-
-| Criterio | Estado | Evidencia |
-|---|---|---|
-| Revisar los notebooks de parcelas y de extracción automática | Hecho | Notebook 02 revisado y no publicado; notebook 03 revisado y publicado sin salidas |
-| Conservar la trazabilidad de los datos y la selección técnica | Hecho | Columnas de calidad y selección en los CSV; `configuracion_extraccion.json` por parcela |
-| Verificar el control de varias imágenes seleccionadas por fecha | Hecho | 0 fechas con más de una imagen seleccionada en las cuatro parcelas |
-| Documentar la agregación semanal sin interpolación | Hecho | `docs/preparacion-datos-simulador.md`, apartados 4.6 a 6 |
-| Revisar dependencias, instrucciones de ejecución y archivos de salida | Hecho | `requirements.txt`, `notebooks/README.md` y apartados 9 y 10 del documento de decisiones |
-| Revisar credenciales, salidas sensibles y permisos antes de publicar | Notebook 03 hecho; notebook 02 pendiente | Autorización de los tutores para coordenadas, municipio y variedad |
-| Incorporar NDRE (trasladado desde la issue #3) | Hecho | Apartado 8 del documento de decisiones |
+- 23/10/2026: revisión con los tutores. Se combinan en un mosaico las teselas de
+  una misma fecha (afecta a Puri), una imagen se descarta solo por el porcentaje
+  de nube y sombra de la propia parcela (máximo 30 %) y el periodo de extracción
+  pasa a ser del 01/04/2026 al 01/11/2026. Se repitió la extracción de las cuatro
+  parcelas (26, 33, 28 y 28 observaciones seleccionadas) y se actualizaron los
+  documentos.
+- 23/10/2026: a propuesta del profesor, el notebook 02 se publica sin salidas y
+  sin coordenadas, municipio ni variedad. Los lee de `datos_parcelas_privados.py`,
+  un archivo que se guarda en Drive y está excluido del repositorio mediante
+  `.gitignore`. Se publica una plantilla con valores ficticios,
+  `notebooks/datos_parcelas_privados_ejemplo.py`. Se actualizaron
+  `notebooks/README.md`, `PLAN_TRABAJO.md` y los documentos de análisis y de
+  preparación.
 
 ## Revisión del sprint
 
-Pendiente de realizar durante la issue #6, al finalizar la iteración.
+Revisión realizada el 23/10/2026 en la issue #6.
+
+### Estado de las issues
+
+Las issues #1, #2, #3 y #4 están cerradas, igual que la #5 (configuración de la
+gestión Scrum-Kanban, fuera de las cinco tareas seleccionadas). La issue #6 se
+cierra con la actualización de este documento.
+
+### Comprobaciones realizadas
+
+| Comprobación | Resultado | Evidencia |
+|---|---|---|
+| Coherencia entre objetivo, notebooks y documentación | Revisada tras los cambios del 23/10/2026. Las cifras de selección (26, 33, 28 y 28 observaciones) coinciden en el análisis de estructura, en el documento de preparación y en la memoria | `docs/analisis-estructura-csv.md`, `docs/preparacion-datos-simulador.md`, `docs/memoria/requisitos-y-datos-sentinel-2.md` |
+| Fechas y parámetros provisionales | Indicados: periodo del 01/04/2026 al 01/11/2026, imágenes hasta el 22/10/2026, última observación con píxeles válidos el 14/10/2026, umbrales sin validar agronómicamente | Apartados 1 y 9 del análisis; apartados 4 y 12 de la preparación |
+| Semanas sin observaciones | No se presentan como datos reales: conservan valores ausentes, `interpolado` es siempre `False` y la semana del 26/10/2026 se marca como aún no disponible | Apartados 4.6 a 6 de la preparación |
+| Credenciales y archivos sin permiso | Los notebooks 02 y 03 se publican sin salidas. El 03 no incluye el identificador del proyecto de Earth Engine. El 02 no incluye coordenadas, municipio ni variedad. `.gitignore` excluye el archivo privado, los GeoJSON y el catálogo. La búsqueda en el repositorio de los municipios y las variedades de las parcelas no dio coincidencias en los archivos que GitHub indexa | `notebooks/README.md`, `.gitignore` |
+| Notebook 01 (con salidas) | Revisado: sus salidas muestran solo los nombres de las columnas de municipio y variedad, sin sus valores, y no incluyen coordenadas, identificadores de proyecto ni códigos de verificación | `notebooks/01_Exploracion_inicial_datos_sentinel-2.ipynb` |
+| Evidencias identificables | Cada issue enlaza sus documentos, notebooks y figuras (apartado de evidencias) | Este documento |
+
+La versión del notebook 03 publicada con salidas el 22/10/2026 y las versiones
+intermedias de los días 22 y 23 permanecen en el historial del repositorio, como
+se registra en las decisiones del sprint.
+
+### Discrepancias y decisiones
+
+| Discrepancia | Decisión |
+|---|---|
+| La planificación hablaba de «revisión bibliográfica» y no se ha realizado | No se presenta como completada. Se mantiene como trabajo posterior |
+| NDRE se solicitó en la issue #3 y no estaba en la extracción | Se incorporó al extractor el 22/10/2026 (issue #4) |
+| Notebook 03 publicado por error con salidas el 22/10/2026 | Eliminado y sustituido por la versión sin salidas; registrado en las decisiones |
+| Los criterios de teselas, nube y sombra y periodo cambiaron el 23/10/2026 | Se repitió la extracción y se actualizaron notebooks, figuras y documentos. La selección pasó de 25, 29, 27 y 26 a 26, 33, 28 y 28 observaciones |
+| Figuras de evolución temporal con el periodo anterior | Sustituidas el 23/10/2026 por figuras con el periodo correcto |
+| Notebook 02 sin publicar por contener datos de las parcelas | Publicado sin salidas ni datos privados, con los datos en un archivo fuera del repositorio (23/10/2026) |
+| El documento de alcance y el de evolución temporal conservaban el periodo anterior y una nota sobre las figuras | Actualizados el 23/10/2026 |
+
+### Revisión con los tutores
+
+Los cambios pedidos en la revisión con los tutores del 23/10/2026 (combinación
+de teselas, criterio de nube y sombra de la parcela y periodo hasta el
+01/11/2026) están en las decisiones del sprint, en el comentario de la issue #6 y
+en el apartado 14 de `docs/preparacion-datos-simulador.md`.
 
 ### Trabajo completado
 
-- Pendiente de registrar con sus evidencias.
-- No se contabiliza automáticamente el trabajo previo como trabajo
-  terminado durante el sprint.
+- Alcance y arquitectura documentados (issue #1): `docs/alcance-y-arquitectura.md`.
+- Estructura de los CSV de Sentinel-2 analizada (issue #2):
+  `docs/analisis-estructura-csv.md` y Parte 1 del notebook 01.
+- Evolución temporal de NDVI, NDRE, NDMI y EVI representada (issue #3):
+  `docs/evolucion-temporal-indices.md`, `docs/figuras/` y Parte 3 del notebook 01.
+- Datos Sentinel-2 preparados para el simulador (issue #4): notebook 03,
+  `docs/preparacion-datos-simulador.md`, `requirements.txt` y
+  `notebooks/README.md`.
+- NDRE incorporado al extractor (bandas B8A y B5).
+- Cambios de la revisión con los tutores aplicados y comprobados en el notebook 03.
+- Notebooks 01, 02 y 03 publicados, con el 02 y el 03 sin salidas, y datos
+  privados de las parcelas fuera del repositorio.
+- Plan de trabajo actualizado (`PLAN_TRABAJO.md`).
+- Memoria del sprint redactada: `docs/memoria/requisitos-y-datos-sentinel-2.md`.
+
+Los notebooks 01 a 03 existían antes del sprint. En el sprint se revisaron, se
+ampliaron (NDRE, mosaico de teselas, criterio de nube y sombra, periodo), se
+documentaron y se publicaron. No se presenta el trabajo previo como desarrollado
+íntegramente en el sprint.
 
 ### Trabajo no completado
 
+- Revisión bibliográfica sistemática: no se ha realizado.
+- Confirmación de la campaña y de las fechas agronómicas de las parcelas.
+- Repetición de la extracción para incorporar las imágenes posteriores al
+  22/10/2026 hasta el 01/11/2026.
+- Históricos de sensores y riego.
+- NDWI y RECI, que usa el motor actual y no están en la extracción.
+- Validación agronómica de los umbrales de la selección provisional.
+- Motor de recomendación, modelos de aprendizaje automático y recomendaciones de
+  riego: fuera del alcance del sprint.
+
+
 ### Incremento obtenido
 
+Un conjunto de datos Sentinel-2 de cuatro parcelas, listo para un uso posterior en
+el simulador. Cubre el periodo provisional del 01/04/2026 al 01/11/2026, con
+imágenes hasta el 22/10/2026. Incluye seis índices (NDVI, NDRE, NDMI, MSI, EVI y
+SAVI), una selección técnica que descarta una observación solo si más del 30 % de
+la parcela es nube o sombra (26, 33, 28 y 28 observaciones seleccionadas de 42,
+36, 41 y 37) y un resumen semanal sin interpolar. Las semanas sin dato conservan
+valores ausentes y las semanas posteriores a la última imagen se marcan como aún
+no disponibles. Los tres notebooks y la documentación están publicados sin datos
+privados de las parcelas.
 
 ## Retrospectiva
 
-Pendiente de realizar al finalizar la iteración.
-
 ### Qué ha funcionado correctamente
 
-- Pendiente de valorar.
+- La revisión con los tutores corrigió criterios importantes antes del cierre y
+  los cambios quedaron documentados con las cifras de antes y después.
+- Contrastar las cifras del notebook 03 con el notebook 01 y con los documentos
+  permitió detectar y corregir incoherencias.
+- Documentar cada decisión en `docs/` y en este seguimiento facilitó rehacer los
+  resultados tras los cambios.
+- Separar los datos privados del código (archivo privado y plantilla) permitió
+  publicar el notebook 02 sin exponer las parcelas.
 
 ### Problemas encontrados
 
-- Pendiente de registrar durante la ejecución.
+- El 22/10/2026 se publicó el notebook 03 con salidas que contenían datos de las
+  parcelas. Se corrigió, pero las versiones previas permanecen en el historial.
+- Los días 22 y 23 hubo varios ciclos de borrar y volver a subir notebooks y
+  figuras (notebooks 01 y 03, figuras de evolución temporal) por versiones
+  incorrectas o intermedias.
+- Los cambios de criterio de la revisión con los tutores llegaron el último día del
+  sprint. Obligaron a repetir la extracción y a regenerar notebooks, figuras y
+  documentos, sin horas de margen.
+- La decisión sobre la publicación del notebook 02 se resolvió el mismo día del
+  cierre.
 
 ### Mejoras para el siguiente sprint
 
-- Pendiente de acordar en la retrospectiva.
+- Antes de subir un archivo a GitHub, comprobar una lista fija: salidas borradas,
+  sin identificadores de proyecto ni credenciales, y sin municipios, variedades ni
+  coordenadas. Subir cada versión una sola vez, tras revisarla.
+- Mantener los datos privados fuera de los notebooks desde el inicio.
+- Decidir si la revisión bibliográfica se planifica en el sprint 3 o se descarta.
+- Repetir la extracción cuando haya imágenes hasta el fin del periodo, confirmar la
+  campaña y las fechas agronómicas, e incorporar los históricos de sensores y
+  riego.
 
 ## Evidencias
 
@@ -249,14 +350,29 @@ Pendiente de realizar al finalizar la iteración.
   - #2 — Analizar la estructura del CSV generado por Sentinel-2.
   - #3 — Representar la evolución temporal de los índices espectrales.
   - #4 — Preparar los datos Sentinel-2 para el simulador.
+  - #5 — Configurar la gestión Scrum-Kanban del proyecto.
   - #6 — Revisar los entregables y documentar el cierre del sprint 2.
 
-- Commits:
-    - Pendiente de registrar al cierre del sprint.
+- Commits (selección; el historial completo está en GitHub):
+  - Extracción: `89315a0` (NDRE en el notebook 03), `09d3f0b` (NDRE en el
+    notebook 01), `3be06ea` (periodo hasta el 01/11/2026 y semanas aún no
+    disponibles), `4972107` (notebook 01 con el periodo hasta el 01/11/2026).
+  - Figuras: `cfcbeab` (NDRE), `8daf966` y `9445282` (periodo correcto).
+  - Documentación: `eabbcdd` (preparación de datos), `8a606ee` y `83858de`
+    (análisis de estructura), `7029dad` (evolución temporal), `577d3d9`,
+    `1877032` y `c0d25b8` (preparación de datos), `a58aac8` (alcance), `9a92e69`
+    (evolución temporal), `e1c2e7a` y `85aba52` (README de notebooks), `f23395e` y
+    `acc4fed` (plan de trabajo), `cb58bfe` (memoria del sprint 2).
+  - Datos privados: `7cf8299` (`.gitignore`) y `e6ae7fb` (notebook 02 y plantilla).
+  - Dependencias: `cd82968` (`requirements.txt`).
 
 - Notebooks:
   - `notebooks/01_Exploracion_inicial_datos_sentinel-2.ipynb` (Partes 1 y 3).
+  - `notebooks/02_preparacion_parcelas_reales.ipynb` (sin salidas ni datos
+    privados).
   - `notebooks/03_extraccion_sentinel2_parcelas_reales.ipynb` (sin salidas).
+  - `notebooks/datos_parcelas_privados_ejemplo.py` (plantilla con valores
+    ficticios).
   - `notebooks/README.md`.
 
 - Resultados:
@@ -264,12 +380,13 @@ Pendiente de realizar al finalizar la iteración.
     de NDRE).
 
 - Documentación:
+  - `PLAN_TRABAJO.md`.
   - `docs/gestion-agil.md`.
   - `docs/memoria/gestion-del-proyecto.md`.
+  - `docs/memoria/requisitos-y-datos-sentinel-2.md`.
   - `docs/alcance-y-arquitectura.md`.
   - `docs/analisis-estructura-csv.md`.
   - `docs/evolucion-temporal-indices.md`.
   - `docs/preparacion-datos-simulador.md`.
   - `requirements.txt`.
   - Este documento de seguimiento.
-  - Los documentos de alcance y análisis que se actualicen en el sprint.
