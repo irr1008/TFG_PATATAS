@@ -9,8 +9,8 @@ este repositorio.
 | Notebook | Función | Estado en el repositorio |
 |---|---|---|
 | `02_preparacion_parcelas_reales` | Genera el catálogo de parcelas y sus geometrías y comprueba su validez | Pendiente de publicar |
-| `03_extraccion_sentinel2_parcelas_reales` | Extrae Sentinel-2 con Google Earth Engine y genera los CSV de índices (NDVI, NDRE, NDMI, MSI, EVI y SAVI), de calidad y el resumen semanal | Publicado, sin salidas |
-| `01_Exploracion_inicial_datos_sentinel-2` | Parte 1: estructura de los CSV de las cuatro parcelas. Parte 2: ejemplo previo con maíz de 2018. Parte 3: evolución temporal de NDVI, NDRE, NDMI y EVI | Publicado, sin salidas |
+| `03_extraccion_sentinel2_parcelas_reales` | Extrae Sentinel-2 con Google Earth Engine y genera los CSV de índices (NDVI, NDRE, NDMI, MSI, EVI y SAVI), de calidad y el resumen semanal. Combina en un mosaico las teselas de una misma fecha cuando la parcela cae en más de una, y descarta una imagen solo si la nube y la sombra de la propia parcela superan el 30 % | Publicado, sin salidas |
+| `01_Exploracion_inicial_datos_sentinel-2` | Parte 1: estructura de los CSV de las cuatro parcelas. Parte 2: ejemplo previo con maíz de 2018. Parte 3: evolución temporal de NDVI, NDRE, NDMI y EVI | Publicado |
 
 ## Orden de ejecución
 
@@ -31,17 +31,22 @@ este repositorio.
    `PROYECTO_EE` de Colab (icono de la llave, con acceso al notebook
    concedido) o se pide al ejecutar sin mostrarlo en pantalla. No se guarda
    en el notebook.
-4. No pegues códigos de verificación, tokens ni identificadores de proyecto en
+4. El periodo de extracción se define en `FECHA_INICIO` y `FECHA_FIN` del
+   notebook 03 (hoy del 2026-04-01 al 2026-11-01, con fin excluido). Si el fin es
+   posterior a la fecha de ejecución, solo se obtienen las imágenes ya
+   disponibles. Al cambiar el periodo, el notebook 01 debe usar el mismo
+   (`PERIODO`).
+5. No pegues códigos de verificación, tokens ni identificadores de proyecto en
    las celdas ni en los comentarios.
-5. Antes de publicar un notebook, borra sus salidas (Editar → Borrar todos los
-   resultados) si contienen datos de las explotaciones.
+6. Antes de publicar un notebook, borra sus salidas si contienen datos de las
+   explotaciones (Editar → Borrar todos los resultados).
 
 ## Dónde se guardan las salidas en Drive
 
 | Salida | Carpeta |
 |---|---|
 | Catálogo y geometrías de las parcelas | `TFG_PATATAS_TRABAJO/parcelas` |
-| CSV de índices, calidad y resumen semanal | `TFG_PATATAS_TRABAJO/resultados/sentinel2_lotes` |
+| CSV de índices, calidad y resumen semanal (una carpeta por periodo) | `TFG_PATATAS_TRABAJO/resultados/sentinel2_lotes` |
 | Tablas del análisis de estructura | `TFG_PATATAS_TRABAJO/resultados/analisis_estructura_csv` |
 | Figuras de evolución temporal | `TFG_PATATAS_TRABAJO/resultados/graficas_evolucion_temporal` |
 
