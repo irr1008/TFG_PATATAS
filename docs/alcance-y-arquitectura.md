@@ -39,7 +39,7 @@ sprint.
 
 | Entrada | Estado | Observaciones |
 |---|---|---|
-| Índices Sentinel-2 de cuatro parcelas | Disponible | Periodo provisional 01/04/2026–01/10/2026; NDVI, NDMI, MSI, EVI, SAVI |
+| Índices Sentinel-2 de cuatro parcelas | Disponible | Periodo provisional 01/04/2026–01/11/2026 (imágenes hasta el 22/10/2026); NDVI, NDRE, NDMI, MSI, EVI, SAVI |
 | Catálogo de parcelas | Disponible | Nombre, municipio, variedad |
 | Histórico de sondas | Disponible | Proporcionado por el profesorado |
 | Riegos aplicados | Pendiente | |
