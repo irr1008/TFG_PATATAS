@@ -200,4 +200,4 @@ subida está menos muestreada.
 - Figuras y tablas, guardadas en Drive en
   `resultados/graficas_evolucion_temporal/`: las cuatro figuras anteriores,
   `huecos_seleccion.csv` y `resumen_indices_seleccionadas.csv`.
-- Las cuatro figuras actualizadas deben copiarse a `docs/figuras/`.
+- Las cuatro figuras están en `docs/figuras/`.
