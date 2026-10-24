@@ -22,7 +22,7 @@ evalúan y preparan los datos no satelitales (sondas y meteorología), se
 solicitan a los tutores los datos pendientes y se completa la extracción del
 periodo.
 
-La duración es de dos semana. La revisión bibliográfica pendiente del
+La duración es de dos semanas. La revisión bibliográfica pendiente del
 sprint 2 se incorpora como tarea acotada a los parámetros del balance hídrico;
 no equivale a una revisión sistemática.
 
