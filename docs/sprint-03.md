@@ -11,8 +11,9 @@
 - Fecha objetivo: 06/11/2026.
 - Responsable: irr1008.
 - Milestone asociado: M2 - Definir variables y unidades del balance hídrico.
-- Estado del sprint: planificado; comienza el 26/10/2026.
+- Estado del sprint: en curso desde el 26/10/2026.
 
+  
 ### Adaptación de la planificación inicial
 
 La planificación general denominaba esta iteración «Adquisición y preparación
@@ -180,6 +181,10 @@ issue afectada y se utiliza el estado Bloqueado.
   tareas, 36 horas y 4 horas de margen. La revisión bibliográfica se incorpora
   de forma acotada. Las tareas de memoria se identifican con la etiqueta
   «Documentación».
+- 26/10/2026: el proyecto utilizará una única sonda de humedad a 25 cm de profundidad.
+  La matriz de pesos por profundidad de la especificación no se aplica y la humedad del
+  perfil es la lectura de esa sonda. Se contrastará con los tutores en la revisión
+  intermedia del 30/10.
 
 ## Medidas aplicadas desde el sprint 2
 
@@ -245,7 +250,7 @@ Pendiente de realizar al finalizar la iteración.
   - Pendiente de registrar.
 
 - Documentación:
-  - `docs/analisis-motor-referencia.md` (prevista).
+  - `docs/analisis-motor-referencia.md`.
   - `docs/variables-balance-hidrico.md` (prevista).
   - `docs/analisis-historico-sondas.md` (prevista).
   - `docs/fuentes-meteorologicas.md` (prevista).
