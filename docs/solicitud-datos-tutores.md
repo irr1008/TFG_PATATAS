@@ -6,7 +6,7 @@ Issue #13 · Sprint 3
 
 - Fecha de envío de la primera solicitud: 26/10/2026.
 - Canal: outlook.
-- Segunda solicitud (en caso de nuevas dudas).
+- Segunda solicitud (dudas técnicas del análisis del motor de referencia): 27/10/2026, por outlook.
 - Revisión intermedia: propuesta para el 30/10/2026. Se registrará solo si se celebra.
 
 ## Peticiones
@@ -20,12 +20,14 @@ Issue #13 · Sprint 3
 | 5 | Sonda única a 25 cm: identificador y acceso al histórico | Análisis del histórico | #9 | Pendiente | |
 | 6 | MAD y parámetros a y b de Kc | Rangos de variables | #8, #14 | Pendiente | |
 | 7 | Autorización para publicar constantes y datos | Publicación en el repositorio | #7, #8 | Pendiente | |
+| 8 | Criterios técnicos del motor | Definiciones de variables y fórmulas | #8, #14 | Pendiente | |
 
 ## Registro de comunicaciones
 
 | Fecha | Acción | Resultado |
 |---|---|---|
 | 26/10/2026 | Envío de la primera solicitud | A la espera de respuesta |
+| 27/10/2026 | Envío de la segunda solicitud de criterio técnico | A la espera de respuesta |
 
 ## Bloqueos
 
