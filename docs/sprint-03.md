@@ -12,7 +12,6 @@
 - Responsable: irr1008.
 - Milestone asociado: M2 - Definir variables y unidades del balance hídrico.
 - Estado del sprint: en curso desde el 26/10/2026.
-
   
 ### Adaptación de la planificación inicial
 
@@ -254,6 +253,6 @@ Pendiente de realizar al finalizar la iteración.
   - `docs/variables-balance-hidrico.md` (prevista).
   - `docs/analisis-historico-sondas.md` (prevista).
   - `docs/fuentes-meteorologicas.md` (prevista).
-  - `docs/solicitud-datos-tutores.md` (prevista).
+  - `docs/solicitud-datos-tutores.md`.
   - `docs/revision-bibliografica.md` (prevista).
   - Este documento de seguimiento.
