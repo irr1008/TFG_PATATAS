@@ -250,7 +250,7 @@ Pendiente de realizar al finalizar la iteración.
 
 - Documentación:
   - `docs/analisis-motor-referencia.md`.
-  - `docs/variables-balance-hidrico.md` (prevista).
+  - `docs/variables-balance-hidrico.md`.
   - `docs/analisis-historico-sondas.md` (prevista).
   - `docs/fuentes-meteorologicas.md` (prevista).
   - `docs/solicitud-datos-tutores.md`.
