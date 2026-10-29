@@ -172,8 +172,9 @@ issue afectada y se utiliza el estado Bloqueado.
 
 ### Limitaciones que siguen abiertas
 
-- Sin registrar.
-
+- El histórico de sondas cubre del 29/04 al 11/09/2026: faltan abril y el
+  periodo desde el 12/09, y no indica la parcela de cada sonda.
+  
 ### Decisiones durante el sprint
 
 - 24/10/2026: planificación del sprint con duración de dos semanas, nueve
@@ -184,6 +185,11 @@ issue afectada y se utiliza el estado Bloqueado.
   La matriz de pesos por profundidad de la especificación no se aplica y la humedad del
   perfil es la lectura de esa sonda. Se contrastará con los tutores en la revisión
   intermedia del 30/10.
+- 29/10/2026: en el histórico de sondas, dos identificadores corresponden a
+  la misma sonda (uno es una extensión incorrecta del otro) y se fusionan. Se
+  eliminan las copias exactas de lecturas y se excluyen las lecturas con
+  humedad menor o igual que 0. Se confirma que la humedad está en % vol., la
+  profundidad es de 25 cm y las fechas están en hora local de España.
 
 ## Medidas aplicadas desde el sprint 2
 
@@ -243,7 +249,7 @@ Pendiente de realizar al finalizar la iteración.
   - Pendiente de registrar al cierre del sprint.
 
 - Notebooks:
-  - Pendiente de registrar.
+  - `notebooks/04_analisis_historico_sondas.ipynb`.
 
 - Resultados:
   - Pendiente de registrar.
@@ -251,7 +257,7 @@ Pendiente de realizar al finalizar la iteración.
 - Documentación:
   - `docs/analisis-motor-referencia.md`.
   - `docs/variables-balance-hidrico.md`.
-  - `docs/analisis-historico-sondas.md` (prevista).
+  - `docs/analisis-historico-sondas.md`.
   - `docs/fuentes-meteorologicas.md` (prevista).
   - `docs/solicitud-datos-tutores.md`.
   - `docs/revision-bibliografica.md` (prevista).
