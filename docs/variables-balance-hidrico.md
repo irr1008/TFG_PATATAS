@@ -1,6 +1,6 @@
 # Variables y unidades del balance hídrico
 
-Issue #8 · Sprint 3 · Fecha: 27 y 28/10/2026
+Issue #8 · Sprint 3 · Fecha: 27, 28 y 29/10/2026
 Estado: versión completa, pendiente de contraste con los tutores en la revisión del 30/10/2026.
 Fuentes: documento de especificación técnica del motor mejorado, motor de referencia v14 (análisis en `docs/analisis-motor-referencia.md`), artículo de Saxton y Rawls (2006) y guía FAO-56 ([Allen et al., 1998](https://www.fao.org/4/X0490E/x0490e00.htm)). Los documentos del profesorado no se incluyen en el repositorio.
 
@@ -17,8 +17,8 @@ Fuentes: documento de especificación técnica del motor mejorado, motor de refe
 
 | Variable | Símbolo | Unidad | Rango o definición | Fuente | Frecuencia | Tipo | Estado |
 |---|---|---|---|---|---|---|---|
-| Humedad volumétrica medida | θ | % vol. | Entre el PMP y la CC_real en régimen normal; por encima de la CC_real, perfil saturado; por debajo del PMP, posible error de la sonda | Sonda única a 25 cm | Por analizar en la #9 (el v14 menciona lecturas cada unas 4 h) | Observada | Histórico disponible, pendiente de analizar |
-| Profundidad de la sonda | z_s | cm | 25, igual para todas las parcelas | Decisión de alcance del 26/10/2026 | Constante | Observada | Fijada por decisión; confirmación de los tutores pendiente |
+| Humedad volumétrica medida | θ | % vol. | Entre el PMP y la CC_real en régimen normal; por encima de la CC_real, perfil saturado; por debajo del PMP, posible error de la sonda | Sonda a 25 cm | Una lectura cada 4 h de mediana, con intervalos irregulares y huecos (#9) | Observada | Histórico analizado (29/04 a 11/09/2026); unidad (% vol.) |
+| Profundidad de la sonda | z_s | cm | 25, igual para todas las parcelas | Decisión de alcance del 26/10/2026 | Constante | Observada | Fijada por el dirigente de las sondas |
 | Punto de marchitez permanente | PMP | % vol. | Humedad a 1500 kPa (15 bar) | Saxton y Rawls a partir de la textura, o ficha de la parcela como en el v14 | Constante por parcela | Derivada | Pendiente de textura (#13) y de decidir la fuente |
 | Capacidad de campo teórica | CC_teórica | % vol. | Humedad a 33 kPa | Saxton y Rawls a partir de la textura | Constante por parcela | Derivada | Pendiente de textura (#13) |
 | Capacidad de campo real | CC_real | % vol. | Pendiente | Calibración con la sonda tras un riego o una lluvia: ventana de 24 a 48 h tras el pico de humedad y punto de inflexión de la derivada | Se actualiza al detectar un evento de riego o lluvia | Derivada | Pendiente de los umbrales de detección |
