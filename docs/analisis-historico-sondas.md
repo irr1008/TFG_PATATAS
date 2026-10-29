@@ -8,7 +8,7 @@ Fuentes: histórico de sondas facilitado por el personal que gestiona las sondas
 
 - El histórico contiene lecturas de 4 sondas, entre el 29/04/2026 y el 11/09/2026, con una lectura cada 4 horas de mediana.
 - No cubre todo el periodo del estudio (01/04 a 01/11/2026): faltan abril y los 50 días desde el 12/09. Es todo el histórico facilitado.
-- Las lecturas no incluyen unidad, profundidad ni parcela de cada sonda. La humedad está en % vol. y las sondas están a 25 cm, ambos datos confirmados el 29/10/2026. La parcela de cada sonda sigue pendiente.
+- Las lecturas no incluyen unidad, profundidad ni parcela de cada sonda. La humedad está en % vol. y las sondas están a 25 cm. La parcela de cada sonda sigue pendiente.
 - Hay huecos largos que coinciden en varias sondas a la vez, lo que apunta a una caída del sistema de captura y no a un fallo de cada sensor.
 - Se han detectado 17 episodios candidatos de subida de humedad, 13 de ellos en una sola sonda, con un patrón regular cada 4 días en julio.
 
@@ -127,7 +127,7 @@ Criterio exploratorio: se marca una subida cuando la humedad aumenta al menos 2 
 - Se usa el histórico tal como se entregó (29/04 a 11/09/2026), sin rellenar huecos ni corregir valores.
 - Las lecturas con humedad menor o igual que 0 se excluyen y las copias exactas se eliminan.
 - Frecuencia para el glosario de variables: una lectura cada 4 horas de mediana, con intervalos irregulares y huecos.
-- Unidad: % vol. Profundidad: 25 cm, que coincide con la decisión de alcance del 26/10/2026. Ambas confirmadas el 29/10/2026.
+- Unidad: % vol. Profundidad: 25 cm, que coincide con la decisión de alcance del 26/10/2026.
 - Fechas: hora local de España. Todo el histórico (29/04 a 11/09) está en horario de verano (UTC+2), sin cambio de hora. Al cruzarlo con datos meteorológicos en UTC hay que agrupar por día local.
 - La cobertura parcial del periodo condiciona la calibración de la CC real y la validación del simulador: solo se podrán usar los 136 días con datos.
 
