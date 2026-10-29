@@ -11,6 +11,7 @@ este repositorio.
 | `02_preparacion_parcelas_reales` | Genera el catálogo de parcelas y sus geometrías y comprueba su validez. Lee las coordenadas, el municipio y la variedad de un archivo privado, `datos_parcelas_privados.py`, que no está en el repositorio | Publicado, sin salidas y sin datos privados |
 | `03_extraccion_sentinel2_parcelas_reales` | Extrae Sentinel-2 con Google Earth Engine y genera los CSV de índices (NDVI, NDRE, NDMI, MSI, EVI y SAVI), de calidad y el resumen semanal. Combina en un mosaico las teselas de una misma fecha cuando la parcela cae en más de una, y descarta una imagen solo si la nube y la sombra de la propia parcela superan el 30 % | Publicado, sin salidas |
 | `01_Exploracion_inicial_datos_sentinel-2` | Parte 1: estructura de los CSV de las cuatro parcelas. Parte 2: ejemplo previo con maíz de 2018. Parte 3: evolución temporal de NDVI, NDRE, NDMI y EVI | Publicado |
+| `04_analisis_historico_sondas` | Analiza el histórico de sondas de humedad del suelo: estructura, frecuencia de lectura, huecos, calidad, solape con el periodo del estudio y episodios candidatos de subida. Lee el histórico de una carpeta privada de Drive y sustituye los identificadores de las sondas por alias | Publicado, sin salidas y sin identificadores |
 
 ## Orden de ejecución
 
@@ -21,6 +22,9 @@ este repositorio.
    representa la evolución de los índices (Parte 3). La Parte 3 usa datos
    definidos en la Parte 1, por lo que se ejecuta después de ella. La Parte 2
    es independiente y requiere un CSV de maíz de 2018 en Drive.
+4. `04_analisis_historico_sondas`: independiente de los anteriores. Lee el
+   histórico de sondas de `TFG_PATATAS_TRABAJO/privado/historico_sondas` y no
+   usa los CSV de Sentinel-2.
 
 ## Cómo ejecutarlos
 
@@ -56,6 +60,8 @@ este repositorio.
 | Tablas del análisis de estructura | `TFG_PATATAS_TRABAJO/resultados/analisis_estructura_csv` |
 | Figuras de evolución temporal | `TFG_PATATAS_TRABAJO/resultados/graficas_evolucion_temporal` |
 | Datos privados de las parcelas (coordenadas, municipio y variedad) | `TFG_PATATAS_TRABAJO/privado` (no se sube a GitHub) |
+| Tablas y figuras del análisis del histórico de sondas | `TFG_PATATAS_TRABAJO/resultados/analisis_historico_sondas` |
+| Histórico de sondas y correspondencia entre identificadores y alias | `TFG_PATATAS_TRABAJO/privado` (no se sube a GitHub) |
 
 ## Datos privados de las parcelas
 
@@ -83,3 +89,5 @@ proyecto de Earth Engine.
 - `docs/evolucion-temporal-indices.md`: evolución temporal (Parte 3 del 01).
 - `docs/preparacion-datos-simulador.md`: reglas y decisiones de preparación de
   los datos (notebook 03).
+- `docs/analisis-historico-sondas.md`: análisis del histórico de sondas
+  (notebook 04).
