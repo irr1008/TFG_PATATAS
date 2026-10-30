@@ -8,7 +8,7 @@
   los datos no satelitales y completar la extracción Sentinel-2 hasta el
   01/11/2026.
 - Fecha de inicio: 26/10/2026.
-- Fecha objetivo: 13/11/2026 (ampliada desde el 06/11/2026; ver «Replanificación del 30/10/2026»).
+- Fecha objetivo: 13/11/2026 (ampliada desde el 06/11/2026; ver <<Replanificación del 30/10/2026>>).
 - Responsable: irr1008.
 - Milestone asociado: M2 - Definir variables y unidades del balance hídrico.
 - Estado del sprint: en curso desde el 26/10/2026; trabajo en pausa del 31/10 al 05/11/2026
