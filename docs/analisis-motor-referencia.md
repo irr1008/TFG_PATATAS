@@ -113,7 +113,7 @@ Los cuatro módulos de la especificación sustituyen al núcleo del v14. Se cons
 
 La variedad, la superficie y el sistema de riego no intervienen en las reglas de decisión, y de los índices satelitales solo MSI y NDWI lo hacen. Esto simplifica la lista de variables del balance hídrico (issue #8).
 
-Decisión de alcance (26/10/2026): el proyecto utilizará una única sonda de humedad a 25 cm de profundidad, como el v14. La matriz de pesos por profundidad de la especificación no se aplica. La decisión se contrastará con los tutores en la revisión intermedia del 30/10.
+Decisión de alcance (26/10/2026): el proyecto utilizará una única sonda de humedad a 25 cm de profundidad, como el v14. La matriz de pesos por profundidad de la especificación no se aplica. La decisión se contrastará con los tutores en la revisión intermedia, aplazada al 06/11.
 
 ## 9. Limitaciones
 
