@@ -174,6 +174,7 @@ issue afectada y se utiliza el estado Bloqueado.
 
 - El histórico de sondas cubre del 29/04 al 11/09/2026: faltan abril y el
   periodo desde el 12/09, y no indica la parcela de cada sonda.
+- No se obtuvo la clave de la API de AEMET OpenData el 30/10/2026; sus variables se verificaron con los metadatos oficiales.
   
 ### Decisiones durante el sprint
 
@@ -258,7 +259,7 @@ Pendiente de realizar al finalizar la iteración.
   - `docs/analisis-motor-referencia.md`.
   - `docs/variables-balance-hidrico.md`.
   - `docs/analisis-historico-sondas.md`.
-  - `docs/fuentes-meteorologicas.md` (prevista).
+  - `docs/fuentes-meteorologicas.md`.
   - `docs/solicitud-datos-tutores.md`.
   - `docs/revision-bibliografica.md` (prevista).
   - Este documento de seguimiento.
