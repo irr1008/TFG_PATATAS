@@ -8,11 +8,12 @@
   los datos no satelitales y completar la extracción Sentinel-2 hasta el
   01/11/2026.
 - Fecha de inicio: 26/10/2026.
-- Fecha objetivo: 06/11/2026.
+- Fecha objetivo: 13/11/2026 (ampliada desde el 06/11/2026; ver «Replanificación del 30/10/2026»).
 - Responsable: irr1008.
 - Milestone asociado: M2 - Definir variables y unidades del balance hídrico.
-- Estado del sprint: en curso desde el 26/10/2026.
-  
+- Estado del sprint: en curso desde el 26/10/2026; trabajo en pausa del 31/10 al 05/11/2026
+  hasta la revisión con los tutores.
+    
 ### Adaptación de la planificación inicial
 
 La planificación general denominaba esta iteración «Adquisición y preparación
@@ -74,6 +75,26 @@ las issues y en las secciones de revisión y evidencias.
 
 Las tareas que comparten jornada no se consideran paralelas: se mantiene el
 límite de una tarea principal en estado En progreso.
+
+## Replanificación del 30/10/2026
+
+Los tutores aplazan la revisión intermedia del 30/10 al 06/11/2026 y no se trabajará hasta que se celebre, porque las decisiones pendientes (fórmula del AFD, profundidad de cálculo, PMP y fuente meteorológica) dependen de ellos. El sprint se amplía una semana.
+
+- Jornadas realizadas: del 26 al 30 de octubre de 2026 (20 horas).
+- Jornadas restantes: 06, 09, 10, 11, 12 y 13 de noviembre (24 horas).
+- Capacidad total: 44 horas, de las cuales 36 son de tareas, 4 de margen y 4 se añaden el 06/11 para la revisión y para incorporar sus resultados.
+- Nueva fecha objetivo del sprint y del milestone M2: 13/11/2026.
+
+| Jornada | Trabajo previsto | Horas |
+|---|---|---:|
+| Viernes 06/11 | Revisión con los tutores, registro de respuestas (#13) y ajuste de los documentos | 4 |
+| Lunes 09/11 | #11 | 4 |
+| Martes 10/11 | #12 | 4 |
+| Miércoles 11/11 | Fin de #12 (1 h) y #14 (3 h) | 4 |
+| Jueves 12/11 | Margen no asignado | 4 |
+| Viernes 13/11 | #15 | 4 |
+
+La tabla de tareas seleccionadas conserva la planificación inicial; las fechas del tablero reflejan esta replanificación.
 
 ## Trabajo previo disponible
 
@@ -197,6 +218,9 @@ issue afectada y se utiliza el estado Bloqueado.
   profundidad es de 25 cm y las fechas están en hora local de España.
 - 30/10/2026: los tutores aplazan la revisión intermedia al 06/11/2026. La issue #11 continúa con la fuente
   propuesta en la #10 (Open-Meteo), marcada como provisional hasta el contraste con los tutores.
+- 30/10/2026: los tutores aplazan la revisión intermedia al 06/11/2026 y se pausa el trabajo hasta entonces.
+  El sprint se amplía hasta el 13/11/2026 y la issue #11 empieza después de la revisión, con la
+  fuente meteorológica ya contrastada.
 
 ## Medidas aplicadas desde el sprint 2
 
