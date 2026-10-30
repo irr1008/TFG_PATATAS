@@ -174,7 +174,11 @@ issue afectada y se utiliza el estado Bloqueado.
 
 - El histórico de sondas cubre del 29/04 al 11/09/2026: faltan abril y el
   periodo desde el 12/09, y no indica la parcela de cada sonda.
-- No se obtuvo la clave de la API de AEMET OpenData el 30/10/2026; sus variables se verificaron con los metadatos oficiales.
+- No se obtuvo la clave de la API de AEMET OpenData el 30/10/2026; sus variables se verificaron con
+  los metadatos oficiales.
+- La revisión intermedia con los tutores, prevista para el 30/10/2026, se aplaza al 06/11/2026, el día del
+  cierre del sprint. Las decisiones que dependen de ellos (fórmula del AFD, profundidad de cálculo, PMP y
+  fuente meteorológica) siguen pendientes.
   
 ### Decisiones durante el sprint
 
@@ -191,6 +195,8 @@ issue afectada y se utiliza el estado Bloqueado.
   eliminan las copias exactas de lecturas y se excluyen las lecturas con
   humedad menor o igual que 0. Se confirma que la humedad está en % vol., la
   profundidad es de 25 cm y las fechas están en hora local de España.
+- 30/10/2026: los tutores aplazan la revisión intermedia al 06/11/2026. La issue #11 continúa con la fuente
+  propuesta en la #10 (Open-Meteo), marcada como provisional hasta el contraste con los tutores.
 
 ## Medidas aplicadas desde el sprint 2
 
