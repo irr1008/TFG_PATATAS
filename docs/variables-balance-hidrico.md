@@ -1,7 +1,7 @@
 # Variables y unidades del balance hídrico
 
 Issue #8 · Sprint 3 · Fecha: 27, 28 y 29/10/2026
-Estado: versión completa, pendiente de contraste con los tutores en la revisión del 30/10/2026.
+Estado: versión completa, pendiente de contraste con los tutores en la revisión del 06/11/2026.
 Fuentes: documento de especificación técnica del motor mejorado, motor de referencia v14 (análisis en `docs/analisis-motor-referencia.md`), artículo de Saxton y Rawls (2006) y guía FAO-56 ([Allen et al., 1998](https://www.fao.org/4/X0490E/x0490e00.htm)). Los documentos del profesorado no se incluyen en el repositorio.
 
 ## 1. Convenciones
