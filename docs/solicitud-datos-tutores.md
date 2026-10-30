@@ -40,6 +40,7 @@ Issue #13 · Sprint 3
 ## Bloqueos
 
 - Revisión intermedia aplazada al 06/11/2026: las respuestas de los tutores a las tres solicitudes siguen pendientes.
+
 ## Decisiones confirmadas
 
 - Sin registrar.
