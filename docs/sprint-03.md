@@ -8,7 +8,7 @@
   los datos no satelitales y completar la extracción Sentinel-2 hasta el
   01/11/2026.
 - Fecha de inicio: 26/10/2026.
-- Fecha objetivo: 13/11/2026 (ampliada desde el 06/11/2026; ver <<Replanificación del 30/10/2026>>).
+- Fecha objetivo: 13/11/2026 (ampliada desde el 06/11/2026; ver «Replanificación del 30/10/2026»).
 - Responsable: irr1008.
 - Milestone asociado: M2 - Definir variables y unidades del balance hídrico.
 - Estado del sprint: en curso desde el 26/10/2026; trabajo en pausa del 31/10 al 05/11/2026
@@ -216,8 +216,6 @@ issue afectada y se utiliza el estado Bloqueado.
   eliminan las copias exactas de lecturas y se excluyen las lecturas con
   humedad menor o igual que 0. Se confirma que la humedad está en % vol., la
   profundidad es de 25 cm y las fechas están en hora local de España.
-- 30/10/2026: los tutores aplazan la revisión intermedia al 06/11/2026. La issue #11 continúa con la fuente
-  propuesta en la #10 (Open-Meteo), marcada como provisional hasta el contraste con los tutores.
 - 30/10/2026: los tutores aplazan la revisión intermedia al 06/11/2026 y se pausa el trabajo hasta entonces.
   El sprint se amplía hasta el 13/11/2026 y la issue #11 empieza después de la revisión, con la
   fuente meteorológica ya contrastada.
