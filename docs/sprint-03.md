@@ -105,8 +105,8 @@ La tabla de tareas seleccionadas conserva la planificación inicial; las fechas 
   especificación técnica del motor mejorado, proporcionados por el profesorado.
 - Artículo de Saxton y Rawls (2006) sobre estimación de las características
   hídricas del suelo.
-- Histórico de sondas, proporcionado por el profesorado.
-
+- Histórico de sondas, facilitado por el personal que gestiona las sondas.
+  
 Este material es el punto de partida de las issues. Su análisis y documentación
 se registran con las fechas reales de su elaboración.
 
