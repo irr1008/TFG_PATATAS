@@ -8,8 +8,8 @@ Issue #13 · Sprint 3
 - Canal: outlook.
 - Segunda solicitud (dudas técnicas del análisis del motor de referencia): 27/10/2026, por outlook.
 - Tercera solicitud (preguntas sobre el histórico de sondas): 29/10/2026, por outlook.
-- Revisión intermedia: propuesta para el 30/10/2026. Se registrará solo si se celebra.
-
+- Revisión intermedia: propuesta para el 30/10/2026, aplazada por los tutores al 06/11/2026.
+  
 ## Peticiones
 
 | Nº | Petición | Motivo | Issue que depende | Estado | Fecha de respuesta |
@@ -35,11 +35,11 @@ Issue #13 · Sprint 3
 | 26/10/2026 | Envío de la primera solicitud | A la espera de respuesta |
 | 27/10/2026 | Envío de la segunda solicitud de criterio técnico | A la espera de respuesta |
 | 29/10/2026 | Envío de la tercera solicitud sobre el histórico de sondas (reitera la petición 4) | A la espera de respuesta |
+| 30/10/2026 | Los tutores comunican el aplazamiento de la revisión intermedia | Nueva fecha propuesta: 06/11/2026 |
 
 ## Bloqueos
 
-- Sin registrar.
-
+- Revisión intermedia aplazada al 06/11/2026: las respuestas de los tutores a las tres solicitudes siguen pendientes.
 ## Decisiones confirmadas
 
 - Sin registrar.
