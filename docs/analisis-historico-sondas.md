@@ -1,7 +1,7 @@
 # Análisis del histórico de sondas de humedad del suelo
 
 Issue #9 · Sprint 3 · Fecha: 29/10/2026
-Estado: versión completa, pendiente de contraste con los tutores en la revisión del 30/10/2026.
+Estado: versión completa, pendiente de contraste con los tutores en la revisión del 06/11/2026.
 Fuentes: histórico de sondas facilitado por el personal que gestiona las sondas (no se incluye en el repositorio) y notebook `notebooks/04_analisis_historico_sondas.ipynb`. Las tablas completas y las figuras están en la carpeta privada de resultados en Drive.
 
 ## 1. Resumen
