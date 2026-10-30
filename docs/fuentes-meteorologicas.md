@@ -1,7 +1,7 @@
 # Fuentes de meteorología y radiación para la ETo
 
 Issue #10 · Sprint 3 · Fecha: 30/10/2026
-Estado: propuesta justificada, pendiente de contraste con los tutores en la revisión del 30/10/2026.
+Estado: propuesta justificada, pendiente de contraste con los tutores en la revisión del 06/11/2026.
 Fuentes: variables del glosario (`docs/variables-balance-hidrico.md`), análisis del motor de referencia v14, guía FAO-56 ([Allen et al., 1998](https://www.fao.org/4/X0490E/x0490e00.htm), [capítulo 3](https://www.fao.org/4/x0490e/x0490e07.htm)) y la documentación de [AEMET OpenData](https://opendata.aemet.es/), [NASA POWER](https://power.larc.nasa.gov/docs/services/api/temporal/daily/) y [Open-Meteo](https://open-meteo.com/en/docs/historical-weather-api). Este documento no contiene claves de API ni coordenadas.
 
 ## 1. Resumen
