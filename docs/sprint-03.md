@@ -98,6 +98,25 @@ Los tutores aplazan la revisión intermedia del 30/10 al 06/11/2026 y no se trab
 
 La tabla de tareas seleccionadas conserva la planificación inicial; las fechas del tablero reflejan esta replanificación.
 
+## Revisión del alcance tras la reunión del 06/11/2026
+
+Decisión de organización registrada el 07/11/2026 y 08/11/2026.
+
+Los tutores recomiendan iniciar un modelo físico nuevo, independiente de Agrobioma v14. Los trabajos anteriores se conservan como antecedentes y se reutilizan solo cuando resulten pertinentes.
+
+El sprint 3 mantiene como fecha objetivo de cierre el 13/11/2026. Su tramo final se dedica a documentar el cambio, clasificar los datos y las tareas pendientes y preparar la transición. No se amplía su alcance para incluir la implementación del nuevo núcleo.
+
+Tratamiento de las tareas pendientes:
+- #11: retirada del sprint y trasladada al backlog para revisar la resolución temporal y el contrato de entradas.
+- #12: retirada del sprint y trasladada al backlog; la integración de Sentinel-2 se priorizará posteriormente.
+- #13: se completa el registro de comunicaciones y se trasladan las peticiones vigentes a una tarea sucesora antes de cerrar la issue.
+- #14: se cierra como no planificada en su alcance original; el respaldo bibliográfico del nuevo modelo se organizará por separado.
+- #15: se mantiene para documentar la revisión, la retrospectiva, las evidencias y la transición.
+
+Los análisis ya realizados no se invalidan por el cambio de enfoque, pero tampoco constituyen automáticamente la especificación del nuevo modelo.
+
+La implementación del núcleo hidráulico y sus pruebas se planificarán en una iteración posterior. Las fechas de las planificaciones anteriores se conservan como historial, no como calendario vigente.
+
 ## Trabajo previo disponible
 
 - Datos Sentinel-2 de las cuatro parcelas, preparados en el sprint 2.
