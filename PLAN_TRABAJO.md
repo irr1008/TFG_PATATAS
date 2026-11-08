@@ -39,9 +39,27 @@ Fase 1 (preparación y datos), trabajada en el sprint 2:
 Pendiente de la fase 1:
 - Repetir la extracción para incorporar las imágenes posteriores al 22/10/2026 hasta el fin del periodo.
 - Confirmar la campaña y las fechas agronómicas de las parcelas.
-- Incorporar los históricos de sensores y riego.
+- Completar la auditoría y preparación de los datos reales en #16:
+  el histórico de sondas ya fue analizado, pero siguen pendientes metadatos,
+  discrepancias y confirmación de riegos aplicados.
 
-Las fases 2 a 6 aún no se han iniciado.
+La fase 2 se ha iniciado a nivel de especificación y diseño, sin implementación.
+
+El sprint 3 se cierra anticipadamente el 08/11/2026 tras el cambio de enfoque
+de la reunión del 06/11. El tiempo restante de su planificación deja de ser
+necesario para el alcance vigente.
+
+El siguiente incremento será un núcleo hidráulico independiente de Agrobioma
+v14, verificado con datos sintéticos. Se prepara mediante las issues #17 a #22,
+con 52 horas estimadas en total. Se pretende iniciar el sprint 4 el 09/11/2026;
+su calendario y milestone se definirán después de cerrar el sprint 3.
+
+La auditoría de datos reales continúa en #16. La meteorología de #11 y la
+ampliación Sentinel-2 de #12 permanecen en el backlog.
+
+Las fases de aprendizaje automático, aprendizaje por refuerzo e interfaz
+se mantienen como líneas futuras, no como trabajo iniciado ni como alcance
+comprometido del próximo sprint.
 
 
 ## Riesgos y limitaciones iniciales
