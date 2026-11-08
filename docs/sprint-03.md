@@ -11,8 +11,9 @@
 - Fecha objetivo: 13/11/2026 (ampliada desde el 06/11/2026; ver «Replanificación del 30/10/2026»).
 - Responsable: irr1008.
 - Milestone asociado: M2 - Definir variables y unidades del balance hídrico.
-- Estado del sprint: en curso desde el 26/10/2026; trabajo en pausa del 31/10 al 05/11/2026
-  hasta la revisión con los tutores.
+- Estado del sprint: en curso, en fase de cierre y transición al nuevo modelo físico.
+  La pausa del 31/10 al 05/11/2026 finalizó con la reunión del 06/11/2026.
+  El alcance vigente figura en <<Revisión del alcance tras la reunión del 06/11/2026>>.
     
 ### Adaptación de la planificación inicial
 
@@ -221,6 +222,11 @@ issue afectada y se utiliza el estado Bloqueado.
 - La revisión intermedia con los tutores, prevista para el 30/10/2026, se aplaza al 06/11/2026, el día del
   cierre del sprint. Las decisiones que dependen de ellos (fórmula del AFD, profundidad de cálculo, PMP y
   fuente meteorológica) siguen pendientes.
+- La revisión con los tutores se celebró el 06/11/2026 y dio lugar a un cambio de enfoque.
+  Las preguntas anteriores no se respondieron punto por punto. Su vigencia para el nuevo
+  modelo se revisa en `docs/solicitud-datos-tutores.md`.
+- Las discrepancias de profundidad de las sondas y la incertidumbre sobre el riego aplicado
+  condicionan la evaluación con datos reales, pero no las pruebas sintéticas del núcleo.
   
 ### Decisiones durante el sprint
 
