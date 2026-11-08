@@ -11,6 +11,7 @@ Issue #13 · Sprint 3
 - Revisión intermedia: celebrada el 06/11/2026, tras aplazarse desde el 30/10/2026. Se acuerda cambiar el enfoque hacia un modelo físico nuevo, independiente de Agrobioma v14. Las peticiones anteriores no se respondieron punto por punto.
 - Registro de la reunión: `docs/registro-reunion-06-11-2026.md`.
 - Especificación del nuevo enfoque: `docs/especificación-modelo-físico.md`.
+- Continuidad de los pendientes del nuevo modelo: issue #16 — Auditar los datos y metadatos para evaluar el nuevo modelo físico.
   
 ## Peticiones
 
@@ -80,3 +81,23 @@ La disponibilidad de información en los PDF no se registra como respuesta de lo
 - Se reutilizará el trabajo que resulte pertinente y se conservará el resto como antecedente, sin continuar necesariamente su desarrollo.
 - Las solicitudes anteriores no se contestaron punto por punto. No se consideran validadas por esta reunión las fórmulas, constantes ni decisiones del enfoque anterior.
 - Las ecuaciones, la geometría y los parámetros del nuevo núcleo son propuestas técnicas documentadas; no se presentan como decisiones aprobadas por los tutores.
+
+## Continuidad del seguimiento desde el 08/11/2026
+
+El registro de solicitudes y de la reunión correspondiente al sprint 3 se conserva en este documento.
+
+El seguimiento de los datos y metadatos necesarios para aplicar y evaluar el nuevo modelo físico continúa en la issue #16 — Auditar los datos y metadatos para evaluar el nuevo modelo físico.
+
+Se trasladan a esa issue los pendientes vigentes identificados en la revisión de las peticiones:
+- Correspondencia entre parcelas, identificadores y alias de las sondas.
+- Profundidad y periodo de instalación de cada sonda.
+- Cobertura, calidad y posibles ampliaciones del histórico.
+- Procedencia y fiabilidad de los parámetros del suelo.
+- Disponibilidad y confirmación de los riegos aplicados.
+- Permisos de uso y publicación.
+
+Las peticiones diferidas se revisarán cuando corresponda definir el cultivo, la demanda atmosférica o la recomendación de riego. Las preguntas específicas del enfoque anterior se conservan como antecedentes, sin trasladarlas automáticamente al nuevo diseño.
+
+El cierre de la issue #13 corresponde al registro y al traspaso de este seguimiento. No significa que se hayan recibido todos los datos ni que las preguntas pendientes estén resueltas.
+
+Las respuestas futuras se registrarán con su fecha y procedencia, manteniendo la trazabilidad con las solicitudes originales.
