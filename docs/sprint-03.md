@@ -8,7 +8,7 @@
   los datos no satelitales y completar la extracción Sentinel-2 hasta el
   01/11/2026.
 - Fecha de inicio: 26/10/2026.
-- Fecha objetivo: 13/11/2026 (ampliada desde el 06/11/2026; ver <<Replanificación del 30/10/2026>>).
+- Fecha objetivo planificada: 13/11/2026 (ampliada desde el 06/11/2026; ver <<Replanificación del 30/10/2026>>).
 - Fecha real de cierre: 08/11/2026, anticipada por el cambio de enfoque.
 - Responsable: irr1008.
 - Milestone asociado: M2 - Definir variables y unidades del balance hídrico.
@@ -111,7 +111,8 @@ El sprint 3 mantiene como fecha objetivo de cierre el 13/11/2026. Esta decisión
 Tratamiento de las tareas pendientes:
 - #11: retirada del sprint y trasladada al backlog para revisar la resolución temporal y el contrato de entradas.
 - #12: retirada del sprint y trasladada al backlog; la integración de Sentinel-2 se priorizará posteriormente.
-- #13: se completa el registro de comunicaciones y se trasladan las peticiones vigentes a una tarea sucesora antes de cerrar la issue.
+- #13: seguimiento cerrado tras completar el registro de comunicaciones y
+  trasladar los pendientes vigentes de datos y metadatos a #16.
 - #14: se cierra como no planificada en su alcance original; el respaldo bibliográfico del nuevo modelo se organizará por separado.
 - #15: se mantiene para documentar la revisión, la retrospectiva, las evidencias y la transición.
 
@@ -139,6 +140,10 @@ se modifican por el cierre anticipado.
 El cierre del sprint no significa que se haya alcanzado todo su objetivo
 original: la preparación meteorológica y la ampliación de Sentinel-2 quedan
 pendientes, y la revisión bibliográfica original se retira por cambio de enfoque.
+
+La decisión de cierre anticipado se adopta el 08/11/2026. La finalización
+administrativa de sus evidencias y el cierre de la issue #15 y del milestone
+se completan posteriormente, sin alterar la fecha de esa decisión.
 
 ## Trabajo previo disponible
 
@@ -241,9 +246,6 @@ issue afectada y se utiliza el estado Bloqueado.
   periodo desde el 12/09, y no indica la parcela de cada sonda.
 - No se obtuvo la clave de la API de AEMET OpenData el 30/10/2026; sus variables se verificaron con
   los metadatos oficiales.
-- La revisión intermedia con los tutores, prevista para el 30/10/2026, se aplaza al 06/11/2026, el día del
-  cierre del sprint. Las decisiones que dependen de ellos (fórmula del AFD, profundidad de cálculo, PMP y
-  fuente meteorológica) siguen pendientes.
 - La revisión con los tutores se celebró el 06/11/2026 y dio lugar a un cambio de enfoque.
   Las preguntas anteriores no se respondieron punto por punto. Su vigencia para el nuevo
   modelo se revisa en `docs/solicitud-datos-tutores.md`.
@@ -359,14 +361,25 @@ Balance técnico y organizativo del cierre, redactado por el estudiante.
   - #14 — Realizar una revisión bibliográfica focalizada de parámetros.
   - #15 — Revisar los entregables y documentar el cierre del sprint 3.
 
-- Commits:
-  - Pendiente de registrar al cierre del sprint.
+- Commits de cierre y transición:
+  - `a7a8d91` — Revisión, retrospectiva y cierre anticipado en `docs/sprint-03.md`.
+  - `b518dc9` — Memoria del sprint en `docs/memoria/variables-datos-y-transicion-modelo-fisico.md`.
+  - `189f261` — Actualización de `PLAN_TRABAJO.md`.
+  - `a19c94a` — Traspaso del seguimiento de datos de #13 a #16.
+  - `0b2eb7f` — Registro de la reunión del 06/11/2026.
+  - `980f3f0` — Especificación inicial del nuevo modelo físico.
+  - `51a0e1d` — Diseño inicial del núcleo hidráulico.
+  - `b019844` — Revisión del diseño y referencia analítica para el estudio temporal.
 
 - Notebooks:
   - `notebooks/04_analisis_historico_sondas.ipynb`.
 
 - Resultados:
-  - Pendiente de registrar.
+  - Tablas y figuras del análisis del histórico de sondas conservadas en Drive,
+    fuera del repositorio.
+  - Análisis, glosario y comparación de fuentes documentados.
+  - Registro de la reunión, especificación inicial y diseño del nuevo núcleo.
+  - Sin implementación, calibración ni validación del nuevo modelo con parcelas.
 
 - Documentación:
   - `docs/analisis-motor-referencia.md`.
