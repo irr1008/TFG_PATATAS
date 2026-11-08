@@ -393,3 +393,15 @@ Balance técnico y organizativo del cierre, redactado por el estudiante.
   - `docs/diseño-nucleo-hidraulico.md`.
   - `docs/memoria/variables-datos-y-transicion-modelo-fisico.md`.
   - Este documento de seguimiento.
+
+## Comprobación final de cierre
+
+Comprobación realizada el 09/11/2026.
+
+- Revisada la coherencia entre el seguimiento, la memoria y el plan de trabajo.
+- Comprobada la existencia de los entregables y referencias del cierre.
+- Diferenciadas las tareas completadas, retiradas y trasladadas al backlog.
+- Comprobado que los documentos de cierre no incorporan datos identificativos
+  ni credenciales y que el notebook 04 permanece sin salidas.
+- La revisión no constituye una auditoría exhaustiva de seguridad ni una
+  validación física del modelo.
