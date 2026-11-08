@@ -8,12 +8,12 @@
   los datos no satelitales y completar la extracción Sentinel-2 hasta el
   01/11/2026.
 - Fecha de inicio: 26/10/2026.
-- Fecha objetivo: 13/11/2026 (ampliada desde el 06/11/2026; ver «Replanificación del 30/10/2026»).
+- Fecha objetivo: 13/11/2026 (ampliada desde el 06/11/2026; ver <<Replanificación del 30/10/2026>>).
+- Fecha real de cierre: 08/11/2026, anticipada por el cambio de enfoque.
 - Responsable: irr1008.
 - Milestone asociado: M2 - Definir variables y unidades del balance hídrico.
-- Estado del sprint: en curso, en fase de cierre y transición al nuevo modelo físico.
-  La pausa del 31/10 al 05/11/2026 finalizó con la reunión del 06/11/2026.
-  El alcance vigente figura en <<Revisión del alcance tras la reunión del 06/11/2026>>.
+- Estado del sprint: cerrado el 08/11/2026 tras documentar los resultados,
+  el trabajo no completado y la transición al nuevo modelo físico.
     
 ### Adaptación de la planificación inicial
 
@@ -83,7 +83,8 @@ límite de una tarea principal en estado En progreso.
 
 Los tutores aplazan la revisión intermedia del 30/10 al 06/11/2026 y no se trabajará hasta que se celebre, porque las decisiones pendientes (fórmula del AFD, profundidad de cálculo, PMP y fuente meteorológica) dependen de ellos. El sprint se amplía una semana.
 
-- Jornadas realizadas: del 26 al 30 de octubre de 2026 (20 horas).
+- Capacidad de referencia prevista para el 26 al 30 de octubre de 2026: 20 horas.
+  Esta cifra no constituye un registro de dedicación real.
 - Jornadas restantes: 06, 09, 10, 11, 12 y 13 de noviembre (24 horas).
 - Capacidad total: 44 horas, de las cuales 36 son de tareas, 4 de margen y 4 se añaden el 06/11 para la revisión y para incorporar sus resultados.
 - Nueva fecha objetivo del sprint y del milestone M2: 13/11/2026.
@@ -105,7 +106,7 @@ Decisión de organización registrada el 07/11/2026 y 08/11/2026.
 
 Los tutores recomiendan iniciar un modelo físico nuevo, independiente de Agrobioma v14. Los trabajos anteriores se conservan como antecedentes y se reutilizan solo cuando resulten pertinentes.
 
-El sprint 3 mantiene como fecha objetivo de cierre el 13/11/2026. Su tramo final se dedica a documentar el cambio, clasificar los datos y las tareas pendientes y preparar la transición. No se amplía su alcance para incluir la implementación del nuevo núcleo.
+El sprint 3 mantiene como fecha objetivo de cierre el 13/11/2026. Esta decisión queda sustituida por el cierre anticipado registrado el 08/11/2026.
 
 Tratamiento de las tareas pendientes:
 - #11: retirada del sprint y trasladada al backlog para revisar la resolución temporal y el contrato de entradas.
@@ -117,6 +118,27 @@ Tratamiento de las tareas pendientes:
 Los análisis ya realizados no se invalidan por el cambio de enfoque, pero tampoco constituyen automáticamente la especificación del nuevo modelo.
 
 La implementación del núcleo hidráulico y sus pruebas se planificarán en una iteración posterior. Las fechas de las planificaciones anteriores se conservan como historial, no como calendario vigente.
+
+## Cierre anticipado del 08/11/2026
+
+Se decide cerrar el sprint 3 el 08/11/2026, antes de la fecha objetivo
+replanificada del 13/11/2026.
+
+Tras la reunión del 06/11 y la revisión del alcance, no es necesario mantener
+esta iteración abierta durante el tiempo restante. Las tareas retiradas no
+se ejecutarán para consumir la capacidad prevista.
+
+La capacidad planificada del 09 al 13/11 deja de estar comprometida con el
+sprint 3. No se presenta como ahorro de esfuerzo medido ni se suma a las
+horas realizadas.
+
+El nuevo núcleo hidráulico se desarrollará en el sprint 4, con planificación
+independiente y con intención de comenzar el 09/11/2026. Sus estimaciones no
+se modifican por el cierre anticipado.
+
+El cierre del sprint no significa que se haya alcanzado todo su objetivo
+original: la preparación meteorológica y la ampliación de Sentinel-2 quedan
+pendientes, y la revisión bibliográfica original se retira por cambio de enfoque.
 
 ## Trabajo previo disponible
 
@@ -258,35 +280,71 @@ issue afectada y se utiliza el estado Bloqueado.
 
 ## Revisión del sprint
 
-Pendiente de realizar durante la issue #15, al finalizar la iteración.
+Realizada al cierre del 08/11/2026.
 
 ### Trabajo completado
 
-- Pendiente de registrar con sus evidencias.
+- #7: análisis del motor de referencia y sus diferencias con la especificación.
+- #8: glosario de variables, unidades y cuestiones pendientes del enfoque anterior.
+- #9: análisis de estructura, calidad y cobertura del histórico de sondas.
+- #10: comparación de fuentes meteorológicas y propuesta de fuente,
+  sin presentarla como validada por los tutores.
+- #13: registro de solicitudes, reunión, revisión de peticiones y traslado
+  del seguimiento de datos al nuevo enfoque mediante #16.
+- Documentación de la reunión del 06/11 y del cambio de enfoque.
+- Especificación inicial y diseño del núcleo hidráulico, sin implementación.
+- Preparación de las issues #17 a #22 para el desarrollo posterior.
 
-### Trabajo no completado
+### Trabajo no completado o retirado
 
-- Pendiente de registrar.
+- #11: meteorología diaria no preparada; permanece en el backlog y deberá
+  revisar su alcance temporal antes de ejecutarse.
+- #12: ampliación de Sentinel-2 no realizada; permanece en el backlog.
+- #14: revisión bibliográfica original no realizada; cerrada como no planificada.
+- No se han recibido todas las respuestas de los tutores ni se han resuelto
+  todas las discrepancias de los datos.
+- No se ha implementado, calibrado ni validado el nuevo modelo físico.
 
 ### Incremento obtenido
 
-- Pendiente de registrar.
+Una base documental de variables, fuentes y calidad de datos, junto con una
+transición trazable hacia un modelo físico independiente de Agrobioma v14.
+
+El análisis del motor anterior se conserva como antecedente, no como
+especificación activa. La preparación de datos reutilizable se conserva,
+sin asumir que todos sus criterios sean adecuados para el nuevo modelo.
+
+El objetivo original del sprint y de M2 se alcanza parcialmente. El cierre
+se realiza por revisión del alcance, no por cumplimiento íntegro.
 
 ## Retrospectiva
 
-Pendiente de realizar al finalizar la iteración.
+Balance técnico y organizativo del cierre, redactado por el estudiante.
 
 ### Qué ha funcionado correctamente
 
-- Pendiente de valorar.
+- Conservar la trazabilidad mediante issues, documentos y commits.
+- Separar las preguntas pendientes de las respuestas realmente recibidas.
+- Revisar el trabajo reutilizable sin eliminar los antecedentes.
+- Definir pruebas y resultados esperados antes de implementar el nuevo núcleo.
 
 ### Problemas encontrados
 
-- Pendiente de registrar durante la ejecución.
+- La reunión prevista para el 30/10 se aplazó al 06/11.
+- El cambio de enfoque dejó sin prioridad varias tareas seleccionadas.
+- La hipótesis uniforme de profundidad de las sondas entra en conflicto
+  con las fichas revisadas.
+- Las recomendaciones de riego no acreditan su aplicación.
+- La planificación inicial mezcló en alguna redacción capacidad prevista
+  y dedicación real; se corrige esa distinción.
 
 ### Mejoras para el siguiente sprint
 
-- Pendiente de acordar en la retrospectiva.
+- Delimitar un incremento pequeño y verificable antes de programar.
+- Separar pruebas sintéticas y evaluación con parcelas.
+- Usar las estimaciones actuales como previsiones, no como horas realizadas.
+- Mantener datos reales y permisos en #16 sin bloquear el núcleo sintético.
+- Documentar cualquier cambio material de las leyes antes de implementarlo.
 
 ## Evidencias
 
@@ -316,5 +374,9 @@ Pendiente de realizar al finalizar la iteración.
   - `docs/analisis-historico-sondas.md`.
   - `docs/fuentes-meteorologicas.md`.
   - `docs/solicitud-datos-tutores.md`.
-  - `docs/revision-bibliografica.md` (prevista).
+  - `docs/revision-bibliografica.md`: entregable previsto no realizado; #14 cerrada como no planificada.
+  - `docs/registro-reunion-06-11-2026.md`.
+  - `docs/especificación-modelo-físico.md`.
+  - `docs/diseño-nucleo-hidraulico.md`.
+  - `docs/memoria/variables-datos-y-transicion-modelo-fisico.md`.
   - Este documento de seguimiento.
