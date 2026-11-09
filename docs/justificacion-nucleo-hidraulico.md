@@ -361,6 +361,10 @@ no únicamente a una propiedad física del suelo.
 La demanda X_dem,j se proporciona externamente para cada capa y cada
 intervalo, en mm.
 
+X_dem,j corresponde a U_j en `diseño-nucleo-hidraulico.md`.
+Ambos símbolos representan la misma extracción solicitada por capa
+y por intervalo; no son dos entradas diferentes.
+
 Debe ser no negativa.
 
 El núcleo no determina por sí mismo la demanda atmosférica, el reparto
@@ -472,3 +476,145 @@ Antes de dar por terminada la tarea se comprobará:
 
 La revisión documental no sustituye la ejecución de las pruebas previstas
 para las tareas de implementación y evaluación.
+
+## 11. Notación y correspondencia con el diseño
+
+El índice j identifica una capa, numerada desde la superficie.
+N es el número total de capas.
+
+| Símbolo | Significado | Unidad |
+|---|---|---|
+| L_j | Espesor fijo de la capa | m |
+| theta_j | Humedad volumétrica media de la capa | m³/m³ |
+| theta_min,j | Límite inferior operativo de extracción | m³/m³ |
+| theta_FC,j | Humedad a capacidad de campo | m³/m³ |
+| theta_sat,j | Humedad de saturación | m³/m³ |
+| S_j | Almacenamiento de agua de la capa | mm |
+| S_min,j, S_FC,j, S_sat,j | Almacenamientos asociados a los umbrales | mm |
+| P, I | Aportes que alcanzan la superficie durante el intervalo | mm |
+| W | Aporte superficial total, P + I; denominado A en el diseño | mm |
+| f_max | Capacidad efectiva máxima de infiltración | mm/h |
+| F_tasa | Límite de infiltración debido a f_max durante el intervalo | mm |
+| C_1 | Espacio disponible en la primera capa al evaluar la infiltración | mm |
+| F | Infiltración efectiva; denominada F_inf en el diseño | mm |
+| RO | Agua no infiltrada que abandona el dominio | mm |
+| x | Exceso de almacenamiento sobre capacidad de campo en la derivación | mm |
+| tau_j | Escala temporal de relajación del drenaje | h |
+| D_pot,j | Drenaje potencial de la capa durante el intervalo | mm |
+| C_receptora | Espacio disponible en la capa receptora | mm |
+| T_j | Transferencia de j a j+1; denominada F_j,j+1 en el diseño | mm |
+| DP | Drenaje que abandona el fondo del perfil | mm |
+| X_dem,j | Extracción solicitada; denominada U_j en el diseño | mm |
+| A_j | Agua disponible para la extracción por encima de S_min,j | mm |
+| X_j | Extracción efectiva | mm |
+| X_no_satisfecha,j | Demanda no satisfecha; denominada U_no_satisfecha,j en el diseño | mm |
+| Delta t_h | Duración del intervalo | h |
+| t | Tiempo de la derivación, expresado en la misma unidad que tau | h |
+| Delta S_j | Diferencia entre almacenamiento final e inicial de la capa | mm |
+
+F_entrada,j y F_salida,j son los totales de entradas y salidas hidráulicas
+de la capa durante el intervalo, en mm. La extracción X_j se contabiliza
+por separado.
+
+Todos los aportes, transferencias y extracciones de las ecuaciones
+discretas son acumulados del intervalo, no tasas.
+
+## 12. Limitaciones y posibles revisiones
+
+| Decisión de este incremento | Qué deja fuera | Posible revisión futura |
+|---|---|---|
+| Capas con humedad media uniforme | Variabilidad dentro de cada capa y alrededor de una sonda | Revisar la discretización vertical y la correspondencia entre observaciones y estados |
+| Drenaje exponencial solo por encima de capacidad de campo | Flujo por debajo de ese umbral y dependencia explícita de gradientes hidráulicos | Evaluar un cierre hidráulico más detallado si los datos y el objetivo lo requieren |
+| Transferencias exclusivamente descendentes | Redistribución ascendente y ascenso capilar | Incorporar flujos bidireccionales y condiciones de contorno apropiadas |
+| Infiltración con capacidad constante | Evolución de la capacidad de entrada durante la humectación | Evaluar una ley dependiente del estado y del evento |
+| Ausencia de depósito superficial | Retención temporal y reinfiltración posterior | Incorporar almacenamiento superficial con su propio balance |
+| Salida inferior sin restricción adicional | Capa impermeable, nivel freático y contrapresión | Revisar la condición de contorno inferior |
+| Extracción prescrita por capa | Demanda atmosférica, reparto radicular y respuesta progresiva al estrés | Incorporar módulos de demanda y extracción con hipótesis explícitas |
+| Separación secuencial de procesos | Simultaneidad de los procesos y respuesta independiente del orden | Medir el error temporal y revisar el acoplamiento si resulta necesario |
+| Parámetros sintéticos | Representación demostrada de una parcela concreta | Estimar y evaluar parámetros con datos adecuados y periodos independientes |
+
+Estas alternativas no se implementan ni se seleccionan en esta tarea.
+
+El criterio de este incremento es disponer de un núcleo pequeño,
+conservativo y verificable, con supuestos explícitos.
+
+Una mayor complejidad no se considerará una mejora demostrada sin evaluar
+su necesidad, sus datos de entrada y sus resultados.
+
+## 13. Alcance de la justificación y comprobaciones posteriores
+
+Esta tarea documenta la coherencia matemática de las leyes propuestas,
+sus unidades, sus hipótesis y sus límites de interpretación.
+
+Se distinguen cuatro actividades:
+
+- Justificación matemática y documental: explicar las ecuaciones elegidas
+  y el alcance de sus fuentes.
+- Verificación numérica: comprobar que el programa implementa las reglas
+  previstas mediante pruebas, balances y referencias analíticas.
+- Calibración: estimar o ajustar parámetros con datos.
+- Evaluación con datos independientes: estudiar el comportamiento del
+  modelo frente a observaciones no utilizadas para ajustar los parámetros.
+
+La derivación exponencial justifica la solución del subproblema de
+relajación aislado. No demuestra la adecuación física de ese cierre
+para una parcela.
+
+La revisión del orden secuencial no sustituye el estudio de sensibilidad
+al paso temporal.
+## 14. Referencias bibliográficas y trazabilidad
+
+### 14.1. FAO-56
+
+Allen, R. G., Pereira, L. S., Raes, D. y Smith, M. (1998).
+Crop evapotranspiration: Guidelines for computing crop water requirements.
+FAO Irrigation and Drainage Paper 56. Roma: FAO.
+
+Capítulo 8: ETc under soil water stress conditions.
+https://www.fao.org/4/X0490E/x0490e0e.htm
+
+Apartados utilizados:
+- Soil water availability: capacidad de campo y punto de marchitez.
+- Soil water balance, ecuación 85: contabilidad diaria del agua.
+- Deep percolation, ecuación 88: pérdida del exceso sobre capacidad
+  de campo dentro del procedimiento diario simplificado.
+
+No se atribuyen a esta fuente la ley exponencial subdiaria, el orden
+secuencial ni los parámetros sintéticos del núcleo.
+
+### 14.2. Ejemplo modular de DSSAT
+
+DSSAT (s. f.). Modular Approach.
+https://dssat.net/development/model-development/
+
+Apartados utilizados:
+- Module Definition and Structure: separación y comunicación entre módulos.
+- Soil Water Balance Module (SW.FOR), Rate calculations:
+  drenaje proporcional al exceso sobre capacidad de campo.
+- Soil Water Balance Module (SW.FOR), Close:
+  comprobación del balance acumulado.
+
+El ejemplo declara su finalidad didáctica y no está destinado a simular
+con exactitud condiciones físicas reales.
+
+La consulta de este ejemplo no implica que el proyecto utilice el
+software DSSAT ni que reproduzca sus algoritmos.
+
+### 14.3. Decisiones propias del proyecto
+
+La ecuación exponencial se deriva en el apartado 4.
+
+El orden de procesos, las restricciones de transferencia y las reglas
+de infiltración y extracción corresponden al diseño del núcleo.
+
+Las capas, los parámetros sintéticos y las tolerancias pertenecen al
+experimento de software. No se presentan como valores obtenidos de
+las referencias anteriores.
+
+Fuentes web consultadas el 09/11/2026.
+
+La conservación de masa es necesaria para este núcleo, pero no demuestra
+por sí sola exactitud temporal ni capacidad de reproducir observaciones.
+
+Las pruebas de implementación y evaluación se realizarán en las tareas
+posteriores. Este documento no declara que hayan sido ejecutadas.
