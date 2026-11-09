@@ -149,7 +149,9 @@ de esos datos no bloquean las pruebas sintéticas de este sprint.
 
 ## Seguimiento de ejecución
 
-Pendiente de registrar durante el sprint.
+- 09/11/2026: preparación de la planificación del sprint y configuración
+  de fechas, estimaciones, prioridades y dependencias en el tablero.
+  La ejecución de la #17 permanece pendiente de inicio.
 
 ## Revisión
 
