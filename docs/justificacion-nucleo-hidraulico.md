@@ -1,7 +1,7 @@
 # Justificación de las leyes y limitaciones del núcleo hidráulico
 
 Issue #17 · Sprint 4 · Fecha: 09/11/2026.
-Estado: en elaboración.
+Estado: revisión documental completada para la #17; pendiente de implementación y verificación numérica.
 Base: `especificación-modelo-físico.md`, versión 0.1, y
 `diseño-nucleo-hidraulico.md`, versión 0.2.
 
@@ -459,7 +459,7 @@ Su aceptación dependerá de los errores medidos, no solo del cierre de masa.
 
 ## 10. Criterios de revisión de esta justificación
 
-Antes de dar por terminada la tarea se comprobará:
+La revisión documental se ha realizado con los siguientes criterios:
 
 - Cada símbolo tiene una definición y una unidad.
 - Se distinguen tasas de flujo y láminas acumuladas por intervalo.
@@ -562,6 +562,13 @@ para una parcela.
 
 La revisión del orden secuencial no sustituye el estudio de sensibilidad
 al paso temporal.
+
+La conservación de masa es necesaria para este núcleo, pero no demuestra
+por sí sola exactitud temporal ni capacidad de reproducir observaciones.
+
+Las pruebas de implementación y evaluación se realizarán en las tareas
+posteriores. Este documento no declara que hayan sido ejecutadas.
+
 ## 14. Referencias bibliográficas y trazabilidad
 
 ### 14.1. FAO-56
@@ -613,8 +620,40 @@ las referencias anteriores.
 
 Fuentes web consultadas el 09/11/2026.
 
-La conservación de masa es necesaria para este núcleo, pero no demuestra
-por sí sola exactitud temporal ni capacidad de reproducir observaciones.
+## 15. Conclusión sobre la suficiencia del diseño
 
-Las pruebas de implementación y evaluación se realizarán en las tareas
-posteriores. Este documento no declara que hayan sido ejecutadas.
+La revisión documental considera que el diseño v0.2 es suficientemente
+explícito para iniciar la implementación y la verificación sintética
+del primer núcleo hidráulico.
+
+Esta conclusión se limita a disponer de:
+
+- Estados, entradas, parámetros y unidades definidos.
+- Ecuaciones de almacenamiento y reglas de transferencia explícitas.
+- Un orden secuencial reproducible.
+- Restricciones de almacenamiento y extracción.
+- Un balance de agua con diagnósticos y tolerancias propuestas.
+- Casos deterministas y un protocolo de estudio temporal.
+- Una referencia analítica para un escenario de drenaje acoplado.
+
+Se mantienen para este incremento el drenaje exponencial, la infiltración
+con capacidad constante, las transferencias exclusivamente descendentes,
+la ausencia de almacenamiento superficial y la extracción prescrita.
+
+Se mantienen como simplificaciones de trabajo verificables, no como
+descripciones ya contrastadas de una parcela.
+
+El núcleo es un modelo de depósitos por capas. No se presenta como una
+solución de la ecuación de Richards.
+
+La revisión no identifica una razón técnica que obligue a modificar
+las ecuaciones o el orden del diseño v0.2 antes de implementar.
+Su comportamiento deberá comprobarse mediante las pruebas previstas.
+
+La suficiencia documental no significa que el programa esté implementado,
+que las pruebas hayan sido superadas ni que el paso nominal de 300 s
+haya sido aceptado.
+
+La adecuación de las simplificaciones a condiciones reales, la estimación
+de parámetros y la evaluación con observaciones quedan pendientes de
+trabajos posteriores.
