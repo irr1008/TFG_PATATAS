@@ -65,7 +65,19 @@ necesario para el alcance vigente.
 El siguiente incremento tendrá como objetivo implementar un núcleo hidráulico
 independiente de Agrobioma v14 y verificarlo con datos sintéticos. Se prepara mediante 
 las issues #17 a #22, con 52 horas estimadas en total. Se pretende iniciar el sprint 4 
-el 09/11/2026; su calendario y milestone se definirán después de cerrar el sprint 3.
+el 09/11/2026.
+
+El sprint 4, planificado del 09/11/2026 al 27/11/2026, tiene como objetivo
+implementar un núcleo hidráulico independiente de Agrobioma v14 y verificarlo
+con datos sintéticos.
+
+Incluye las issues #17 a #22, con 52 horas estimadas y 8 horas de margen sobre
+una capacidad de referencia de 60 horas. Se asocia al milestone M3 -
+Implementar y verificar el núcleo hidráulico.
+
+La planificación y los criterios de comprobación figuran en
+`docs/sprint-04.md`. La implementación y la verificación están pendientes;
+no se presentan como resultados ya obtenidos.
 
 La auditoría de datos reales continúa en #16. La meteorología de #11 y la
 ampliación Sentinel-2 de #12 permanecen en el backlog.
