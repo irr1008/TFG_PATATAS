@@ -50,3 +50,12 @@ datos_parcelas_privados.py
 privado/
 *.geojson
 catalogo_parcelas.csv
+
+# Construcción y metadatos del paquete Python
+*.egg-info/
+build/
+dist/
+
+# Cobertura de pruebas
+.coverage
+htmlcov/
