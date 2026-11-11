@@ -10,7 +10,8 @@
 - Fecha objetivo: 27/11/2026.
 - Responsable: irr1008.
 - Milestone asociado: M3 - Implementar y verificar el núcleo hidráulico.
-- Estado: planificado; la ejecución se registra en las issues.
+- Estado: en ejecución; el detalle de ejecución se registra en las issues
+  y los estados actuales se mantienen en GitHub Projects.
 
 ## Contexto
 
@@ -152,6 +153,26 @@ de esos datos no bloquean las pruebas sintéticas de este sprint.
 - 09/11/2026: preparación de la planificación del sprint y configuración
   de fechas, estimaciones, prioridades y dependencias en el tablero.
   La ejecución de la #17 permanece pendiente de inicio.
+  
+- 09/11/2026: completada la revisión documental de la #17.
+  Se publica la justificación de las leyes, sus hipótesis y limitaciones.
+  Se considera el diseño v0.2 suficientemente explícito para iniciar
+  la implementación y la verificación sintética, sin declarar
+  validación con parcelas.
+  
+- 10/11/2026: primer bloque de la #18 completado.
+  Configuración del perfil, opciones de procesos y validaciones básicas.
+  Ejecución en Colab: 43 pruebas superadas sobre el commit c541560.
+  
+- 11/11/2026: completada la implementación prevista en la #18 y realizada
+  la comprobación final de configuración, conversiones, estados y entradas.
+  El ejemplo de uso se ejecuta correctamente.
+  Suite completa: 186 pruebas superadas, código de salida 0,
+  sobre el commit d24be2f, con Python 3.13.18 y pytest 8.4.2.
+  El cierre administrativo y la dedicación real se registran en la issue.
+
+Este avance todavía no incluye el cálculo de flujos ni la ejecución
+de series temporales. No constituye calibración ni validación con parcelas.
 
 ## Revisión
 
@@ -188,10 +209,32 @@ Pendiente de realizar en #22.
 ## Evidencias
 
 - Issues: #17, #18, #19, #20, #21 y #22.
-- Commits: pendientes de registrar durante la ejecución.
-- Justificación: `docs/justificacion-nucleo-hidraulico.md` (prevista).
-- Código: `src/modelo_fisico/` (previsto).
-- Pruebas: `tests/` (previstas).
-- Verificación: `docs/verificacion-nucleo-hidraulico.md` (prevista).
-- Demostración: `notebooks/05_demostracion_nucleo_hidraulico.ipynb` (prevista).
-- Memoria: pendiente de redactar al cierre.
+  El detalle de ejecución y dedicación real se registra en cada issue.
+
+- Justificación: `docs/justificacion-nucleo-hidraulico.md`.
+  Revisión documental completada en la #17.
+
+- Código de configuración, conversiones, estados y entradas:
+  `src/modelo_fisico/`.
+
+- Pruebas automatizadas: `tests/`.
+  Última comprobación de la #18: 186 pruebas superadas sobre d24be2f.
+
+- Guía de instalación, uso, unidades y tolerancias:
+  `docs/uso-nucleo-hidraulico.md`, enlazada desde el README.
+
+- Commits de referencia:
+  - c541560: configuración y pruebas básicas.
+  - d24be2f: versión utilizada en la comprobación final de la #18.
+
+- Evidencia de ejecución de la #18:
+  notebook de trabajo de Colab conservado con sus salidas.
+  No sustituye a la demostración prevista en la #21.
+
+- Verificación del núcleo:
+  `docs/verificacion-nucleo-hidraulico.md` (prevista).
+
+- Demostración:
+  `notebooks/05_demostracion_nucleo_hidraulico.ipynb` (prevista).
+
+- Memoria: pendiente de actualizar al cierre.
