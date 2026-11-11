@@ -152,7 +152,8 @@ de esos datos no bloquean las pruebas sintéticas de este sprint.
 
 - 09/11/2026: preparación de la planificación del sprint y configuración
   de fechas, estimaciones, prioridades y dependencias en el tablero.
-  La ejecución de la #17 permanece pendiente de inicio.
+  Esta preparación precedió al inicio efectivo de la #17, cuya revisión documental
+  quedó completada el 09/11/2026.
   
 - 09/11/2026: completada la revisión documental de la #17.
   Se publica la justificación de las leyes, sus hipótesis y limitaciones.
