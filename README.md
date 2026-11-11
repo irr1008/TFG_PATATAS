@@ -52,3 +52,13 @@ Iván Ramírez Rodríguez (irr1008@alu.ubu.es)
 - Rubén Ruíz González
 - Antonia Maiara Marques Do Nascimiento
 
+## Núcleo hidráulico
+
+La configuración, los estados, las entradas y las conversiones están
+en `src/modelo_fisico/`.
+
+Las instrucciones de instalación, el ejemplo mínimo, las unidades
+y la ejecución de pruebas se describen en
+[Uso y pruebas del núcleo hidráulico](docs/uso-nucleo-hidraulico.md).
+
+Este incremento todavía no calcula flujos ni ejecuta simulaciones temporales.
