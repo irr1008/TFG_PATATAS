@@ -172,8 +172,20 @@ de esos datos no bloquean las pruebas sintéticas de este sprint.
   sobre el commit d24be2f, con Python 3.13.18 y pytest 8.4.2.
   El cierre administrativo y la dedicación real se registran en la issue.
 
-Este avance todavía no incluye el cálculo de flujos ni la ejecución
-de series temporales. No constituye calibración ni validación con parcelas.
+- 12/11/2026: completado el primer bloque de la #19.
+  Se implementan el drenaje potencial, el drenaje inferior y las
+  transferencias internas de abajo arriba, con diagnóstico de balance.
+  Se comprueban los casos E, F y G de esta fase, la capacidad receptora,
+  los procesos desactivados y perfiles de una y tres capas.
+  Ejecución en Colab sobre 721ab41: 243 pruebas superadas,
+  código de salida 0.
+  La #19 permanece en progreso; faltan infiltración, extracción
+  e integración del paso completo.
+
+El avance actual incluye los flujos de drenaje inferior y las
+transferencias internas, pero todavía no el paso hidráulico completo
+ni la ejecución de series temporales.
+No constituye calibración ni validación con parcelas.
 
 ## Revisión
 
