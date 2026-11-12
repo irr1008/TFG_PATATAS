@@ -1,5 +1,6 @@
 from dataclasses import FrozenInstanceError
 from math import exp, fsum
+from modelo_fisico.conversiones import humedad_a_almacenamiento
 
 import pytest
 
@@ -87,15 +88,22 @@ def test_caso_f_transferencia_conservativa():
 
 
 def test_caso_e_receptora_llena():
-    estado = EstadoPerfil(
-        perfil_base(drenaje_inferior=False),
-        (74.0, 180.0),
+    perfil = perfil_base(drenaje_inferior=False)
+    capa_inferior = perfil.capas[1]
+    saturacion_inferior = humedad_a_almacenamiento(
+        capa_inferior.theta_sat,
+        capa_inferior.espesor_m,
     )
+    estado = EstadoPerfil(perfil, (74.0, saturacion_inferior))
 
     resultado = aplicar_drenaje(estado, 300.0 / 3600.0)
 
     assert resultado.transferencias_mm == (0.0,)
-    assert resultado.estado_final.almacenamientos_mm == (74.0, 180.0)
+    assert resultado.drenaje_inferior_mm == 0.0
+    assert (
+        resultado.estado_final.almacenamientos_mm
+        == estado.almacenamientos_mm
+    )
     comprobar_balance(estado, resultado)
 
 
@@ -123,10 +131,25 @@ def test_transferencia_limitada_por_hueco_receptor():
 
 
 def test_fondo_libera_hueco_antes_de_transferir():
-    estado = EstadoPerfil(perfil_base(), (74.0, 180.0))
+    perfil = perfil_base()
+    capa_inferior = perfil.capas[1]
+
+    saturacion_inferior = humedad_a_almacenamiento(
+        capa_inferior.theta_sat,
+        capa_inferior.espesor_m,
+    )
+    capacidad_campo_inferior = humedad_a_almacenamiento(
+        capa_inferior.theta_fc,
+        capa_inferior.espesor_m,
+    )
+    estado = EstadoPerfil(perfil, (74.0, saturacion_inferior))
 
     resultado = aplicar_drenaje(estado, 300.0 / 3600.0)
-    dp = 80.0 * (1.0 - exp(-1.0 / 144.0))
+
+    exceso_inferior = (
+        saturacion_inferior - capacidad_campo_inferior
+    )
+    dp = exceso_inferior * (1.0 - exp(-1.0 / 144.0))
     transferencia = 24.0 * (1.0 - exp(-1.0 / 72.0))
 
     assert resultado.drenaje_inferior_mm == pytest.approx(
@@ -136,7 +159,10 @@ def test_fondo_libera_hueco_antes_de_transferir():
         (transferencia,), rel=REL, abs=ABS_MM
     )
     assert resultado.estado_final.almacenamientos_mm == pytest.approx(
-        (74.0 - transferencia, 180.0 - dp + transferencia),
+        (
+            74.0 - transferencia,
+            saturacion_inferior - dp + transferencia,
+        ),
         rel=REL,
         abs=ABS_MM,
     )
@@ -172,13 +198,25 @@ def test_tres_capas_recorrido_abajo_arriba():
 
 
 def test_agua_recibida_no_vuelve_a_drenar_en_la_misma_fase():
-    estado = EstadoPerfil(perfil_base(), (74.0, 100.0))
+    perfil = perfil_base()
+    capa_inferior = perfil.capas[1]
+    capacidad_campo_inferior = humedad_a_almacenamiento(
+        capa_inferior.theta_fc,
+        capa_inferior.espesor_m,
+    )
+    estado = EstadoPerfil(
+        perfil,
+        (74.0, capacidad_campo_inferior),
+    )
 
     resultado = aplicar_drenaje(estado, 300.0 / 3600.0)
 
     assert resultado.drenaje_inferior_mm == 0.0
     assert resultado.transferencias_mm[0] > 0.0
-    assert resultado.estado_final.almacenamientos_mm[1] > 100.0
+    assert (
+        resultado.estado_final.almacenamientos_mm[1]
+        > capacidad_campo_inferior
+    )
     comprobar_balance(estado, resultado)
 
 
