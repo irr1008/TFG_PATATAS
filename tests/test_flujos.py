@@ -2,7 +2,10 @@ from math import exp
 
 import pytest
 
-from modelo_fisico.flujos import drenaje_potencial_mm
+from modelo_fisico.flujos import (
+    drenaje_potencial_mm,
+    infiltracion_y_salida_mm,
+)
 
 
 @pytest.mark.parametrize("almacenamiento_mm", [0.0, 40.0, 50.0])
@@ -125,3 +128,77 @@ def test_rechaza_argumentos_fuera_de_rango(campo, valor):
 
     with pytest.raises(ValueError):
         drenaje_potencial_mm(**argumentos)
+
+@pytest.mark.parametrize(
+    ("aporte_mm", "hueco_mm", "activa", "esperado"),
+    [
+        (0.0, 50.0, True, (0.0, 0.0)),
+        (0.5, 50.0, True, (0.5, 0.0)),
+        (3.0, 50.0, True, (1.0, 2.0)),
+        (3.0, 0.5, True, (0.5, 2.5)),
+        (3.0, 0.0, True, (0.0, 3.0)),
+        (3.0, 50.0, False, (0.0, 3.0)),
+    ],
+)
+def test_infiltracion_y_salida(
+    aporte_mm, hueco_mm, activa, esperado
+):
+    resultado = infiltracion_y_salida_mm(
+        aporte_mm=aporte_mm,
+        f_max_mm_h=12.0,
+        dt_h=300.0 / 3600.0,
+        capacidad_disponible_mm=hueco_mm,
+        activa=activa,
+    )
+
+    assert resultado == pytest.approx(
+        esperado, rel=1e-12, abs=1e-12
+    )
+    assert sum(resultado) == pytest.approx(
+        aporte_mm, rel=1e-12, abs=1e-12
+    )
+
+
+def test_infiltracion_con_capacidad_de_entrada_cero():
+    resultado = infiltracion_y_salida_mm(
+        aporte_mm=3.0,
+        f_max_mm_h=0.0,
+        dt_h=1.0,
+        capacidad_disponible_mm=50.0,
+        activa=True,
+    )
+
+    assert resultado == (0.0, 3.0)
+
+
+@pytest.mark.parametrize(
+    ("campo", "valor"),
+    [
+        ("aporte_mm", -1.0),
+        ("aporte_mm", float("nan")),
+        ("aporte_mm", True),
+        ("f_max_mm_h", -1.0),
+        ("f_max_mm_h", float("inf")),
+        ("dt_h", 0.0),
+        ("dt_h", -1.0),
+        ("dt_h", None),
+        ("capacidad_disponible_mm", -1.0),
+        ("capacidad_disponible_mm", float("nan")),
+        ("activa", 1),
+    ],
+)
+@pytest.mark.parametrize("proceso_activo", [True, False])
+def test_infiltracion_rechaza_argumentos_invalidos(
+    campo, valor, proceso_activo
+):
+    argumentos = {
+        "aporte_mm": 3.0,
+        "f_max_mm_h": 12.0,
+        "dt_h": 300.0 / 3600.0,
+        "capacidad_disponible_mm": 50.0,
+        "activa": proceso_activo,
+    }
+    argumentos[campo] = valor
+
+    with pytest.raises(ValueError):
+        infiltracion_y_salida_mm(**argumentos)
