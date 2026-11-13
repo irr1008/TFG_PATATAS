@@ -182,9 +182,19 @@ de esos datos no bloquean las pruebas sintéticas de este sprint.
   La #19 permanece en progreso; faltan infiltración, extracción
   e integración del paso completo.
 
-El avance actual incluye los flujos de drenaje inferior y las
-transferencias internas, pero todavía no el paso hidráulico completo
-ni la ejecución de series temporales.
+- 13/11/2026: implementada y comprobada la fase de infiltración
+  y salida superficial de la #19.
+  Se verifica la actualización de la capa superior, los casos B, C y D
+  de esta fase, el balance y una composición drenaje → infiltración.
+  Ejecución en Colab sobre e18b418: 287 pruebas superadas,
+  código de salida 0.
+  Quedan pendientes la extracción y la integración y comprobación
+  del paso hidráulico completo.
+
+El avance actual incluye drenaje inferior, transferencias internas
+e infiltración y salida superficial.
+Todavía no incluye la extracción ni una función de paso hidráulico
+completo con su balance independiente, ni la ejecución de series temporales.
 No constituye calibración ni validación con parcelas.
 
 ## Revisión
