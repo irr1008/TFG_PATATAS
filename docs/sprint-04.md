@@ -8,6 +8,8 @@
   temporal con datos sintéticos.
 - Fecha de inicio planificada: 09/11/2026.
 - Fecha objetivo original: 27/11/2026.
+- Fecha de cierre revisada: pendiente de concretar al replanificar
+  el trabajo restante.
 - Responsable: irr1008.
 - Milestone asociado: M3 - Implementar y verificar el núcleo hidráulico.
 - Estado: en ejecucióncon, con interrupción por motivos de salud
