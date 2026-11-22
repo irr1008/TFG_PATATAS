@@ -12,7 +12,7 @@
   el trabajo restante.
 - Responsable: irr1008.
 - Milestone asociado: M3 - Implementar y verificar el núcleo hidráulico.
-- Estado: en ejecucióncon, con interrupción por motivos de salud
+- Estado: en ejecución, con interrupción por motivos de salud
   durante la semana del 16 al 22/11 y reanudación prevista para la semana del 23/11.
   
 ## Contexto
