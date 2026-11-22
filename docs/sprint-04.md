@@ -7,12 +7,12 @@
   Agrobioma v14, y verificar su conservación de masa y su comportamiento
   temporal con datos sintéticos.
 - Fecha de inicio planificada: 09/11/2026.
-- Fecha objetivo: 27/11/2026.
+- Fecha objetivo original: 27/11/2026.
 - Responsable: irr1008.
 - Milestone asociado: M3 - Implementar y verificar el núcleo hidráulico.
-- Estado: en ejecución; el detalle de ejecución se registra en las issues
-  y los estados actuales se mantienen en GitHub Projects.
-
+- Estado: en ejecucióncon, con interrupción por motivos de salud
+  durante la semana del 16 al 22/11 y reanudación prevista para la semana del 23/11.
+  
 ## Contexto
 
 El sprint 3 se cerró anticipadamente tras el cambio de enfoque de la reunión
@@ -191,11 +191,45 @@ de esos datos no bloquean las pruebas sintéticas de este sprint.
   Quedan pendientes la extracción y la integración y comprobación
   del paso hidráulico completo.
 
+- 22/11/2026: se registra una interrupción del trabajo por motivos
+  de salud durante la semana del 16 al 22/11.
+  No se ha producido avance técnico adicional respecto al último
+  bloque comprobado el 13/11.
+  Tampoco se ha celebrado la reunión de seguimiento con los tutores
+  prevista para el 13/11; su nueva fecha queda pendiente de acordar.
+  La continuación del trabajo se traslada a la semana del 23/11,
+  manteniendo el orden de dependencias: #19 -> #20 -> #21 -> #22.
+  Las fechas originales se conservan como referencia de planificación;
+  las nuevas fechas de finalización se concretarán tras revisar
+  la carga pendiente.
+
 El avance actual incluye drenaje inferior, transferencias internas
 e infiltración y salida superficial.
 Todavía no incluye la extracción ni una función de paso hidráulico
 completo con su balance independiente, ni la ejecución de series temporales.
 No constituye calibración ni validación con parcelas.
+
+## Replanificación tras la interrupción
+
+La interrupción por motivos de salud no modifica el alcance técnico
+ni los criterios de aceptación del sprint.
+
+Se prevé retomar el trabajo durante la semana del 23/11/2026,
+empezando por los pendientes de la #19:
+- Extracción efectiva y demanda no satisfecha.
+- Integración del paso hidráulico completo.
+- Balance independiente del paso y pruebas combinadas de orden.
+- Revisión final de los criterios de aceptación.
+
+Después se continuará con #20, #21 y #22, respetando sus dependencias.
+
+No se presupone que todo el trabajo restante pueda completarse
+dentro de la fecha objetivo original del 27/11.
+Las fechas revisadas se actualizarán en el seguimiento y en Projects,
+sin sustituir las estimaciones originales por dedicaciones reales.
+
+La reunión de seguimiento con los tutores no se ha celebrado.
+Su nueva fecha está pendiente de acordar.
 
 ## Revisión
 
