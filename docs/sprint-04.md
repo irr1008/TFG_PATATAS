@@ -205,10 +205,26 @@ de esos datos no bloquean las pruebas sintéticas de este sprint.
   las nuevas fechas de finalización se concretarán tras revisar
   la carga pendiente.
 
-El avance actual incluye drenaje inferior, transferencias internas
-e infiltración y salida superficial.
-Todavía no incluye la extracción ni una función de paso hidráulico
-completo con su balance independiente, ni la ejecución de series temporales.
+- 23/11/2026: reanudado el trabajo tras la interrupción y completada
+  la #19.
+  Se implementan la extracción efectiva con la demanda no satisfecha
+  y el paso hidráulico completo, con el orden del diseño:
+  drenaje inferior, transferencias de abajo arriba, infiltración
+  y salida superficial, y extracción.
+  El balance del paso se calcula de forma independiente
+  (epsilon = Delta S - B) y se registran los residuales de las fases.
+  Se comprueban los casos A a H, con F y G contra su expresión
+  analítica, tres pruebas de orden, perfiles de una y de tres capas
+  y los procesos desactivados. El caso I se cubre con las validaciones
+  de configuración, entradas y estados.
+  Ejecución en Colab sobre 203ee29: 329 pruebas superadas,
+  código de salida 0, con Python 3.13.18 y pytest 8.4.2.
+
+El avance actual incluye el paso hidráulico completo (drenaje inferior,
+transferencias internas, infiltración y salida superficial, y extracción)
+con su balance independiente.
+Todavía no incluye la ejecución de series temporales ni el estudio
+de refinamiento temporal.
 No constituye calibración ni validación con parcelas.
 
 ## Replanificación tras la interrupción
@@ -216,12 +232,9 @@ No constituye calibración ni validación con parcelas.
 La interrupción por motivos de salud no modifica el alcance técnico
 ni los criterios de aceptación del sprint.
 
-Se prevé retomar el trabajo durante la semana del 23/11/2026,
-empezando por los pendientes de la #19:
-- Extracción efectiva y demanda no satisfecha.
-- Integración del paso hidráulico completo.
-- Balance independiente del paso y pruebas combinadas de orden.
-- Revisión final de los criterios de aceptación.
+El trabajo se retomó el 23/11/2026 y la #19 quedó completada ese día.
+Continúan, en este orden y respetando sus dependencias, la #20,
+la #21 y la #22.
 
 Después se continuará con #20, #21 y #22, respetando sus dependencias.
 
@@ -277,7 +290,7 @@ Pendiente de realizar en #22.
   `src/modelo_fisico/`.
 
 - Pruebas automatizadas: `tests/`.
-  Última comprobación de la #18: 186 pruebas superadas sobre d24be2f.
+  Última comprobación de la #19: 329 pruebas superadas sobre 203ee29.
 
 - Guía de instalación, uso, unidades y tolerancias:
   `docs/uso-nucleo-hidraulico.md`, enlazada desde el README.
@@ -285,6 +298,7 @@ Pendiente de realizar en #22.
 - Commits de referencia:
   - c541560: configuración y pruebas básicas.
   - d24be2f: versión utilizada en la comprobación final de la #18.
+  - 203ee29: versión utilizada en la comprobación final de la #19.
 
 - Evidencia de ejecución de la #18:
   notebook de trabajo de Colab conservado con sus salidas.
