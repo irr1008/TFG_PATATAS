@@ -2,7 +2,7 @@
 
 ## Información del sprint
 
-- Sprint: 4 — Núcleo hidráulico verificable.
+- Sprint: 4 - Núcleo hidráulico verificable.
 - Objetivo: implementar un núcleo hidráulico por capas, independiente de
   Agrobioma v14, y verificar su conservación de masa y su comportamiento
   temporal con datos sintéticos.
@@ -13,7 +13,7 @@
 - Responsable: irr1008.
 - Milestone asociado: M3 - Implementar y verificar el núcleo hidráulico.
 - Estado: en ejecución, con interrupción por motivos de salud
-  durante la semana del 16 al 22/11 y reanudación prevista para la semana del 23/11.
+  durante la semana del 16 al 22/11. Reanudado el 23/11.
   
 ## Contexto
 
@@ -235,8 +235,6 @@ ni los criterios de aceptación del sprint.
 El trabajo se retomó el 23/11/2026 y la #19 quedó completada ese día.
 Continúan, en este orden y respetando sus dependencias, la #20,
 la #21 y la #22.
-
-Después se continuará con #20, #21 y #22, respetando sus dependencias.
 
 No se presupone que todo el trabajo restante pueda completarse
 dentro de la fecha objetivo original del 27/11.
