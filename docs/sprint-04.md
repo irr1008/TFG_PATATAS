@@ -219,6 +219,18 @@ de esos datos no bloquean las pruebas sintéticas de este sprint.
   de configuración, entradas y estados.
   Ejecución en Colab sobre 203ee29: 329 pruebas superadas,
   código de salida 0, con Python 3.13.18 y pytest 8.4.2.
+  
+- 24/11/2026: iniciada la #20 sobre el paso hidráulico de la #19.
+  Se implementan la malla temporal, la división en cambios de entrada
+  y el tratamiento del último intervalo.
+  También se implementan eventos sintéticos con tasas constantes
+  y su conversión a acumulados mediante solape temporal.
+  Se comprueban los acumulados prescritos del escenario 11.1,
+  sin ejecutar todavía su evolución hidráulica.
+  Ejecución en Colab sobre 1bbe162: 393 pruebas superadas,
+  código de salida 0, con Python 3.13.18 y pytest 8.4.2.
+  La #20 continúa en progreso; quedan pendientes el ejecutor,
+  el balance global, los escenarios temporales y la convergencia.
 
 El avance actual incluye el paso hidráulico completo (drenaje inferior,
 transferencias internas, infiltración y salida superficial, y extracción)
@@ -289,6 +301,7 @@ Pendiente de realizar en #22.
 
 - Pruebas automatizadas: `tests/`.
   Última comprobación de la #19: 329 pruebas superadas sobre 203ee29.
+  Última comprobación parcial de la #20: 393 pruebas superadas sobre 1bbe162.
 
 - Guía de instalación, uso, unidades y tolerancias:
   `docs/uso-nucleo-hidraulico.md`, enlazada desde el README.
@@ -297,7 +310,8 @@ Pendiente de realizar en #22.
   - c541560: configuración y pruebas básicas.
   - d24be2f: versión utilizada en la comprobación final de la #18.
   - 203ee29: versión utilizada en la comprobación final de la #19.
-
+  - 1bbe162: comprobación de la malla temporal y los eventos de la #20.
+  
 - Evidencia de ejecución de la #18:
   notebook de trabajo de Colab conservado con sus salidas.
   No sustituye a la demostración prevista en la #21.
