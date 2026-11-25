@@ -336,7 +336,11 @@ Desde la raíz del repositorio, con Python y pip disponibles:
 ```bash
 python -m pip install -e ".[test]"
 python -m pytest -v
+python -m modelo_fisico.verificacion_temporal --salida resultados_verificacion
 ```
+
+Para reproducir la versión comprobada, el repositorio debe
+situarse previamente en el commit indicado en la sección 2.
 
 Para ejecutar únicamente las pruebas de escenarios:
 
@@ -344,14 +348,17 @@ Para ejecutar únicamente las pruebas de escenarios:
 python -m pytest tests/test_escenarios_temporales.py -v
 ```
 
-La ejecución de pytest comprueba los criterios,
-pero no exporta las tablas del estudio.
+Para ejecutar únicamente las pruebas del generador:
 
-Las tablas se generaron en el notebook de trabajo
-Pruebas_nucleo_hidraulico_issue20.ipynb, mediante
-ocho llamadas a ejecutar_serie sobre el commit indicado.
+```bash
+python -m pytest tests/test_verificacion_temporal.py -v
+```
 
-Se exportaron:
+La suite comprueba las aserciones automatizadas.
+El comando del generador exporta las tablas del estudio.
+
+El generador ejecuta los escenarios 11.1 y 11.2 con pasos
+nominales de 300, 150, 75 y 37,5 s y escribe:
 
 - resumen_balances.csv.
 - refinamiento_11_1.csv.
@@ -360,9 +367,22 @@ Se exportaron:
 - Ocho series temporales en CSV.
 - commit.txt.
 
-La publicación de un procedimiento de generación de tablas
-ejecutable desde el repositorio queda pendiente de completar
-antes del cierre de la #20.
+En la ejecución revisada se comprobaron doce CSV no vacíos
+y la coincidencia entre commit.txt y el commit del repositorio.
+
+Las comprobaciones adicionales del notebook verifican:
+
+- Los tres criterios del escenario 11.1.
+- El cierre del balance global en las ocho ejecuciones.
+- La disminución del máximo error de theta2 al refinar
+  en el escenario 11.2.
+
+La generación desde el repositorio se ejecutó sobre el commit
+indicado en la sección 2. Sus resultados son coherentes con
+las cifras recogidas en este informe.
+
+El notebook de evidencia se conserva con sus salidas.
+No se presupone su publicación en el repositorio.
 
 ## 11. Limitaciones
 
