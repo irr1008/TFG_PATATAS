@@ -248,8 +248,7 @@ de esos datos no bloquean las pruebas sintéticas de este sprint.
   código de salida 0, con Python 3.13.18 y pytest 8.4.2.
   La verificación es sintética: no constituye calibración
   ni validación con parcelas.
-  La #20 queda pendiente únicamente de la revisión de coherencia
-  final y de su cierre administrativo.
+  La #20 queda cerrada.
 
 El avance actual incluye el paso hidráulico completo, el ejecutor
 temporal, el balance global independiente, los escenarios 11.1 y 11.2,
