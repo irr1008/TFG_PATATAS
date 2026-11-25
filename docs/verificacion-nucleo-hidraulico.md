@@ -1,0 +1,257 @@
+# Verificación del núcleo hidráulico
+
+Fecha de comprobación: 25/11/2026.
+
+Estado: verificación numérica con escenarios sintéticos.
+No constituye calibración ni validación con parcelas reales.
+
+## 1. Objetivo y alcance
+
+Comprobar por separado:
+
+- La conservación de masa.
+- La integración temporal de las entradas prescritas.
+- La dependencia de los resultados respecto al paso temporal.
+- El error frente a una solución analítica de drenaje acoplado.
+
+El estudio utiliza el diseño del núcleo hidráulico v0.2,
+especialmente sus secciones 9, 11.1 y 11.2.
+
+Los parámetros son sintéticos. No proceden de parcelas,
+sondas ni datos privados.
+
+## 2. Versión y entorno comprobados
+
+- Commit: c4149c7cb8d062e9d89c04bc97c6a3574d84b23d.
+- Python: 3.13.18.
+- pytest: 8.4.2.
+- Entorno de ejecución: Google Colab.
+- Suite completa: 438 pruebas superadas.
+- Código de salida: 0.
+- Tiempo observado de pytest: 7,70 s.
+- Ocho ejecuciones adicionales para generar las tablas:
+  dos escenarios y cuatro resoluciones.
+
+El tiempo de ejecución es una observación de esta sesión,
+no un criterio de aceptación.
+
+El notebook de trabajo se conserva con sus salidas.
+No sustituye a la demostración reproducible prevista en la #21.
+
+## 3. Configuración sintética
+
+| Parámetro | Capa 1 | Capa 2 |
+|---|---:|---:|
+| Profundidad superior (m) | 0,00 | 0,20 |
+| Profundidad inferior (m) | 0,20 | 0,60 |
+| Espesor (m) | 0,20 | 0,40 |
+| Humedad mínima (m³/m³) | 0,05 | 0,05 |
+| Capacidad de campo (m³/m³) | 0,25 | 0,25 |
+| Saturación (m³/m³) | 0,45 | 0,45 |
+| Escala de drenaje (h) | 6 | 12 |
+
+Capacidad máxima de infiltración: 12 mm/h.
+
+Se mantienen activos la infiltración, las transferencias
+internas y el drenaje inferior.
+
+Duración de cada ejecución: 24 h.
+
+Pasos nominales: 300, 150, 75 y 37,5 s.
+
+El algoritmo aplica, en este orden:
+
+1. Drenaje inferior.
+2. Transferencias internas de abajo arriba.
+3. Infiltración y salida superficial.
+4. Extracción prescrita.
+5. Comprobaciones y balance.
+
+El agua infiltrada no drena hasta el siguiente paso.
+Este retardo pertenece a la separación numérica de procesos;
+no representa un tiempo de viaje físico.
+
+## 4. Tiempos, eventos y acumulados
+
+Los tiempos se expresan en segundos desde el inicio.
+Las tasas de entrada se expresan en mm/h.
+
+Cada evento se interpreta sobre el intervalo [inicio, fin).
+Su aporte a un intervalo es la tasa multiplicada por
+la duración de solape en horas.
+
+Los eventos solapados se suman.
+Fuera de los eventos, las tasas son cero por definición
+de la programación sintética completa.
+
+El ejecutor incorpora los inicios y finales de eventos
+a la malla antes de aplicar los pasos hidráulicos.
+Los cambios no desplazan la malla nominal restante.
+
+Las pruebas del ejecutor incluyen cambios no alineados,
+último intervalo corto y conservación de los aportes.
+
+## 5. Balance independiente
+
+Para cada ejecución:
+
+Delta S = suma(S_final) - suma(S_inicial).
+
+B = P + I - RO - DP - suma(X).
+
+Residual global = Delta S - B.
+
+X representa la extracción efectiva, no la solicitada.
+Las transferencias internas no son salidas del perfil.
+
+El residual global se obtiene con estados extremos
+y flujos acumulados, independientemente de la suma
+de residuales por paso.
+
+También se registran:
+
+- Suma firmada de residuales por paso.
+- Suma de sus valores absolutos.
+
+La tolerancia global sigue el diseño:
+
+tolerancia = n * 1e-9 mm + 1e-12 * escala_global,
+
+donde n es el número de pasos y:
+
+escala_global = max(
+  1 mm,
+  almacenamiento inicial total,
+  almacenamiento final total,
+  P + I + RO + DP + suma(X)
+).
+
+No se corrigen estados ni flujos para forzar el cierre.
+
+En las ocho ejecuciones, el valor absoluto del residual
+global es inferior a 3,1e-12 mm.
+
+Las tolerancias globales se sitúan aproximadamente
+entre 2,88e-7 y 2,30e-6 mm.
+
+Todas las ejecuciones cumplen su tolerancia.
+Este resultado comprueba la contabilidad del agua,
+no la precisión temporal ni la validez física.
+
+## 6. Escenario 11.1: aportes y extracción
+
+Estado inicial: S1 = 40 mm; S2 = 80 mm.
+
+Entradas:
+
+- Riego de 6 mm/h durante [0 h, 2 h).
+- Precipitación cero durante toda la ejecución.
+- Extracción solicitada cero hasta las 2 h.
+- Desde las 2 hasta las 24 h:
+  0,05 mm/h en la capa 1 y 0,10 mm/h en la capa 2.
+
+Acumulados comprobados en las cuatro resoluciones:
+
+- Riego: 12 mm.
+- Infiltración: 12 mm.
+- Demanda solicitada: 1,1 y 2,2 mm.
+- Extracción efectiva: 1,1 y 2,2 mm.
+- Demanda no satisfecha: cero.
+- Salida superficial: cero.
+- Drenaje inferior: cero.
+
+### 6.1. Estados finales
+
+| Paso (s) | Pasos efectivos | S1 final (mm) | S2 final (mm) |
+|---:|---:|---:|---:|
+| 300 | 288 | 49,503863 | 79,196137 |
+| 150 | 576 | 49,503864 | 79,196136 |
+| 75 | 1152 | 49,503864 | 79,196136 |
+| 37,5 | 2304 | 49,503865 | 79,196135 |
+
+Existe transferencia interna de aproximadamente 1,396 mm.
+No debe confundirse con drenaje por el fondo.
+
+### 6.2. Comparación entre 75 y 37,5 s
+
+Se comparan 1153 tiempos comunes, incluido el inicial,
+sin interpolación.
+
+| Magnitud | Valor aproximado | Umbral | Resultado |
+|---|---:|---:|---|
+| Máxima diferencia de humedad | 8e-6 m³/m³ | 1e-4 m³/m³ | Cumple |
+| Diferencia de RO total | 0 mm | 0,01 mm | Cumple |
+| Diferencia de DP total | 0 mm | 0,01 mm | Cumple |
+
+La diferencia final de almacenamiento es aproximadamente
+2,62e-7 mm por capa.
+
+Las comparaciones de RO y DP son limitadas en este escenario:
+ambos flujos son cero en todas las resoluciones.
+La evaluación del drenaje inferior se complementa
+con el escenario 11.2.
+
+### 6.3. Paso nominal de 300 s
+
+Frente a 37,5 s, las diferencias máximas de humedad
+en tiempos comunes son aproximadamente:
+
+- Capa 1: 5,9e-5 m³/m³.
+- Capa 2: 3,0e-5 m³/m³.
+
+La diferencia final de almacenamiento es aproximadamente
+1,84e-6 mm por capa.
+
+La coincidencia casi completa al final no sustituye
+la comparación de toda la serie.
+
+## 7. Escenario 11.2: drenaje acoplado
+
+Estado inicial: S1 = 74 mm; S2 = 124 mm.
+
+Precipitación, riego y demandas de extracción: cero.
+
+Se mantienen activas las transferencias y el drenaje inferior.
+
+### 7.1. Referencia analítica
+
+Con t expresado en horas:
+
+S1(t) = 50 + 24 exp(-t/6).
+
+S2(t) = 100 + 72 exp(-t/12) - 48 exp(-t/6).
+
+DP(t) = 198 - S1(t) - S2(t).
+
+La referencia representa el sistema continuo de drenaje
+acoplado del diseño. No reproduce el algoritmo secuencial.
+
+Cada resolución se compara con esta referencia en todos
+sus tiempos de salida, incluido el inicial.
+
+### 7.2. Resultados
+
+Los errores finales son numérico menos analítico.
+Los errores máximos son valores absolutos.
+
+| Paso (s) | Máximo error de theta2 (m³/m³) | Error final de S2 (mm) | Error final de DP (mm) | Máximo error de DP en la serie (mm) |
+|---:|---:|---:|---:|---:|
+| 300 | 0,000105 | +0,019571 | -0,019571 | 0,041812 |
+| 150 | 0,000052 | +0,009769 | -0,009769 | 0,020870 |
+| 75 | 0,000026 | +0,004880 | -0,004880 | 0,010426 |
+| 37,5 | 0,000013 | +0,002439 | -0,002439 | 0,005211 |
+
+El máximo error de humedad de la capa 1 es inferior
+a 5e-16 m³/m³ en estas ejecuciones.
+
+La capa inferior conserva algo más de agua que la referencia
+continua, mientras el drenaje acumulado queda por debajo.
+
+### 7.3. Refinamiento
+
+Los cocientes entre errores máximos de theta2 de resoluciones
+consecutivas son aproximadamente:
+
+- 300/150 s: 2,003478.
+- 150/75 s: 2,001735.
+- 75/37,5
