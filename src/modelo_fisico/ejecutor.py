@@ -146,3 +146,86 @@ def ejecutar_serie(
             registro.resultado.transferencias_mm[j]
             for registro in registros
         )
+        for j in range(numero_capas - 1)
+    )
+    solicitadas = tuple(
+        fsum(
+            registro.entradas.extracciones_solicitadas_mm[j]
+            for registro in registros
+        )
+        for j in range(numero_capas)
+    )
+    extracciones = tuple(
+        fsum(
+            registro.resultado.extracciones_mm[j]
+            for registro in registros
+        )
+        for j in range(numero_capas)
+    )
+    no_satisfechas = tuple(
+        fsum(
+            registro.resultado.demandas_no_satisfechas_mm[j]
+            for registro in registros
+        )
+        for j in range(numero_capas)
+    )
+
+    total_inicial = fsum(estado_inicial.almacenamientos_mm)
+    total_final = fsum(estado.almacenamientos_mm)
+    extraido = fsum(extracciones)
+
+    balance_flujos = fsum(
+        (precipitacion, riego, -salida, -drenaje, -extraido)
+    )
+    residual_global = (
+        total_final - total_inicial
+    ) - balance_flujos
+
+    escala = max(
+        1.0,
+        total_inicial,
+        total_final,
+        fsum((precipitacion, riego, salida, drenaje, extraido)),
+    )
+    tolerancia = len(registros) * 1e-9 + 1e-12 * escala
+
+    suma_residuales = fsum(
+        registro.resultado.residual_masa_mm
+        for registro in registros
+    )
+    suma_absoluta = fsum(
+        abs(registro.resultado.residual_masa_mm)
+        for registro in registros
+    )
+
+    if (
+        not isfinite(escala)
+        or not isfinite(residual_global)
+        or not isfinite(suma_residuales)
+        or not isfinite(suma_absoluta)
+        or abs(residual_global) > tolerancia
+    ):
+        raise ValueError(
+            "Balance global fuera de tolerancia: "
+            f"residual={residual_global} mm; "
+            f"tolerancia={tolerancia} mm."
+        )
+
+    return ResultadoEjecucion(
+        estado_inicial=estado_inicial,
+        estado_final=estado,
+        registros=registros,
+        precipitacion_mm=precipitacion,
+        riego_mm=riego,
+        infiltracion_mm=infiltracion,
+        salida_superficial_mm=salida,
+        drenaje_inferior_mm=drenaje,
+        transferencias_mm=transferencias,
+        extracciones_solicitadas_mm=solicitadas,
+        extracciones_mm=extracciones,
+        demandas_no_satisfechas_mm=no_satisfechas,
+        residual_global_mm=residual_global,
+        tolerancia_global_mm=tolerancia,
+        suma_residuales_mm=suma_residuales,
+        suma_absoluta_residuales_mm=suma_absoluta,
+    )
