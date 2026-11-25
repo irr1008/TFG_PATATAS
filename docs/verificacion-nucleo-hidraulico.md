@@ -410,10 +410,14 @@ Completado y comprobado:
 - Escenarios 11.1 y 11.2.
 - Comparación de cuatro resoluciones.
 - Pruebas automatizadas de escenarios.
+- Generador de tablas ejecutable desde el repositorio.
+- Cinco pruebas automatizadas del generador.
+- Ejecución del notebook de comprobación sin los errores
+  anteriores de clonado e importación.
+- Generación de doce CSV no vacíos y registro del commit.
 
 Pendiente antes del cierre:
 
-- Publicar el procedimiento reproducible de generación
-  de las tablas desde el repositorio.
-- Revisar la coherencia de código, pruebas, informe y evidencias.
+- Completar la revisión de coherencia de código, pruebas,
+  informe y evidencias tras esta actualización documental.
 - Actualizar el seguimiento de la issue y del sprint.
