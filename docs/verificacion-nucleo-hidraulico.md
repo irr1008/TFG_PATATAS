@@ -22,22 +22,35 @@ sondas ni datos privados.
 
 ## 2. Versión y entorno comprobados
 
-- Commit: c4149c7cb8d062e9d89c04bc97c6a3574d84b23d.
+- Commit del código verificado:
+  581c8bfcbf70e2e948585d1c23799dbd392df416.
 - Python: 3.13.18.
 - pytest: 8.4.2.
 - Entorno de ejecución: Google Colab.
-- Suite completa: 438 pruebas superadas.
+- Suite completa: 443 pruebas superadas.
 - Código de salida: 0.
-- Tiempo observado de pytest: 7,70 s.
-- Ocho ejecuciones adicionales para generar las tablas:
-  dos escenarios y cuatro resoluciones.
+- Tiempo observado de pytest: 8,96 s.
+- Generación de tablas: dos escenarios y cuatro resoluciones,
+  mediante el módulo modelo_fisico.verificacion_temporal.
+- Archivos comprobados: doce CSV no vacíos y commit.txt.
+- El commit registrado en los resultados coincide con
+  el commit del repositorio.
 
 El tiempo de ejecución es una observación de esta sesión,
 no un criterio de aceptación.
 
-El notebook de trabajo se conserva con sus salidas.
-No sustituye a la demostración reproducible prevista en la #21.
+La evidencia revisada es el notebook
+Pruebas_nucleo_hidraulico_issue20-14.ipynb,
+con sus salidas guardadas tras reiniciar la sesión y ejecutar
+las celdas en orden.
 
+El notebook comprueba la preparación del repositorio,
+la instalación, la suite, la generación de resultados,
+los criterios del escenario 11.1, los balances de las ocho
+ejecuciones y la disminución del error de theta2 al refinar
+en el escenario 11.2.
+
+No sustituye a la demostración reproducible prevista en la #21.
 ## 3. Configuración sintética
 
 | Parámetro | Capa 1 | Capa 2 |
