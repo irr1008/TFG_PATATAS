@@ -231,12 +231,30 @@ de esos datos no bloquean las pruebas sintéticas de este sprint.
   código de salida 0, con Python 3.13.18 y pytest 8.4.2.
   La #20 continúa en progreso; quedan pendientes el ejecutor,
   el balance global, los escenarios temporales y la convergencia.
+  
+- 25/11/2026: completado el ejecutor temporal y verificadas las
+  series sintéticas de la #20.
+  Se implementan ejecutar_serie, el registro por intervalo y el
+  balance global independiente de la suma de residuales por paso.
+  Se ejecutan los escenarios 11.1 y 11.2 con pasos de 300, 150,
+  75 y 37,5 s, y se publica un generador reproducible de tablas.
+  El escenario 11.1 cumple sus tres criterios de comparación
+  entre 75 y 37,5 s. En el escenario 11.2, el error máximo de
+  humedad de la capa inferior disminuye aproximadamente a la mitad
+  al dividir el paso por dos; con 300 s es de 1,05e-4 m³/m³.
+  Los residuales globales de las ocho ejecuciones cumplen
+  su tolerancia.
+  Ejecución en Colab sobre 581c8bf: 443 pruebas superadas,
+  código de salida 0, con Python 3.13.18 y pytest 8.4.2.
+  La verificación es sintética: no constituye calibración
+  ni validación con parcelas.
+  La #20 queda pendiente únicamente de la revisión de coherencia
+  final y de su cierre administrativo.
 
-El avance actual incluye el paso hidráulico completo (drenaje inferior,
-transferencias internas, infiltración y salida superficial, y extracción)
-con su balance independiente.
-Todavía no incluye la ejecución de series temporales ni el estudio
-de refinamiento temporal.
+El avance actual incluye el paso hidráulico completo, el ejecutor
+temporal, el balance global independiente, los escenarios 11.1 y 11.2,
+la comparación de cuatro resoluciones y un generador reproducible
+de tablas. Todavía no incluye la demostración publicada de la #21.
 No constituye calibración ni validación con parcelas.
 
 ## Replanificación tras la interrupción
@@ -301,8 +319,8 @@ Pendiente de realizar en #22.
 
 - Pruebas automatizadas: `tests/`.
   Última comprobación de la #19: 329 pruebas superadas sobre 203ee29.
-  Última comprobación parcial de la #20: 393 pruebas superadas sobre 1bbe162.
-
+  Última comprobación de la #20: 443 pruebas superadas sobre 581c8bf.
+  
 - Guía de instalación, uso, unidades y tolerancias:
   `docs/uso-nucleo-hidraulico.md`, enlazada desde el README.
 
@@ -311,13 +329,19 @@ Pendiente de realizar en #22.
   - d24be2f: versión utilizada en la comprobación final de la #18.
   - 203ee29: versión utilizada en la comprobación final de la #19.
   - 1bbe162: comprobación de la malla temporal y los eventos de la #20.
+  - 581c8bf: versión utilizada en la comprobación final de la #20.
   
 - Evidencia de ejecución de la #18:
   notebook de trabajo de Colab conservado con sus salidas.
   No sustituye a la demostración prevista en la #21.
 
+- Evidencia de ejecución de la #20:
+  notebook de trabajo de Colab conservado con sus salidas.
+  No sustituye a la demostración prevista en la #21.
+
 - Verificación del núcleo:
-  `docs/verificacion-nucleo-hidraulico.md` (prevista).
+  `docs/verificacion-nucleo-hidraulico.md`.
+  Generador de tablas: `src/modelo_fisico/verificacion_temporal.py`.
 
 - Demostración:
   `notebooks/05_demostracion_nucleo_hidraulico.ipynb` (prevista).
