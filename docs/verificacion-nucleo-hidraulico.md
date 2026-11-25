@@ -315,7 +315,18 @@ diez casos contando las parametrizaciones:
 - Reducción del error máximo de humedad de la capa 2
   y del error final de drenaje al refinar.
 
-Las tablas del notebook complementan estas aserciones:
+El archivo tests/test_verificacion_temporal.py añade
+cinco pruebas del generador:
+
+- Generación del conjunto de archivos.
+- Cierre del balance en el resumen.
+- Cumplimiento de los criterios del escenario 11.1.
+- Comprobación de los errores analíticos del escenario 11.2.
+- Escritura de resultados mediante el punto de entrada main.
+
+Los cinco casos se superan dentro de la suite completa.
+
+Las tablas generadas complementan estas aserciones:
 no todas sus cifras están fijadas como valores de regresión.
 
 ## 10. Reproducción y trazabilidad
