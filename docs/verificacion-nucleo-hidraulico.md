@@ -254,4 +254,122 @@ consecutivas son aproximadamente:
 
 - 300/150 s: 2,003478.
 - 150/75 s: 2,001735.
-- 75/37,5
+- 75/37,5 s: 2,000868.
+
+El error disminuye aproximadamente a la mitad
+al dividir el paso por dos.
+
+La tendencia observada es compatible con primer orden
+temporal del acoplamiento en este escenario.
+No constituye una demostración general del orden
+para cualquier configuración o evento.
+
+No se exige coincidencia exacta con la solución continua
+para un paso finito.
+
+## 8. Uso del paso nominal de 300 s
+
+Se mantiene 300 s como resolución nominal de trabajo
+para demostraciones sintéticas y exploración del núcleo,
+siempre acompañada de estos errores medidos.
+
+No se acepta como resolución universal ni como garantía
+de una precisión determinada.
+
+En el escenario 11.2, su error máximo de humedad
+en la capa inferior es aproximadamente 1,05e-4 m³/m³
+y el máximo error de drenaje acumulado es 0,041812 mm.
+
+Si una aplicación exige errores menores, deberá emplear
+una resolución más fina y comprobar su adecuación.
+
+El umbral de humedad establecido para comparar 75 y 37,5 s
+en el escenario 11.1 no se traslada automáticamente
+como criterio de aceptación del escenario 11.2.
+
+El cierre de masa no basta para aceptar un paso temporal.
+
+## 9. Pruebas automatizadas
+
+El archivo tests/test_escenarios_temporales.py añade
+diez casos contando las parametrizaciones:
+
+- Acumulados, balance y límites del escenario 11.1
+  en las cuatro resoluciones.
+- Criterios entre 75 y 37,5 s del escenario 11.1.
+- Balance, límites y referencia de la capa superior
+  del escenario 11.2 en las cuatro resoluciones.
+- Reducción del error máximo de humedad de la capa 2
+  y del error final de drenaje al refinar.
+
+Las tablas del notebook complementan estas aserciones:
+no todas sus cifras están fijadas como valores de regresión.
+
+## 10. Reproducción y trazabilidad
+
+Desde la raíz del repositorio, con Python y pip disponibles:
+
+```bash
+python -m pip install -e ".[test]"
+python -m pytest -v
+```
+
+Para ejecutar únicamente las pruebas de escenarios:
+
+```bash
+python -m pytest tests/test_escenarios_temporales.py -v
+```
+
+La ejecución de pytest comprueba los criterios,
+pero no exporta las tablas del estudio.
+
+Las tablas se generaron en el notebook de trabajo
+Pruebas_nucleo_hidraulico_issue20.ipynb, mediante
+ocho llamadas a ejecutar_serie sobre el commit indicado.
+
+Se exportaron:
+
+- resumen_balances.csv.
+- refinamiento_11_1.csv.
+- criterios_11_1.csv.
+- errores_analiticos_11_2.csv.
+- Ocho series temporales en CSV.
+- commit.txt.
+
+La publicación de un procedimiento de generación de tablas
+ejecutable desde el repositorio queda pendiente de completar
+antes del cierre de la #20.
+
+## 11. Limitaciones
+
+- Parámetros, estados y entradas sintéticos.
+- Sin calibración ni comparación con parcelas reales.
+- Flujo exclusivamente descendente.
+- Sin redistribución por debajo de capacidad de campo.
+- Sin depósito superficial.
+- Infiltración máxima constante.
+- Extracciones prescritas, no demanda atmosférica calculada.
+- Dependencia temporal de la separación de procesos.
+- Dos escenarios temporales no cubren todas las configuraciones.
+
+Las pruebas deterministas de saturación y capacidad receptora
+siguen siendo necesarias: el escenario 11.1 no las sustituye.
+
+## 12. Estado del trabajo
+
+Completado y comprobado:
+
+- Ejecutor temporal.
+- Eventos y acumulados.
+- Registro de estados, flujos y residuales.
+- Balance global independiente.
+- Escenarios 11.1 y 11.2.
+- Comparación de cuatro resoluciones.
+- Pruebas automatizadas de escenarios.
+
+Pendiente antes del cierre:
+
+- Publicar el procedimiento reproducible de generación
+  de las tablas desde el repositorio.
+- Revisar la coherencia de código, pruebas, informe y evidencias.
+- Actualizar el seguimiento de la issue y del sprint.
