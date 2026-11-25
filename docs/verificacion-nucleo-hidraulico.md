@@ -51,6 +51,7 @@ ejecuciones y la disminución del error de theta2 al refinar
 en el escenario 11.2.
 
 No sustituye a la demostración reproducible prevista en la #21.
+
 ## 3. Configuración sintética
 
 | Parámetro | Capa 1 | Capa 2 |
@@ -416,8 +417,7 @@ Completado y comprobado:
   anteriores de clonado e importación.
 - Generación de doce CSV no vacíos y registro del commit.
 
-Pendiente antes del cierre:
+Pendiente fuera de esta tarea:
 
-- Completar la revisión de coherencia de código, pruebas,
-  informe y evidencias tras esta actualización documental.
-- Actualizar el seguimiento de la issue y del sprint.
+- Demostración sintética reproducible de la #21.
+- Revisión y cierre del sprint en la #22.
