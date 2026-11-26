@@ -271,7 +271,7 @@ de esos datos no bloquean las pruebas sintéticas de este sprint.
 El avance actual incluye el paso hidráulico completo, el ejecutor
 temporal, el balance global independiente, los escenarios 11.1 y 11.2,
 la comparación de cuatro resoluciones y un generador reproducible
-de tablas. y la demostración publicada en un notebook sin salidas.
+de tablas y la demostración publicada en un notebook sin salidas.
 No constituye calibración ni validación con parcelas.
 
 ## Replanificación tras la interrupción
@@ -279,7 +279,7 @@ No constituye calibración ni validación con parcelas.
 La interrupción por motivos de salud no modifica el alcance técnico
 ni los criterios de aceptación del sprint.
 
-El trabajo se retomó el 23/11/2026.Las tareas #19, #20 y #21 quedaron
+El trabajo se retomó el 23/11/2026. Las tareas #19, #20 y #21 quedaron
 completadas el 23, el 25 y el 26/11/2026. Queda la #22, de cierre y
 revisión.
 
@@ -353,7 +353,7 @@ Pendiente de realizar en #22.
   
 - Evidencia de ejecución de la #18:
   notebook de trabajo de Colab conservado con sus salidas.
-  No sustituye a la demostración prevista en la #21.
+  No sustituye a la demostración publicada en la #21.
 
 - Evidencia de ejecución de la #20:
   notebook de trabajo de Colab conservado con sus salidas.
