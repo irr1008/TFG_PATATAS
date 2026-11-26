@@ -250,10 +250,28 @@ de esos datos no bloquean las pruebas sintéticas de este sprint.
   ni validación con parcelas.
   La #20 queda cerrada.
 
+- 26/11/2026: completada la #21.
+  Se publica la demostración sintética del núcleo hidráulico y se
+  actualiza el README de notebooks.
+  El notebook importa `modelo_fisico` desde el repositorio, ejecuta los
+  escenarios 11.1 y 11.2 con cuatro pasos temporales y representa
+  entradas, humedad por capa, salidas acumuladas, balances y errores
+  frente a la referencia analítica.
+  Comprobación de partida: 443 pruebas superadas sobre e6282c4.
+  Ejecución del notebook publicado desde GitHub en una sesión nueva de
+  Colab, sobre 198d896: los ocho balances globales cumplen su
+  tolerancia, el escenario 11.1 cumple sus tres criterios y el
+  error del escenario 11.2 disminuye aproximadamente a la mitad al
+  dividir el paso por dos.
+  El notebook se publica sin salidas.
+  La verificación es sintética: no constituye calibración ni
+  validación con parcelas.
+  La #21 queda cerrada.
+
 El avance actual incluye el paso hidráulico completo, el ejecutor
 temporal, el balance global independiente, los escenarios 11.1 y 11.2,
 la comparación de cuatro resoluciones y un generador reproducible
-de tablas. Todavía no incluye la demostración publicada de la #21.
+de tablas. y la demostración publicada en un notebook sin salidas.
 No constituye calibración ni validación con parcelas.
 
 ## Replanificación tras la interrupción
@@ -261,9 +279,9 @@ No constituye calibración ni validación con parcelas.
 La interrupción por motivos de salud no modifica el alcance técnico
 ni los criterios de aceptación del sprint.
 
-El trabajo se retomó el 23/11/2026 y la #19 quedó completada ese día.
-Continúan, en este orden y respetando sus dependencias, la #20,
-la #21 y la #22.
+El trabajo se retomó el 23/11/2026.Las tareas #19, #20 y #21 quedaron
+completadas el 23, el 25 y el 26/11/2026. Queda la #22, de cierre y
+revisión.
 
 No se presupone que todo el trabajo restante pueda completarse
 dentro de la fecha objetivo original del 27/11.
@@ -319,7 +337,8 @@ Pendiente de realizar en #22.
 - Pruebas automatizadas: `tests/`.
   Última comprobación de la #19: 329 pruebas superadas sobre 203ee29.
   Última comprobación de la #20: 443 pruebas superadas sobre 581c8bf.
-  
+  Comprobación de partida de la #21: 443 pruebas superadas sobre e6282c4.
+    
 - Guía de instalación, uso, unidades y tolerancias:
   `docs/uso-nucleo-hidraulico.md`, enlazada desde el README.
 
@@ -329,6 +348,8 @@ Pendiente de realizar en #22.
   - 203ee29: versión utilizada en la comprobación final de la #19.
   - 1bbe162: comprobación de la malla temporal y los eventos de la #20.
   - 581c8bf: versión utilizada en la comprobación final de la #20.
+  - e6282c4: versión de partida de la #21 y cierre administrativo de la #20.
+  - 198d896: versión sobre la que se comprobó la demostración publicada.
   
 - Evidencia de ejecución de la #18:
   notebook de trabajo de Colab conservado con sus salidas.
@@ -343,6 +364,7 @@ Pendiente de realizar en #22.
   Generador de tablas: `src/modelo_fisico/verificacion_temporal.py`.
 
 - Demostración:
-  `notebooks/05_demostracion_nucleo_hidraulico.ipynb` (prevista).
+  `notebooks/05_demostracion_nucleo_hidraulico.ipynb` publicado sin
+  salidas, con instrucciones en `notebooks/README.md`.
 
 - Memoria: pendiente de actualizar al cierre.
