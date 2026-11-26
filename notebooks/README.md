@@ -2,7 +2,8 @@
 
 Los notebooks se ejecutan en Google Colab. Los datos (geometrías de parcelas,
 CSV generados y resultados) se guardan en Google Drive y no forman parte de
-este repositorio.
+este repositorio. La excepción es el notebook 05, que usa solo datos
+sintéticos y no necesita Drive.
 
 ## Notebooks y estado en el repositorio
 
@@ -12,6 +13,7 @@ este repositorio.
 | `03_extraccion_sentinel2_parcelas_reales` | Extrae Sentinel-2 con Google Earth Engine y genera los CSV de índices (NDVI, NDRE, NDMI, MSI, EVI y SAVI), de calidad y el resumen semanal. Combina en un mosaico las teselas de una misma fecha cuando la parcela cae en más de una, y descarta una imagen solo si la nube y la sombra de la propia parcela superan el 30 % | Publicado, sin salidas |
 | `01_Exploracion_inicial_datos_sentinel-2` | Parte 1: estructura de los CSV de las cuatro parcelas. Parte 2: ejemplo previo con maíz de 2018. Parte 3: evolución temporal de NDVI, NDRE, NDMI y EVI | Publicado |
 | `04_analisis_historico_sondas` | Analiza el histórico de sondas de humedad del suelo: estructura, frecuencia de lectura, huecos, calidad, solape con el periodo del estudio y episodios candidatos de subida. Lee el histórico de una carpeta privada de Drive y sustituye los identificadores de las sondas por alias | Publicado, sin salidas y sin identificadores |
+| `05_demostracion_nucleo_hidraulico` | Demostración sintética reproducible del núcleo hidráulico: ejecuta los escenarios 11.1 y 11.2 con el paquete `modelo_fisico`, y muestra figuras, tablas de balance y errores frente a la referencia analítica. No usa datos privados, Drive ni claves | Publicado, sin salidas |
 
 ## Orden de ejecución
 
@@ -25,12 +27,15 @@ este repositorio.
 4. `04_analisis_historico_sondas`: independiente de los anteriores. Lee el
    histórico de sondas de `TFG_PATATAS_TRABAJO/privado/historico_sondas` y no
    usa los CSV de Sentinel-2.
+5. `05_demostracion_nucleo_hidraulico`: independiente de los anteriores. No
+   usa Drive, datos privados ni claves, y obtiene el paquete `modelo_fisico`
+   clonando el repositorio.
 
 ## Cómo ejecutarlos
 
 1. Abre el notebook en Colab y ejecuta las celdas en orden.
-2. Autoriza el acceso a Drive cuando Colab lo pida. Los notebooks usan la
-   carpeta de trabajo `TFG_PATATAS_TRABAJO` de tu Drive.
+2. Autoriza el acceso a Drive cuando Colab lo pida (no hace falta en el
+   notebook 05). Los notebooks usan la carpeta de trabajo `TFG_PATATAS_TRABAJO` de tu Drive.
 3. Antes de ejecutar el notebook 02, copia `datos_parcelas_privados_ejemplo.py`
    con el nombre `datos_parcelas_privados.py` en `TFG_PATATAS_TRABAJO/privado`
    de tu Drive y sustituye los valores ficticios por los reales (municipio,
@@ -62,6 +67,7 @@ este repositorio.
 | Datos privados de las parcelas (coordenadas, municipio y variedad) | `TFG_PATATAS_TRABAJO/privado` (no se sube a GitHub) |
 | Tablas y figuras del análisis del histórico de sondas | `TFG_PATATAS_TRABAJO/resultados/analisis_historico_sondas` |
 | Histórico de sondas y correspondencia entre identificadores y alias | `TFG_PATATAS_TRABAJO/privado` (no se sube a GitHub) |
+| Figuras y tablas de la demostración (notebook 05) | `/content` de la sesión de Colab, no en Drive; se pierden al cerrar la sesión |
 
 ## Datos privados de las parcelas
 
@@ -77,11 +83,42 @@ proyecto de Earth Engine.
 
 ## Requisitos
 
-- Cuenta de Google con acceso a Drive y a Google Earth Engine.
+- Cuenta de Google con acceso a Drive y a Google Earth Engine (no necesaria
+  para el notebook 05).
 - Dependencias en `requirements.txt`, probadas en Colab con Python 3.13.16. En
   Colab la mayoría ya están instaladas; los notebooks 02 y 03 instalan
   `shapely` y `earthengine-api` en celdas propias.
 - No se almacenan credenciales ni tokens en este repositorio.
+
+## Demostración del núcleo hidráulico
+
+El notebook `05_demostracion_nucleo_hidraulico.ipynb` ejecuta los
+escenarios 11.1 y 11.2 del diseño con el paquete `modelo_fisico` y
+representa los resultados con figuras y tablas. No duplica las ecuaciones
+del núcleo: importa el paquete del repositorio.
+
+### Cómo ejecutarlo
+
+1. Abre el notebook en Google Colab desde GitHub.
+2. Ejecuta todas las celdas en orden. La primera clona o actualiza el
+   repositorio y añade `src` a la ruta de importación.
+
+### Resultados generados
+
+- Las figuras se guardan en `/content/figuras_demostracion`.
+- Las tablas CSV y `commit.txt` se guardan en
+  `/content/resultados_demostracion`.
+
+Para regenerar solo las tablas, sin notebook:
+
+    python -m modelo_fisico.verificacion_temporal --salida resultados_verificacion
+
+### Alcance
+
+Los parámetros, estados y entradas son sintéticos. El ejemplo no
+representa una parcela calibrada ni constituye una recomendación de
+riego. Las limitaciones completas están en
+`docs/verificacion-nucleo-hidraulico.md`.
 
 ## Documentación relacionada
 
@@ -91,3 +128,6 @@ proyecto de Earth Engine.
   los datos (notebook 03).
 - `docs/analisis-historico-sondas.md`: análisis del histórico de sondas
   (notebook 04).
+- `docs/verificacion-nucleo-hidraulico.md`: verificación del núcleo
+  hidráulico (notebook 05).
+
