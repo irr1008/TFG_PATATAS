@@ -280,7 +280,7 @@ de esos datos no bloquean las pruebas sintéticas de este sprint.
 
 El avance actual incluye el paso hidráulico completo, el ejecutor
 temporal, el balance global independiente, los escenarios 11.1 y 11.2,
-la comparación de cuatro resoluciones,un generador reproducible
+la comparación de cuatro resoluciones, un generador reproducible
 de tablas y la demostración publicada en un notebook sin salidas.
 No constituye calibración ni validación con parcelas.
 
