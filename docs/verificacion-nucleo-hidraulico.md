@@ -2,7 +2,7 @@
 
 Fecha de comprobación: 25/11/2026.
 
-Actualizado el 27/11/2026 para reflejar la demostración de la #21
+Actualizado el 27/11/2026 para reflejar la demostración de la #21.
 
 Estado: verificación numérica con escenarios sintéticos.
 No constituye calibración ni validación con parcelas reales.
