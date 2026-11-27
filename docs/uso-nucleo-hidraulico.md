@@ -3,10 +3,14 @@
 ## 1. Alcance
 
 El paquete `modelo_fisico` contiene la configuración, los estados,
-las entradas y las conversiones del núcleo hidráulico.
+las entradas y las conversiones del núcleo hidráulico, el paso hidráulico
+completo (drenaje, transferencias, infiltración y extracción), el ejecutor
+temporal con balance global independiente y el generador de las tablas
+de verificación.
 
-Este incremento no calcula flujos, no ejecuta series temporales
-y no calibra parámetros.
+El paquete no calibra parámetros. Su verificación es sintética y se
+describe en `docs/verificacion-nucleo-hidraulico.md`. La demostración
+reproducible está en `notebooks/05_demostracion_nucleo_hidraulico.ipynb`.
 
 El núcleo no necesita Drive, APIs, credenciales ni datos privados.
 
