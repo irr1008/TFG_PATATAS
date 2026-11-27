@@ -8,12 +8,13 @@
   temporal con datos sintéticos.
 - Fecha de inicio planificada: 09/11/2026.
 - Fecha objetivo original: 27/11/2026.
-- Fecha de cierre revisada: pendiente de concretar al replanificar
+- Fecha de cierre: 27/11/2026, coincidente con la fecha objetivo original.
   el trabajo restante.
 - Responsable: irr1008.
 - Milestone asociado: M3 - Implementar y verificar el núcleo hidráulico.
-- Estado: en ejecución, con interrupción por motivos de salud
-  durante la semana del 16 al 22/11. Reanudado el 23/11.
+- Estado: cerrado el 27/11/2026 con el núcleo hidráulico v0.1, según lo
+  acordado en la reunión de ese día. Hubo una interrupción por motivos de
+  salud durante la semana del 16 al 22/11; el trabajo se reanudó el 23/11.
   
 ## Contexto
 
@@ -268,9 +269,19 @@ de esos datos no bloquean las pruebas sintéticas de este sprint.
   validación con parcelas.
   La #21 queda cerrada.
 
+- 27/11/2026: reunión de seguimiento con los tutores y cierre del sprint.
+  Se acuerda cerrar el sprint 4 con el núcleo actual y planificar un
+  sprint 5 de mejora (más capas, capa final como depósito, temperatura y
+  radiación). El registro está en `docs/registro-reunion-27-11-2026.md`.
+  Comprobación de partida de la #22 en Colab, desde una copia limpia:
+  443 pruebas superadas sobre c65337a, código de salida 0, con
+  Python 3.13.18 y pytest 8.4.2.
+  Se revisan y actualizan el informe de verificación, la guía de uso
+  y el plan de trabajo.
+
 El avance actual incluye el paso hidráulico completo, el ejecutor
 temporal, el balance global independiente, los escenarios 11.1 y 11.2,
-la comparación de cuatro resoluciones y un generador reproducible
+la comparación de cuatro resoluciones,un generador reproducible
 de tablas y la demostración publicada en un notebook sin salidas.
 No constituye calibración ni validación con parcelas.
 
@@ -283,45 +294,66 @@ El trabajo se retomó el 23/11/2026. Las tareas #19, #20 y #21 quedaron
 completadas el 23, el 25 y el 26/11/2026. Queda la #22, de cierre y
 revisión.
 
-No se presupone que todo el trabajo restante pueda completarse
-dentro de la fecha objetivo original del 27/11.
-Las fechas revisadas se actualizarán en el seguimiento y en Projects,
-sin sustituir las estimaciones originales por dedicaciones reales.
-
-La reunión de seguimiento con los tutores no se ha celebrado.
-Su nueva fecha está pendiente de acordar.
+El 27/11/2026 se celebró la reunión de seguimiento con los tutores
+(`docs/registro-reunion-27-11-2026.md`). Se acordó cerrar el sprint 4 con
+el núcleo actual en la fecha objetivo original, sin ampliar su alcance.
 
 ## Revisión
 
-Pendiente de realizar en #22.
+Revisión realizada el 27/11/2026 sobre el commit c65337a.
 
 ### Trabajo completado
 
-- Pendiente de registrar con evidencias.
+- #17: justificación de las leyes y límites del núcleo.
+- #18: configuración, estados, conversiones y validaciones.
+- #19: paso hidráulico completo y casos deterministas.
+- #20: ejecutor temporal, balance global independiente, escenarios 11.1
+  y 11.2 con cuatro resoluciones y generador de tablas.
+- #21: demostración sintética reproducible, publicada sin salidas.
+- Evidencia: 443 pruebas superadas sobre c65337a, con Python 3.13.18 y
+  pytest 8.4.2. Los ocho balances globales cumplen su tolerancia.
 
 ### Trabajo parcial o no completado
 
-- Pendiente de registrar.
+- Compatibilidad con Python 3.11 y 3.12 sin comprobar: el paquete declara
+  Python 3.11 o posterior, pero las pruebas se ejecutaron solo con 3.13.18.
+- Cobertura temporal limitada a dos escenarios sintéticos.
+- Sin calibración ni validación con parcelas, fuera del alcance del sprint.
+- Auditoría de datos reales (#16) en el backlog.
 
 ### Incremento obtenido
 
-- Pendiente de evaluar.
+Núcleo hidráulico v0.1, independiente de Agrobioma v14, con dos capas de
+prueba, verificado con datos sintéticos. No es un modelo calibrado ni una
+herramienta de recomendación de riego.
 
 ## Retrospectiva
 
-Pendiente de realizar en #22.
-
 ### Qué ha funcionado
 
-- Pendiente de valorar.
+- Respetar el orden de dependencias #17 -> #18 -> #19 -> #20 -> #21.
+- Probar cada fase con casos deterministas antes de integrar la siguiente.
+- Calcular el balance global de forma independiente, sin sumar residuales.
+- No aceptar el cierre de masa como prueba de precisión temporal: se
+  añadió el refinamiento y la comparación analítica.
+- Registrar en cada bloque el commit probado, las versiones y el número
+  de pruebas.
 
 ### Problemas encontrados
 
-- Pendiente de registrar.
+- La interrupción por salud del 16 al 22/11 retrasó el trabajo y la
+  reunión de seguimiento hasta el 27/11.
+- El notebook de evidencia de la #20 tuvo errores de clonado e importación
+  antes de funcionar de forma estable.
+- Parte de la documentación quedó desactualizada al avanzar el código y
+  se corrigió en la revisión de la #22.
 
 ### Mejoras
 
-- Pendiente de acordar.
+- Actualizar la documentación afectada al cerrar cada issue.
+- Concretar en el sprint 5 qué significa aumentar el número de capas,
+  porque el núcleo actual ya admite perfiles de una a cuatro capas.
+- Registrar la dedicación real en el momento de cerrar cada tarea.
 
 ## Evidencias
 
@@ -357,7 +389,7 @@ Pendiente de realizar en #22.
 
 - Evidencia de ejecución de la #20:
   notebook de trabajo de Colab conservado con sus salidas.
-  No sustituye a la demostración prevista en la #21.
+  No sustituye a la demostración publicada en la #21.
 
 - Verificación del núcleo:
   `docs/verificacion-nucleo-hidraulico.md`.
@@ -367,4 +399,4 @@ Pendiente de realizar en #22.
   `notebooks/05_demostracion_nucleo_hidraulico.ipynb` publicado sin
   salidas, con instrucciones en `notebooks/README.md`.
 
-- Memoria: pendiente de actualizar al cierre.
+- Memoria: docs/memoria/nucleo-hidraulico-sprint-4.md.
