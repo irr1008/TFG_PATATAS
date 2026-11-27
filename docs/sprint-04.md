@@ -9,7 +9,6 @@
 - Fecha de inicio planificada: 09/11/2026.
 - Fecha objetivo original: 27/11/2026.
 - Fecha de cierre: 27/11/2026, coincidente con la fecha objetivo original.
-  el trabajo restante.
 - Responsable: irr1008.
 - Milestone asociado: M3 - Implementar y verificar el núcleo hidráulico.
 - Estado: cerrado el 27/11/2026 con el núcleo hidráulico v0.1, según lo
