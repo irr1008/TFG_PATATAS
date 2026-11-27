@@ -47,7 +47,8 @@ Trabajo de análisis y transición realizado en el sprint 3:
 - Reunión del 06/11 y cambio de enfoque registrados en
   `docs/registro-reunion-06-11-2026.md`.
 - Nuevo modelo descrito en `docs/especificación-modelo-físico.md`
-  y `docs/diseño-nucleo-hidraulico.md`, sin implementación todavía.
+  y `docs/diseño-nucleo-hidraulico.md`; sin implementación al cierre del
+  sprint 3, implementado y verificado en el sprint 4.
 
 Pendiente de la fase 1:
 - Repetir la extracción para incorporar las imágenes posteriores al 22/10/2026 hasta el fin del periodo.
