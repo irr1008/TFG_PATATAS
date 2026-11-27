@@ -2,6 +2,8 @@
 
 Fecha de comprobación: 25/11/2026.
 
+Actualizado el 27/11/2026 para reflejar la demostración de la #21
+
 Estado: verificación numérica con escenarios sintéticos.
 No constituye calibración ni validación con parcelas reales.
 
@@ -50,7 +52,7 @@ los criterios del escenario 11.1, los balances de las ocho
 ejecuciones y la disminución del error de theta2 al refinar
 en el escenario 11.2.
 
-No sustituye a la demostración reproducible prevista en la #21.
+No sustituye a la demostración publicada en la #21, notebooks/05_demostracion_nucleo_hidraulico.ipynb.
 
 ## 3. Configuración sintética
 
@@ -385,6 +387,8 @@ las cifras recogidas en este informe.
 El notebook de evidencia se conserva con sus salidas.
 No se presupone su publicación en el repositorio.
 
+La demostración publicada se ejecutó desde GitHub, en una sesión nueva de Colab, sobre 198d896, con los mismos resultados que recoge este informe.
+
 ## 11. Limitaciones
 
 - Parámetros, estados y entradas sintéticos.
@@ -396,6 +400,8 @@ No se presupone su publicación en el repositorio.
 - Extracciones prescritas, no demanda atmosférica calculada.
 - Dependencia temporal de la separación de procesos.
 - Dos escenarios temporales no cubren todas las configuraciones.
+- Sin temperatura ni radiación.
+- Sin capa final que actúe como depósito: el drenaje inferior sale del perfil.
 
 Las pruebas deterministas de saturación y capacidad receptora
 siguen siendo necesarias: el escenario 11.1 no las sustituye.
@@ -417,7 +423,10 @@ Completado y comprobado:
   anteriores de clonado e importación.
 - Generación de doce CSV no vacíos y registro del commit.
 
+Completado después de esta verificación:
+
+- Demostración sintética reproducible de la #21, sobre 198d896.
+
 Pendiente fuera de esta tarea:
 
-- Demostración sintética reproducible de la #21.
 - Revisión y cierre del sprint en la #22.
