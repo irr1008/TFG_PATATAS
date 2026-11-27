@@ -56,28 +56,34 @@ Pendiente de la fase 1:
   el histórico de sondas ya fue analizado, pero siguen pendientes metadatos,
   discrepancias y confirmación de riegos aplicados.
 
-La fase 2 se ha iniciado a nivel de especificación y diseño, sin implementación.
+La fase 2 (modelo físico) cuenta con un núcleo hidráulico v0.1, implementado
+y verificado con datos sintéticos en el sprint 4. No está calibrado ni
+validado con parcelas.
 
-El sprint 3 se cierra anticipadamente el 08/11/2026 tras el cambio de enfoque
-de la reunión del 06/11. El tiempo restante de su planificación deja de ser
-necesario para el alcance vigente.
+El sprint 3 se cerró anticipadamente el 08/11/2026 tras el cambio de enfoque
+de la reunión del 06/11.
 
-El siguiente incremento tendrá como objetivo implementar un núcleo hidráulico
-independiente de Agrobioma v14 y verificarlo con datos sintéticos. Se prepara mediante 
-las issues #17 a #22, con 52 horas estimadas en total. Se pretende iniciar el sprint 4 
-el 09/11/2026.
+El sprint 4, planificado del 09/11/2026 al 27/11/2026, se cierra el
+27/11/2026 con el núcleo actual, según lo acordado en la reunión de ese día.
+Incluyó las issues #17 a #22, asociadas al milestone M3. Su planificación,
+seguimiento y revisión figuran en `docs/sprint-04.md`.
 
-El sprint 4, planificado del 09/11/2026 al 27/11/2026, tiene como objetivo
-implementar un núcleo hidráulico independiente de Agrobioma v14 y verificarlo
-con datos sintéticos.
+Resultado del sprint 4:
+- Núcleo hidráulico por capas, independiente de Agrobioma v14:
+  configuración, estados, paso hidráulico completo y ejecutor temporal.
+- Balance global independiente y verificación de los escenarios 11.1 y 11.2
+  con cuatro resoluciones temporales.
+- Suite de 443 pruebas superadas.
+- Informe en `docs/verificacion-nucleo-hidraulico.md` y demostración en
+  `notebooks/05_demostracion_nucleo_hidraulico.ipynb`.
+- La verificación es sintética: no constituye calibración ni validación
+  con parcelas.
 
-Incluye las issues #17 a #22, con 52 horas estimadas y 8 horas de margen sobre
-una capacidad de referencia de 60 horas. Se asocia al milestone M3 -
-Implementar y verificar el núcleo hidráulico.
-
-La planificación y los criterios de comprobación figuran en
-`docs/sprint-04.md`. La implementación y la verificación están pendientes;
-no se presentan como resultados ya obtenidos.
+Propuestas acordadas en la reunión del 27/11/2026, aún sin planificar como
+trabajo comprometido: aumentar el número de capas, añadir una capa final que
+actúe como depósito e incorporar temperatura y radiación del ambiente.
+Su planificación como sprint 5 está prevista para el fin de semana
+del 28 y 29/11/2026.
 
 La auditoría de datos reales continúa en #16. La meteorología de #11 y la
 ampliación Sentinel-2 de #12 permanecen en el backlog.
