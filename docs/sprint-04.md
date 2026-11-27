@@ -278,6 +278,11 @@ de esos datos no bloquean las pruebas sintéticas de este sprint.
   Se revisan y actualizan el informe de verificación, la guía de uso
   y el plan de trabajo.
 
+- El 27/11/2026 las fechas de inicio y objetivo de las issues en GitHub
+  Projects se actualizaron a las fechas efectivas de ejecución. La tabla de
+  este documento conserva las fechas de planificación original. Las
+  estimaciones en horas no se modifican.
+
 El avance actual incluye el paso hidráulico completo, el ejecutor
 temporal, el balance global independiente, los escenarios 11.1 y 11.2,
 la comparación de cuatro resoluciones, un generador reproducible
